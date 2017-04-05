@@ -1,0 +1,5 @@
+node_modules/
+demo/dist/**
+src/**/*.js
+src/**/*.map
+npm-debug.log

@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:4200",
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}/dist",
+            "sourceMapPathOverrides": {
+                "webpack:///./*": "${workspaceRoot}/*"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch node",
+            "program": "${workspaceRoot}/src/main.ts",
+            "cwd": "${workspaceRoot}/src",
+            "outFiles": ["${workspaceRoot}/src/main.js"],
+            "sourceMaps": true
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "url": "http://localhost:4200/#/",
+            "port": 9222,
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}/dist",
+            "sourceMapPathOverrides": {
+                "webpack:///./*": "${workspaceRoot}/*"
+            }
+        }
+    ]
+}
