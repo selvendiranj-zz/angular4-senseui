@@ -9,5 +9,5 @@
         "**/*.js.map": { "when": "$(basename).map" },
         "npm-debug.log": true
     },
-    "vsicons.presets.angular": false
+    "vsicons.presets.angular": true
 }
