@@ -17,12 +17,37 @@
         "mobile": false,
         "styles": [
             "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "../plugins/font-awesome/css/font-awesome.min.css",
+            "../plugins/switchery/switchery.min.css",
+            "../plugins/bootstrap-select/bootstrap-select.min.css",
+            "../plugins/bootstrap-validator/bootstrapValidator.min.css",
+            "../plugins/pace/pace.min.css",
             "assets/css/glyphicons.css",
             "assets/css/style.css",
-            "assets/css/prettify-angulario.css"
+            "assets/css/prettify-angulario.css",
+            "assets/css/bootstrap.min.css",
+            "assets/css/style.css",
+            "assets/css/demo/jquery-steps.min.css",
+            "assets/css/demo/jasmine.css"
         ],
         "scripts": [
-            "../node_modules/google-code-prettify/bin/prettify.min.js"
+            "../node_modules/google-code-prettify/bin/prettify.min.js",
+            "../plugins/pace/pace.min.js",
+            "../plugins/fast-click/fastclick.min.js",
+            "../plugins/switchery/switchery.min.js",
+            "../plugins/parsley/parsley.min.js",
+            "../plugins/jquery-steps/jquery-steps.min.js",
+            "../plugins/bootstrap-select/bootstrap-select.min.js",
+            "../plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
+            "../plugins/masked-input/bootstrap-inputmask.min.js",
+            "../plugins/bootstrap-validator/bootstrapValidator.min.js",
+            "../plugins/screenfull/screenfull.js",
+            "js/jquery-2.1.1.min.js",
+            "js/bootstrap.min.js",
+            "js/scripts.js",
+            "js/demo/wizard.js",
+            "js/demo/jasmine.js",
+            "js/demo/form-wizard.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
