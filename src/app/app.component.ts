@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { SenseUIScripts } from './shared/senseui-scripts';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -6,7 +8,10 @@ import * as $ from 'jquery';
     templateUrl: './app.component.html'
 })
 
-export class AppComponent
+export class AppComponent implements AfterViewInit
 {
-
+    public ngAfterViewInit(): void
+    {
+        new SenseUIScripts();
+    }
 }

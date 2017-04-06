@@ -1894,8 +1894,6 @@ $(".inbox-star")
     });
 
 
-$("#profilebtn")
-    .click(function() {
-        $("#profilebody")
-            .slideToggle();
-    });
+$("#profilebtn").click(function() {
+    $("#profilebody").slideToggle();
+});

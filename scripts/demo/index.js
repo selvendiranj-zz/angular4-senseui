@@ -89,7 +89,7 @@ $(window).on('load', function() {
         }]
     });
 
-    // Manual code to alter the Vector map plugin to 
+    // Manual code to alter the Vector map plugin to
     // allow for individual coloring of countries
     var states = ['US-MT', 'US-TX', 'US-MO',
         'US-NY'
