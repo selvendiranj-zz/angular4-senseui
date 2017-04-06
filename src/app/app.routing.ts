@@ -1,11 +1,7 @@
-import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { Version1Component } from './components/dashboard/version1.component';
 
 export const routes = [
-    { path: '', data: ['Getting started'], component: GettingStartedComponent },
-    {
-        path: 'dashboard', data: ['Dashboard'],
-        // component: TypeaheadSectionComponent
-        loadChildren: './components/dashboard/dashboard.module#dashboardModule'
-    },
+    { path: '', data: ['Dashboard'], component: Version1Component },
+    // { path: 'dashboard', data: ['Dashboard'], loadChildren: './components/dashboard/dashboard.module#DashboardModule' },
     { path: '**', redirectTo: '/' }
 ];

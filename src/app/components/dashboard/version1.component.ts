@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'senseui',
-    templateUrl: './app.component.html'
+    templateUrl: './version1.component.html'
 })
 
-export class AppComponent
+export class Version1Component
 {
 
 }
