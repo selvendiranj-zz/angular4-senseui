@@ -1,6 +1,6 @@
 {
     "project": {
-        "name": "ng2-bootstrap"
+        "name": "angular2-senseui"
     },
     "apps": [{
         "root": "src",
