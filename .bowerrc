@@ -1,0 +1,12 @@
+{
+    "directory": "bower_components",
+    "registry": "http://bower.herokuapp.com",
+    "proxy": "http://proxy.cognizant.com:6050",
+    "https-proxy": "http://proxy.cognizant.com:6050",
+    "save": true,
+    "save-exact": true,
+    "strict-ssl": false,
+    "ignoredDependencies": [
+        "jquery"
+    ]
+}

@@ -6877,14 +6877,14 @@ hr {
 }
 
 .weather-panel-bg {
-    background: #0eaaa6 url(../img/thumbs/6.jpg);
+    background: #0eaaa6 url(../images/thumbs/6.jpg);
     min-width: 100%;
     min-height: 100%;
     background-size: cover;
 }
 
 .weather-panel-bg2 {
-    background: #0eaaa6 url(../img/thumbs/bg.png);
+    background: #0eaaa6 url(../images/thumbs/bg.png);
     min-width: 100%;
     min-height: 100%;
     background-size: cover;
@@ -7779,7 +7779,7 @@ hr {
     background-image: -moz-linear-gradient(top, #edeef0 0, #dfe1e5 100%);
     background-image: -ms-linear-gradient(top, #edeef0 0, #dfe1e5 100%);
     background-image: -o-linear-gradient(top, #edeef0 0, #dfe1e5 100%);
-    background-image: linear-gradient(top, #edeef0 0, #dfe1e5 100%);
+    background-image: linear-gradient(to bottom, #edeef0 0, #dfe1e5 100%);
     filter: progid: DXImageTransform.Microsoft.gradient(startColorStr='#edeef0 0px', endColorStr='#dfe1e5 100%');
     color: #8b91a0;
 }
@@ -8448,7 +8448,7 @@ input[type=submit].btn-block {
     border: 1px solid #eeeeee;
     background-image: -webkit-radial-gradient(#d6d5d6 30%, transparent 20%), -webkit-radial-gradient(#cfcfc3 38%, transparent 24%), -webkit-linear-gradient(top, transparent 0%, transparent 95%, rgba(32, 223, 223, 0.1) 95%, rgba(32, 223, 223, 0.1) 100%);
     background-image: -moz-radial-gradient(#d6d5d6 30%, transparent 20%), -moz-radial-gradient(#cfcfc3 38%, transparent 24%), -moz-linear-gradient(top, transparent 0%, transparent 95%, rgba(32, 223, 223, 0.1) 95%, rgba(32, 223, 223, 0.1) 100%);
-    background-image: radial-gradient(#d6d5d6 30%, rgba(0, 0, 0, 0) 20%), radial-gradient(#cfcfc3 38%, rgba(0, 0, 0, 0) 24%), linear-gradient(top, transparent 0%, transparent 95%, rgba(32, 223, 223, 0.1) 95%, rgba(32, 223, 223, 0.1) 100%);
+    background-image: radial-gradient(#d6d5d6 30%, rgba(0, 0, 0, 0) 20%), radial-gradient(#cfcfc3 38%, rgba(0, 0, 0, 0) 24%), linear-gradient(to bottom, transparent 0%, transparent 95%, rgba(32, 223, 223, 0.1) 95%, rgba(32, 223, 223, 0.1) 100%);
     background-position: 4px 1px, 4px 0px, 50% 0px;
     background-repeat: repeat-y, repeat-y, repeat;
     background-size: 30px 30px, 30px 30px, 30px 30px;
@@ -9350,7 +9350,7 @@ table th[class*=col-] {
 .userWidget-1 .avatar-bg {
     width: 100%;
     height: 250px;
-    background: #0eaaa6 url(../img/thumbs/img4.png);
+    background: #0eaaa6 url(../images/thumbs/img4.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

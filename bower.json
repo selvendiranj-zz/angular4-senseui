@@ -1,0 +1,20 @@
+{
+    "name": "angular2-senseui",
+    "description": "senseui using bootstrap",
+    "authors": [
+        "Selvendiran <selvendiranj@gmail.com>"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/selvendiranj/angular2-senseui",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "glyphicons": "0.0.2"
+    }
+}
