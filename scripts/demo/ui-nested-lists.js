@@ -1,15 +1,12 @@
-
 // UI-Nested-lists.js
 // ====================================================================
 // This file should not be included in your project.
 // This is just a sample how to initialize plugins or components.
 //
-// - squaredesigns.net -
 
+var Nestable = function() {
 
-var Nestable = function () {
-
-    var updateOutput = function (e) {
+    var updateOutput = function(e) {
         var list = e.length ? e : $(e.target),
             output = list.data('output');
         if (window.JSON) {
@@ -23,21 +20,21 @@ var Nestable = function () {
 
     // activate Nestable for list 1
     $('#nestable_list_1').nestable({
-        group: 1
-    })
+            group: 1
+        })
         .on('change', updateOutput);
 
     // activate Nestable for list 2
     $('#nestable_list_2').nestable({
-        group: 1
-    })
+            group: 1
+        })
         .on('change', updateOutput);
 
     // output initial serialised data
     updateOutput($('#nestable_list_1').data('output', $('#nestable_list_1_output')));
     updateOutput($('#nestable_list_2').data('output', $('#nestable_list_2_output')));
 
-    $('#nestable_list_menu').on('click', function (e) {
+    $('#nestable_list_menu').on('click', function(e) {
         var target = $(e.target),
             action = target.data('action');
         if (action === 'expand-all') {

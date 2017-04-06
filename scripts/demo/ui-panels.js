@@ -1,21 +1,18 @@
-
 // UI-Panels.js
 // ====================================================================
 // This file should not be included in your project.
 // This is just a sample how to initialize plugins or components.
 //
-// - squaredesigns.net -
+
+$(document).ready(function() {
 
 
- $(document).ready(function() {
-
-
-	// UI DRAG & DROP PANEL
-	// =================================================================
-	// Require Bootstrap Button
-	// -----------------------------------------------------------------
-	// http://getbootstrap.com/javascript/#buttons
-	// =================================================================
+    // UI DRAG & DROP PANEL
+    // =================================================================
+    // Require Bootstrap Button
+    // -----------------------------------------------------------------
+    // http://getbootstrap.com/javascript/#buttons
+    // =================================================================
 
     $(".grid").sortable({
         tolerance: 'pointer',
@@ -27,19 +24,18 @@
     });
 
 
-	// PANEL WITH SWITCH - TURN YOUR DEFAULT CHECKBOX INTO BEAUTIFUL IOS 7 STYLE SWITCHES.
-	// =================================================================
-	// Require Switchery
-	// http://abpetkov.github.io/switchery/
-	// =================================================================
-	new Switchery(document.getElementById('demo-panel-w-switch'));
+    // PANEL WITH SWITCH - TURN YOUR DEFAULT CHECKBOX INTO BEAUTIFUL IOS 7 STYLE SWITCHES.
+    // =================================================================
+    // Require Switchery
+    // http://abpetkov.github.io/switchery/
+    // =================================================================
+    new Switchery(document.getElementById('demo-panel-w-switch'));
 
 
-	// FULLSCREEN PANEL
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
+    // FULLSCREEN PANEL
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
 
     $("[data-click=panel-expand]").click(function(e) {
         e.preventDefault();
@@ -55,11 +51,10 @@
     });
 
 
-	// COLLAPSE PANEL
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
+    // COLLAPSE PANEL
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
 
     $("[data-click=panel-collapse]").click(function(e) {
         e.preventDefault();
@@ -67,11 +62,10 @@
     });
 
 
-	// RELOAD PANEL
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
+    // RELOAD PANEL
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
 
 
     $("[data-click=panel-reload]").click(function(e) {
@@ -89,36 +83,34 @@
         }
     });
 
-	// PANEL WITH VARIETY OF COMPONENTS - DEMO AUTO CLOSE ALERTS
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
-	$('#demo-panel-alert').on('click', function(){
-		$.jasmineNoty({
-			type: 'primary',
-			container : '#demo-panel-w-alert',
-			html : '<strong>Well done!</strong> You successfully read this important alert message.',
-			focus: false,
-			timer : 2000
-		});
-	});
+    // PANEL WITH VARIETY OF COMPONENTS - DEMO AUTO CLOSE ALERTS
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
+    $('#demo-panel-alert').on('click', function() {
+        $.jasmineNoty({
+            type: 'primary',
+            container: '#demo-panel-w-alert',
+            html: '<strong>Well done!</strong> You successfully read this important alert message.',
+            focus: false,
+            timer: 2000
+        });
+    });
 
 
 
-	// PANEL WITH VARIETY OF COMPONENTS - DEMO STICKY ALERTS
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
-	$('#demo-panel-alert2').on('click', function(){
-		$.jasmineNoty({
-			type: 'success',
-			container : '#demo-panel-w-alert',
-			html : '<div class="media-left"> <span class="icon-wrap icon-wrap-xs icon-circle alert-icon"><i class="fa fa-thumbs-up fa-lg"></i></span></div><div class="media-body"><h4 class="alert-title">Successfully Saved</h4><p class="alert-message">Your Settings Successfully Saved</p></div>',
-			focus: false
-		});
-	});
+    // PANEL WITH VARIETY OF COMPONENTS - DEMO STICKY ALERTS
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
+    $('#demo-panel-alert2').on('click', function() {
+        $.jasmineNoty({
+            type: 'success',
+            container: '#demo-panel-w-alert',
+            html: '<div class="media-left"> <span class="icon-wrap icon-wrap-xs icon-circle alert-icon"><i class="fa fa-thumbs-up fa-lg"></i></span></div><div class="media-body"><h4 class="alert-title">Successfully Saved</h4><p class="alert-message">Your Settings Successfully Saved</p></div>',
+            focus: false
+        });
+    });
 
 
- });
+});

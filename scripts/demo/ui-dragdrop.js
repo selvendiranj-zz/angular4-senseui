@@ -1,21 +1,18 @@
-
 // Ui DragDrop.js
 // ====================================================================
 // This file should not be included in your project.
 // This is just a sample how to initialize plugins or components.
 //
-// - squaredesigns.net -
+
+$(document).ready(function() {
 
 
-$(document).ready(function(){
-
-
-	// UI DRAG & DROP PANEL
-	// =================================================================
-	// Require Bootstrap Button
-	// -----------------------------------------------------------------
-	// http://getbootstrap.com/javascript/#buttons
-	// =================================================================
+    // UI DRAG & DROP PANEL
+    // =================================================================
+    // Require Bootstrap Button
+    // -----------------------------------------------------------------
+    // http://getbootstrap.com/javascript/#buttons
+    // =================================================================
 
     $(".grid").sortable({
         tolerance: 'pointer',

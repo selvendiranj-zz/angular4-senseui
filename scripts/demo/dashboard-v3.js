@@ -1,67 +1,64 @@
-
 // Homepage 3.js
 // ====================================================================
 // This file should not be included in your project.
 // This is just a sample how to initialize plugins or components.
 //
-// - squaredesigns.net -
-
 
 $(document).ready(function() {
 
 
 
-	// EASY PIE CHART
-	// =================================================================
-	// Require easyPieChart
-	// -----------------------------------------------------------------
-	// http://rendro.github.io/easy-pie-chart/
-	// =================================================================
+    // EASY PIE CHART
+    // =================================================================
+    // Require easyPieChart
+    // -----------------------------------------------------------------
+    // http://rendro.github.io/easy-pie-chart/
+    // =================================================================
 
-	$('#demo-pie-2').easyPieChart({
-		barColor :'#F3565D',
-		scaleColor:false,
-		trackColor:'#eee',
-		lineCap : 'round',
-		   size : '70',
-		lineWidth :8,
-		onStep: function(from, to, percent) {
-			$(this.el).find('.pie-value').text(Math.round(percent) + '%');
-		}
-	});
+    $('#demo-pie-2').easyPieChart({
+        barColor: '#F3565D',
+        scaleColor: false,
+        trackColor: '#eee',
+        lineCap: 'round',
+        size: '70',
+        lineWidth: 8,
+        onStep: function(from, to, percent) {
+            $(this.el).find('.pie-value').text(Math.round(percent) + '%');
+        }
+    });
 
-	$('#demo-pie-3').easyPieChart({
-		barColor :'#F3565D',
-		scaleColor:false,
-		trackColor:'#eee',
-		lineCap : 'round',
-		   size : '70',
-		lineWidth :8,
-		onStep: function(from, to, percent) {
-			$(this.el).find('.pie-value').text(Math.round(percent) + '%');
-		}
-	});
+    $('#demo-pie-3').easyPieChart({
+        barColor: '#F3565D',
+        scaleColor: false,
+        trackColor: '#eee',
+        lineCap: 'round',
+        size: '70',
+        lineWidth: 8,
+        onStep: function(from, to, percent) {
+            $(this.el).find('.pie-value').text(Math.round(percent) + '%');
+        }
+    });
 
-	$('#demo-pie-4').easyPieChart({
-		barColor :'#F3565D',
-		scaleColor:false,
-		trackColor:'#eee',
-		lineCap : 'round',
-		   size : '70',
-		lineWidth :8,
-		onStep: function(from, to, percent) {
-			$(this.el).find('.pie-value').text(Math.round(percent) + '%');
-		}
-	});
+    $('#demo-pie-4').easyPieChart({
+        barColor: '#F3565D',
+        scaleColor: false,
+        trackColor: '#eee',
+        lineCap: 'round',
+        size: '70',
+        lineWidth: 8,
+        onStep: function(from, to, percent) {
+            $(this.el).find('.pie-value').text(Math.round(percent) + '%');
+        }
+    });
 
 
 
-	// JVECTOR MAP
-	// =================================================================
-	// Require jvectormap.js
-	// -----------------------------------------------------------------
-	// https://github.com/bjornd/jvectormap
-	// =================================================================
+    // JVECTOR MAP
+    // =================================================================
+    // Require jvectormap.js
+    // -----------------------------------------------------------------
+    // https://github.com/bjornd/jvectormap
+    // =================================================================
 
     $('#world-map-markers').vectorMap({
         map: 'world_mill_en',
@@ -69,7 +66,7 @@ $(document).ready(function() {
         normalizeFunction: 'polynomial',
         hoverOpacity: 0.7,
         hoverColor: false,
-	    zoomButtons: false,
+        zoomButtons: false,
         markerStyle: {
             initial: {
                 fill: '#fad733'
@@ -252,25 +249,38 @@ $(document).ready(function() {
     // -----------------------------------------------------------------
     // http://www.flotcharts.org/
     // =================================================================
-    var earning = [['Jan', 5], ['Feb', 8], ['March', 6], ['April', 9], ['May', 7], ['June', 4], ['July', 8], ['Aug', 12], ['Sept', 6], ['Oct', 8], ['Nov', 6], ['Dec', 10]];
+    var earning = [
+        ['Jan', 5],
+        ['Feb', 8],
+        ['March', 6],
+        ['April', 9],
+        ['May', 7],
+        ['June', 4],
+        ['July', 8],
+        ['Aug', 12],
+        ['Sept', 6],
+        ['Oct', 8],
+        ['Nov', 6],
+        ['Dec', 10]
+    ];
 
     var plot = $.plot("#demo-earning-statistics", [{
         label: 'Net Earning',
         data: earning,
-       }], {
+    }], {
         series: {
             lines: {
                 show: true,
-				lineWidth: 2,
-				fill: false
+                lineWidth: 2,
+                fill: false
             },
             points: {
                 show: true,
-				lineWidth: 2,
-				fill: true,
-				fillColor: "#ffffff",
-				symbol: "circle",
-				radius: 5
+                lineWidth: 2,
+                fill: true,
+                fillColor: "#ffffff",
+                symbol: "circle",
+                radius: 5
             },
             shadowSize: 0 // Drawing is faster without shadows
         },
@@ -305,59 +315,62 @@ $(document).ready(function() {
     // http://www.flotcharts.org/
     // =================================================================
 
-        var data1 = [];
-        var totalPoints = 300;
-        function GetData() {
+    var data1 = [];
+    var totalPoints = 300;
+
+    function GetData() {
         data1.shift();
         while (data1.length < totalPoints) {
-        var prev = data1.length > 0 ? data1[data1.length - 1] : 50;
-        var y = prev + Math.random() * 10 - 5;
-        y = y < 0 ? 0 : (y > 100 ? 100 : y);
-        data1.push(y);
+            var prev = data1.length > 0 ? data1[data1.length - 1] : 50;
+            var y = prev + Math.random() * 10 - 5;
+            y = y < 0 ? 0 : (y > 100 ? 100 : y);
+            data1.push(y);
         }
-    var result = [];
-    for (var i = 0; i < data1.length; ++i) {
-        result.push([i, data1[i]])
+        var result = [];
+        for (var i = 0; i < data1.length; ++i) {
+            result.push([i, data1[i]])
         }
-    return result;
+        return result;
     }
     var updateInterval = 100;
     var plot = $.plot($("#demo-realtime"), [
-            GetData()], {
-            series: {
-                lines: {
-                    show: true,
-                    fill: true
-                },
-                shadowSize: 0
+        GetData()
+    ], {
+        series: {
+            lines: {
+                show: true,
+                fill: true
             },
-            yaxis: {
-                min: 0,
-                max: 100,
-                ticks: 10
-            },
-            xaxis: {
-                show: true
-            },
-            grid: {
-                hoverable: true,
-                clickable: true,
-                tickColor: "#eeeeee",
-                borderWidth: 1,
-                borderColor: "#eeeeee"
-            },
-            colors: ["#5abcdf", "#ff8673"],
-            tooltip: true,
-            tooltipOpts: {
-                defaultTheme: false
-            }
-        });
-        function update() {
-            plot.setData([GetData()]);
-            plot.draw();
-            setTimeout(update, updateInterval);
+            shadowSize: 0
+        },
+        yaxis: {
+            min: 0,
+            max: 100,
+            ticks: 10
+        },
+        xaxis: {
+            show: true
+        },
+        grid: {
+            hoverable: true,
+            clickable: true,
+            tickColor: "#eeeeee",
+            borderWidth: 1,
+            borderColor: "#eeeeee"
+        },
+        colors: ["#5abcdf", "#ff8673"],
+        tooltip: true,
+        tooltipOpts: {
+            defaultTheme: false
         }
-        update();
+    });
+
+    function update() {
+        plot.setData([GetData()]);
+        plot.draw();
+        setTimeout(update, updateInterval);
+    }
+    update();
 
 
     // FOOTABLE FILTERING
@@ -367,24 +380,24 @@ $(document).ready(function() {
     // http://fooplugins.com/plugins/footable-jquery/
     // =================================================================
 
-	var filtering = $('#demo-foo-filtering');
-	filtering.footable().on('footable_filtering', function (e) {
-		var selected = $('#demo-foo-filter-status').find(':selected').val();
-		e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
-		e.clear = !e.filter;
-	});
+    var filtering = $('#demo-foo-filtering');
+    filtering.footable().on('footable_filtering', function(e) {
+        var selected = $('#demo-foo-filter-status').find(':selected').val();
+        e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+        e.clear = !e.filter;
+    });
 
-	// Filter status
-	$('#demo-foo-filter-status').change(function (e) {
-		e.preventDefault();
-		filtering.trigger('footable_filter', {filter: $(this).val()});
-	});
+    // Filter status
+    $('#demo-foo-filter-status').change(function(e) {
+        e.preventDefault();
+        filtering.trigger('footable_filter', { filter: $(this).val() });
+    });
 
-	// Search input
-	$('#demo-foo-search').on('input', function (e) {
-		e.preventDefault();
-		filtering.trigger('footable_filter', {filter: $(this).val()});
-	});
+    // Search input
+    $('#demo-foo-search').on('input', function(e) {
+        e.preventDefault();
+        filtering.trigger('footable_filter', { filter: $(this).val() });
+    });
 
 
 });

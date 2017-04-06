@@ -1,21 +1,18 @@
-
 // UI-Typography.js
 // ====================================================================
 // This file should not be included in your project.
 // This is just a sample how to initialize plugins or components.
 //
-// - squaredesigns.net -
+
+$(document).ready(function() {
 
 
- $(document).ready(function() {
-
-
-	// UI DRAG & DROP PANEL
-	// =================================================================
-	// Require Bootstrap Button
-	// -----------------------------------------------------------------
-	// http://getbootstrap.com/javascript/#buttons
-	// =================================================================
+    // UI DRAG & DROP PANEL
+    // =================================================================
+    // Require Bootstrap Button
+    // -----------------------------------------------------------------
+    // http://getbootstrap.com/javascript/#buttons
+    // =================================================================
 
     $(".grid").sortable({
         tolerance: 'pointer',
@@ -27,11 +24,10 @@
     });
 
 
-	// FULLSCREEN PANEL
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
+    // FULLSCREEN PANEL
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
 
     $("[data-click=panel-expand]").click(function(e) {
         e.preventDefault();
@@ -47,11 +43,10 @@
     });
 
 
-	// COLLAPSE PANEL
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
+    // COLLAPSE PANEL
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
 
     $("[data-click=panel-collapse]").click(function(e) {
         e.preventDefault();
@@ -59,12 +54,10 @@
     });
 
 
-	// RELOAD PANEL
-	// =================================================================
-	// Require Nifty Admin Javascript
-	// http://www.squaredesigns.net/
-	// =================================================================
-
+    // RELOAD PANEL
+    // =================================================================
+    // Require Nifty Admin Javascript
+    // =================================================================
 
     $("[data-click=panel-reload]").click(function(e) {
         e.preventDefault();
@@ -81,4 +74,4 @@
         }
     });
 
- });
+});
