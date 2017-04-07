@@ -12,6 +12,7 @@ import { SettingsComponent } from './common/settings/settings.component';
 import { AppComponent } from './app.component';
 import { routes } from './app.routing';
 import { Version1Component } from './components/dashboard/version1.component';
+import { ScriptService } from './shared/script.service';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,7 @@ import { Version1Component } from './components/dashboard/version1.component';
         RouterModule.forRoot(routes, { useHash: true })
     ],
     providers: [
-
+        ScriptService
     ],
     bootstrap: [AppComponent]
 })

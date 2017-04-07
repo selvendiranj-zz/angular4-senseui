@@ -1,7 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { SenseUIScripts } from './shared/senseui-scripts';
-
-import * as $ from 'jquery';
+import { ScriptService } from './shared/script.service';
 
 @Component({
     selector: 'senseui',
@@ -10,8 +9,15 @@ import * as $ from 'jquery';
 
 export class AppComponent implements AfterViewInit
 {
+    private scriptSvc: ScriptService;
+
+    public constructor(scriptSvc: ScriptService)
+    {
+        this.scriptSvc = scriptSvc;
+    }
+
     public ngAfterViewInit(): void
     {
-        new SenseUIScripts();
+        this.scriptSvc.loadCompScript('AppComponent');
     }
 }
