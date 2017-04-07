@@ -71,8 +71,10 @@
     },
     "homepage": "https://github.com/valor-software/ng2-bootstrap#readme",
     "dependencies": {
+        "font-awesome": "^4.7.0",
         "jquery": "^3.2.1",
         "moment": "2.18.1",
+        "bootstrap": "3.3.7",
         "ng2-bootstrap": "1.6.0"
     },
     "peerDependencies": {
@@ -86,7 +88,6 @@
         "@angular/platform-browser": "^4.0.0",
         "@angular/platform-browser-dynamic": "^4.0.0",
         "@angular/router": "^4.0.0",
-        "bootstrap": "3.3.7",
         "core-js": "^2.4.1",
         "zone.js": "0.8.5",
         "rxjs": "5.2.0"

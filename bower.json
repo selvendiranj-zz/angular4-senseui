@@ -15,6 +15,9 @@
         "tests"
     ],
     "dependencies": {
-        "glyphicons": "0.0.2"
+        "gamma": "*",
+        "jquery-steps": "1.1.0",
+        "glyphicons": "0.0.2",
+        "pace": "1.0.2"
     }
 }

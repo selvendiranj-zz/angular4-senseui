@@ -18,23 +18,22 @@
         "styles": [
             "../node_modules/bootstrap/dist/css/bootstrap.min.css",
             "assets/css/style.css",
-            "../plugins/font-awesome/css/font-awesome.min.css",
+            "../node_modules/font-awesome/css/font-awesome.min.css",
             "../plugins/switchery/switchery.min.css",
             "../plugins/bootstrap-select/bootstrap-select.min.css",
             "../plugins/bootstrap-validator/bootstrapValidator.min.css",
             "../plugins/jvectormap/jquery-jvectormap.css",
-            "assets/css/demo/jquery-steps.min.css",
-            "assets/css/demo/jasmine.css",
-            "../plugins/pace/pace.min.css"
+            "../bower_components/jquery-steps/demo/css/jquery.steps.css",
+            "../bower_components/pace/themes/green/pace-theme-center-radar.css"
         ],
         "scripts": [
-            "../plugins/pace/pace.min.js",
+            "../bower_components/pace/pace.min.js",
             "../node_modules/jquery/dist/jquery.min.js",
             "../node_modules/bootstrap/dist/js/bootstrap.min.js",
             "../plugins/fast-click/fastclick.min.js",
             "../plugins/switchery/switchery.min.js",
             "../plugins/parsley/parsley.min.js",
-            "../plugins/jquery-steps/jquery-steps.min.js",
+            "../bower_components/jquery-steps/build/jquery.steps.min.js",
             "../plugins/bootstrap-select/bootstrap-select.min.js",
             "../plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
             "../plugins/masked-input/bootstrap-inputmask.min.js",
