@@ -18,6 +18,12 @@
         "gamma": "*",
         "jquery-steps": "1.1.0",
         "glyphicons": "0.0.2",
-        "pace": "1.0.2"
+        "pace": "1.0.2",
+        "switchery": "0.8.2",
+        "fastclick": "1.0.6",
+        "bootstrap-select": "1.12.2",
+        "bootstrapvalidator": "0.5.3",
+        "jvectormap": "2.0.4",
+        "parsleyjs": "2.7.0"
     }
 }
