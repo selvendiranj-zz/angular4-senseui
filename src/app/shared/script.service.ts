@@ -35,7 +35,10 @@ export class ScriptService
     public load(...scripts: string[]): any
     {
         let promises: any[] = [];
-        scripts.forEach((script: any) => promises.push(this.loadScript(script)));
+        scripts.forEach((script: any) =>
+        {
+            promises.push(this.loadScript(script));
+        });
         return Promise.all(promises);
     }
 

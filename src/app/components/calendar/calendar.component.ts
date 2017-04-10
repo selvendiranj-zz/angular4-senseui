@@ -5,7 +5,7 @@ import { ScriptService } from '../../shared/script.service';
     moduleId: module.id,
     selector: 'senseui-calendar',
     templateUrl: './calendar.component.html',
-    styles: [require('../../../../bower_components/fullcalendar/dist/fullcalendar.min.css')]
+    styleUrls: ['../../../assets/bower_components/fullcalendar/dist/fullcalendar.min.css']
 })
 
 export class CalendarComponent implements AfterViewInit

@@ -11,7 +11,7 @@ import { CalendarComponent } from './calendar.component';
         CalendarComponent
     ],
     imports: [
-        RouterModule.forRoot(routes, { useHash: true })
+        RouterModule.forChild(routes)
     ],
     exports: [
         CalendarComponent

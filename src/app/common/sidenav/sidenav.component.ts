@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { routes } from './sidenav.routes';
 
 @Component({
     selector: 'senseui-sidenav',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 
 export class SidenavComponent
 {
-
+    public menuItems: any[] = routes;
 }

@@ -16,9 +16,9 @@ export const ScriptStore: Scripts[] = [
     { name: 'senui-wizard', src: '../scripts/demo/wizard.js' },
     { name: 'senui-form-wizard', src: '../scripts/demo/form-wizard.js' },
     { name: 'senui-calendar', src: '../scripts/demo/fullcalendar.js' },
-    { name: 'moment', src: '../bower_components/moment/min/moment.min.js' },
-    { name: 'jquery-ui', src: '../bower_components/jquery-ui/jquery-ui.min.js' },
-    { name: 'fullcalendar', src: '../bower_components/fullcalendar/dist/fullcalendar.min.js' }
+    { name: 'moment', src: 'assets/bower_components/moment/min/moment.min.js' },
+    { name: 'jquery-ui', src: 'assets/bower_components/jquery-ui/jquery-ui.min.js' },
+    { name: 'fullcalendar', src: 'assets/bower_components/fullcalendar/dist/fullcalendar.min.js' }
 ];
 
 export const CompScriptsStore: CompScripts[] = [

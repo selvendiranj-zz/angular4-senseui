@@ -8,62 +8,26 @@
             <div class="nano">
                 <div class="nano-content">
                     <ul id="mainnav-menu" class="list-group">
-                        <!--Category name-->
-                        <li class="list-header">Navigation</li>
-                        <!--Menu list item-->
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="fa fa-home"></i>
-                                <span class="menu-title">Dashboard</span>
-                                <i class="arrow"></i>
-                            </a>
-                            <!--Submenu-->
-                            <ul class="collapse">
-                                <li><a href="index.html"><i class="fa fa-caret-right"></i> Homepage V1</a></li>
-                                <li><a href="dashboard-v2.html"><i class="fa fa-caret-right"></i> Homepage V2</a></li>
-                                <li><a href="dashboard-v3.html"><i class="fa fa-caret-right"></i> Homepage V3</a></li>
-                            </ul>
-                        </li>
-                        <!--Menu list item-->
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="menu-title">E-commerce</span>
-                                <i class="arrow"></i>
-                            </a>
-                            <!--Submenu-->
-                            <ul class="collapse">
-                                <li><a href="ecommerce.html"><i class="fa fa-caret-right"></i> Dashboard</a></li>
-                                <li><a href="ecommerce-order.html"><i class="fa fa-caret-right"></i> Order </a></li>
-                                <li><a href="ecommerce-orderview.html"><i class="fa fa-caret-right"></i> Orders View</a></li>
-                                <li><a href="ecommerce-products.html"><i class="fa fa-caret-right"></i> Product List </a></li>
-                            </ul>
-                        </li>
-                        <li class="list-divider"></li>
-                        <!--Category name-->
-                        <li class="list-header">Components</li>
-                        <!--Menu list item-->
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-th"></i>
-                                <span class="menu-title">
-                                            <strong>Layouts</strong>
-                                            </span>
-                                <i class="arrow"></i>
-                            </a>
-                            <!--Submenu-->
-                            <ul class="collapse">
-                                <li><a href="layout-blank.html"><i class="fa fa-caret-right"></i> Blank Page </a></li>
-                                <li><a href="layout-boxed.html"><i class="fa fa-caret-right"></i> Boxed Version </a></li>
-                                <li><a href="layout-collapsed-sidebar.html"><i class="fa fa-caret-right"></i> Collapsed Sidebar </a></li>
-                                <li><a href="layout-push-menu.html"><i class="fa fa-caret-right"></i> Push Menu </a></li>
-                                <li><a href="layout-slide-menu.html"><i class="fa fa-caret-right"></i> Slide Menu </a></li>
-                                <li><a href="layout-horizontal-menu.html"><i class="fa fa-caret-right"></i> Horizontal Menu </a></li>
-                                <li><a href="layout-horizontal-menu-boxed.html"><i class="fa fa-caret-right"></i> Boxed Horizontal </a></li>
-                                <li><a href="layout-blank.html"><i class="fa fa-caret-right"></i> Apps layout V1 </a></li>
-                                <li><a href="layout-app-v2.html"><i class="fa fa-caret-right"></i> Apps layout V2 </a></li>
-                                <li><a href="layout-blank.html"><i class="fa fa-caret-right"></i> Full Width </a></li>
-                            </ul>
+                        <li *ngFor="let item of menuItems" [ngClass]="(item.isCategory)?item.icon:''">
+                            <ng-container *ngIf="item.isCategory">
+                                {{item.name}}
+                            </ng-container>
+                            <ng-container *ngIf="!item.isCategory">
+                                <a href="javascript:void(0)">
+                                    <i [ngClass]="item.icon"></i>
+                                    <span class="menu-title">{{item.name}}</span>
+                                    <i class="arrow" *ngIf="item.children.length"></i>
+                                </a>
+                                <ng-container *ngIf="item.children.length">
+                                    <ul class="collapse">
+                                        <li *ngFor="let subItem of item.children">
+                                            <a [routerLink]="[subItem.url]">
+                                                <i [ngClass]="subItem.icon"></i> {{subItem.name}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </ng-container>
+                            </ng-container>
                         </li>
                         <!--Menu list item-->
                         <li>
@@ -161,7 +125,7 @@
                         <li class="list-header">Extra</li>
                         <!--Menu list item-->
                         <li>
-                            <a href="calendar.html">
+                            <a href="./#/calendar">
                                 <i class="fa fa-calendar"></i>
                                 <span class="menu-title">
                                             Calendar
