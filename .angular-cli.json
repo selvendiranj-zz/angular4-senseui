@@ -24,7 +24,8 @@
             "assets/bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css",
             "assets/bower_components/jvectormap/jquery-jvectormap.css",
             "assets/bower_components/jquery-steps/demo/css/jquery.steps.css",
-            "assets/bower_components/pace/themes/green/pace-theme-center-radar.css"
+            "assets/bower_components/pace/themes/green/pace-theme-center-radar.css",
+            "assets/bower_components/fullcalendar/dist/fullcalendar.min.css"
         ],
         "scripts": [
             "assets/bower_components/pace/pace.min.js",
@@ -44,7 +45,10 @@
             "assets/bower_components/jvectormap/jquery.jvectormap.min.js",
             "assets/bower_components/jvectormap/tests/assets/jquery-jvectormap-us-aea-en.js",
             "assets/bower_components/easy-pie-chart/dist/jquery.easypiechart.min.js",
-            "assets/bower_components/screenfull/dist/screenfull.min.js"
+            "assets/bower_components/screenfull/dist/screenfull.min.js",
+            "assets/bower_components/moment/min/moment.min.js",
+            "assets/bower_components/jquery-ui/jquery-ui.min.js",
+            "assets/bower_components/fullcalendar/dist/fullcalendar.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
