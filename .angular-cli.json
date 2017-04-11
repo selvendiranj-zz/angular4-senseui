@@ -26,7 +26,8 @@
             "assets/bower_components/jquery-steps/demo/css/jquery.steps.css",
             "assets/bower_components/pace/themes/green/pace-theme-center-radar.css",
             "assets/bower_components/fullcalendar/dist/fullcalendar.min.css",
-            "assets/bower_components/footable/compiled/footable.bootstrap.min.css"
+            "assets/bower_components/footable/compiled/footable.bootstrap.min.css",
+            "assets/bower_components/morris.js/morris.css"
         ],
         "scripts": [
             "assets/bower_components/pace/pace.min.js",
@@ -42,6 +43,12 @@
             "assets/bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
             "assets/bower_components/jquery-flot/jquery.flot.js",
             "assets/bower_components/jquery-flot/jquery.flot.resize.js",
+            "assets/bower_components/jquery-flot/jquery.flot.pie.js",
+            "assets/bower_components/jquery-flot/jquery.flot.selection.js",
+            "assets/bower_components/jquery-flot/jquery.flot.errorbars.js",
+            "assets/bower_components/jquery-flot/jquery.flot.fillbetween.js",
+            "assets/bower_components/jquery-flot/jquery.flot.time.js",
+            "assets/bower_components/jquery-flot/jquery.flot.stack.js",
             "assets/bower_components/jquery-flot/jquery.flot.categories.js",
             "assets/bower_components/jvectormap/jquery.jvectormap.min.js",
             "assets/bower_components/jvectormap/tests/assets/jquery-jvectormap-us-aea-en.js",
@@ -50,8 +57,10 @@
             "assets/bower_components/footable/compiled/footable.min.js",
             "assets/bower_components/screenfull/dist/screenfull.min.js",
             "assets/bower_components/moment/min/moment.min.js",
+            "assets/bower_components/moment-range/lib/moment-range.js",
             "assets/bower_components/jquery-ui/jquery-ui.min.js",
-            "assets/bower_components/fullcalendar/dist/fullcalendar.min.js"
+            "assets/bower_components/fullcalendar/dist/fullcalendar.min.js",
+            "assets/bower_components/morris.js/morris.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
