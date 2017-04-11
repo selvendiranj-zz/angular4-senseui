@@ -16,9 +16,9 @@
         "prefix": "",
         "mobile": false,
         "styles": [
-            "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
             "assets/css/style.css",
-            "../node_modules/font-awesome/css/font-awesome.min.css",
+            "assets/bower_components/font-awesome/css/font-awesome.min.css",
             "assets/bower_components/switchery/dist/switchery.min.css",
             "assets/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css",
             "assets/bower_components/bootstrapvalidator/dist/css/bootstrapValidator.min.css",
@@ -29,8 +29,8 @@
         ],
         "scripts": [
             "assets/bower_components/pace/pace.min.js",
-            "../node_modules/jquery/dist/jquery.min.js",
-            "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "assets/bower_components/jquery/dist/jquery.min.js",
+            "assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
             "assets/bower_components/fastclick/lib/fastclick.js",
             "assets/bower_components/switchery/dist/switchery.min.js",
             "assets/bower_components/parsleyjs/dist/parsley.min.js",
