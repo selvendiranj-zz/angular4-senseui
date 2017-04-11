@@ -3,26 +3,26 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { Home1Service } from './home1.service';
+import { Home3Service } from './home3.service';
 
-import { Home1Component } from './home1.component';
+import { Home3Component } from './home3.component';
 
 @NgModule({
     declarations: [
-        Home1Component
+        Home3Component
     ],
     imports: [
-        RouterModule.forChild([{ path: '', component: Home1Component }])
+        RouterModule.forChild([{ path: '', component: Home3Component }])
     ],
     exports: [
-        Home1Component
+        Home3Component
     ],
     providers: [
-        Home1Service
+        Home3Service
     ]
 })
 
-export class Home1Module
+export class Home3Module
 {
 
 }
