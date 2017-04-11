@@ -3,12 +3,15 @@
 // ====================================================================
 
 import { Injectable } from '@angular/core';
+declare const window: any;
 
 @Injectable()
 export class FlotService
 {
     public InitFlot(): any
     {
+        window['moment-range'].extendMoment(moment);
+
         // FLOT CHART
         // =================================================================
         // Require Flot Charts
@@ -509,7 +512,7 @@ export class FlotService
 
             let range = moment().range(moment(chatData.daterange[0], 'M-D-YY'), moment(chatData.daterange[1], 'M-D-YY'));
 
-            range.by(moment().range(moment(chatData.daterange[0], 'M-D-YY'), moment(chatData.daterange[0], 'M-D-YY').add('days', 1)), function (m: any): any
+            range.by(moment().range(moment(chatData.daterange[0], 'M-D-YY'), moment(chatData.daterange[0], 'M-D-YY').add(1, 'days')), function (m: any): any
             {
                 dataTemp.date.push(m.valueOf());
                 ticks.push([m.valueOf(), m.format('MMM D')]);

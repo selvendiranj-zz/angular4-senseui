@@ -49,6 +49,7 @@
             "assets/bower_components/jquery-flot/jquery.flot.fillbetween.js",
             "assets/bower_components/jquery-flot/jquery.flot.time.js",
             "assets/bower_components/jquery-flot/jquery.flot.stack.js",
+            "assets/bower_components/jquery-flot/jquery.flot.spline.js",
             "assets/bower_components/jquery-flot/jquery.flot.categories.js",
             "assets/bower_components/jvectormap/jquery.jvectormap.min.js",
             "assets/bower_components/jvectormap/tests/assets/jquery-jvectormap-us-aea-en.js",
@@ -60,7 +61,8 @@
             "assets/bower_components/moment-range/lib/moment-range.min.js",
             "assets/bower_components/jquery-ui/jquery-ui.min.js",
             "assets/bower_components/fullcalendar/dist/fullcalendar.min.js",
-            "assets/bower_components/morris.js/morris.min.js"
+            "assets/bower_components/morris.js/morris.min.js",
+            "assets/bower_components/raphael/raphael.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
