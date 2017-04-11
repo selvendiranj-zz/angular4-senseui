@@ -9,8 +9,8 @@ interface Sidenav
 
 const dashboard: Sidenav[] = [
     { name: 'Homepage V1', icon: 'fa fa-caret-right', url: '/', isCategory: false, children: [] },
-    { name: 'Homepage V2', icon: 'fa fa-caret-right', url: '/dashboard/homev2', isCategory: false, children: [] },
-    { name: 'Homepage V3', icon: 'fa fa-caret-right', url: '/dashboard/homev3', isCategory: false, children: [] }
+    { name: 'Homepage V2', icon: 'fa fa-caret-right', url: '/dashboard/home2', isCategory: false, children: [] },
+    { name: 'Homepage V3', icon: 'fa fa-caret-right', url: '/dashboard/home3', isCategory: false, children: [] }
 ];
 
 const ecommerce: Sidenav[] = [

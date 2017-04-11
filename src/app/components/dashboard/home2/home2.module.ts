@@ -3,26 +3,26 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { CalendarServcie } from './calendar.service';
+import { Home2Service } from './home2.service';
 
-import { CalendarComponent } from './calendar.component';
+import { Home2Component } from './home2.component';
 
 @NgModule({
     declarations: [
-        CalendarComponent
+        Home2Component
     ],
     imports: [
-        RouterModule.forChild([{ path: '', component: CalendarComponent }])
+        RouterModule.forChild([{ path: '', component: Home2Component }])
     ],
     exports: [
-        CalendarComponent
+        Home2Component
     ],
     providers: [
-        CalendarServcie
+        Home2Service
     ]
 })
 
-export class CalendarModule
+export class Home2Module
 {
 
 }

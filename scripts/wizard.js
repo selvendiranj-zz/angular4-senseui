@@ -3,13 +3,13 @@
  * Page/renders: forms-wizard.html
  * Plugins used: steps, inputmask, parsley
  * ======================================================================== */
-$(function () {
+$(function() {
     // Form wizard with no validation
     // ================================
     $("#wizard").steps({
         headerTag: ".wizard-title",
         bodyTag: ".wizard-container",
-        onFinished: function () {
+        onFinished: function() {
             // do anything here ;)
             alert("finished!");
         }
@@ -21,7 +21,7 @@ $(function () {
         headerTag: ".wizard-title",
         bodyTag: ".wizard-container",
         transitionEffect: "fade",
-        onStepChanging: function (event, currentIndex, newIndex) {
+        onStepChanging: function(event, currentIndex, newIndex) {
             // Allways allow previous action even if the current form is not valid!
             if (currentIndex > newIndex) {
                 return true;
@@ -60,7 +60,7 @@ $(function () {
             }
 
         },
-        onStepChanged: function (event, currentIndex, priorIndex) {
+        onStepChanged: function(event, currentIndex, priorIndex) {
             // Used to skip the "Warning" step if the user is old enough.
             if (currentIndex === 2 && Number($("#age-2").val()) >= 18) {
                 $("#form-3").steps("next");
@@ -71,11 +71,11 @@ $(function () {
                 $("#form-3").steps("previous");
             }
         },
-        onFinishing: function (event, currentIndex, newIndex) {
+        onFinishing: function(event, currentIndex, newIndex) {
             // revalidate the whole form
             return $(this).parsley().validate();
         },
-        onFinished: function () {
+        onFinished: function() {
             // yayyy! all validation is pass.. now we can send data to server
             // or display message ;)
             alert("submitted!");
