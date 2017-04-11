@@ -52,13 +52,13 @@ export class CalendarServcie
             select(start: any, end: any): any
             {
                 let title = prompt('Event Title:');
-                let eventData;
+                let eventData: any;
                 if (title)
                 {
                     eventData = {
-                        title: title,
-                        start: start,
-                        end: end
+                        title,
+                        start,
+                        end
                     };
                     $('#demo-calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
                 }

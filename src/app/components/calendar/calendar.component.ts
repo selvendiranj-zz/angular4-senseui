@@ -21,7 +21,7 @@ export class CalendarComponent implements AfterViewInit
 
     public ngAfterViewInit(): void
     {
-        this.scriptSvc.loadCompScript('CalendarComponent');
+        // this.scriptSvc.loadCompScript('CalendarComponent');
         this.calService.InitCalendar();
     }
 }
