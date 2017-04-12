@@ -11,6 +11,8 @@ declare const PR: any;
 declare const $: any;
 declare const moment: any;
 declare const Morris: any;
+declare const Dropzone: any;
+declare const noUiSlider: any;
 
 declare module jasmine
 {

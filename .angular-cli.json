@@ -27,6 +27,16 @@
             "assets/bower_components/fullcalendar/dist/fullcalendar.min.css",
             "assets/bower_components/footable/compiled/footable.bootstrap.min.css",
             "assets/bower_components/morris.js/morris.css",
+            "assets/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css",
+            "assets/bower_components/tag-it/css/jquery.tagit.css",
+            "assets/bower_components/ion.rangeslider/css/ion.rangeSlider.css",
+            "assets/bower_components/ion.rangeslider/css/ion.rangeSlider.skinNice.css",
+            "assets/bower_components/chosen/chosen.css",
+            "assets/bower_components/noUiSlider/distribute/nouislider.min.css",
+            "assets/bower_components/bootstrap-timepicker/css/timepicker.less",
+            "assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
+            "assets/bower_components/dropzone/dist/min/dropzone.min.css",
+            "assets/bower_components/summernote/dist/summernote.css",
             "assets/bower_components/pace/themes/green/pace-theme-flat-top.css"
         ],
         "scripts": [
@@ -61,7 +71,18 @@
             "assets/bower_components/jquery-ui/jquery-ui.min.js",
             "assets/bower_components/fullcalendar/dist/fullcalendar.min.js",
             "assets/bower_components/morris.js/morris.min.js",
-            "assets/bower_components/raphael/raphael.min.js"
+            "assets/bower_components/raphael/raphael.min.js",
+            "assets/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+            "assets/bower_components/tag-it/js/tag-it.min.js",
+            "assets/bower_components/chosen/chosen.jquery.js",
+            "assets/bower_components/noUiSlider/distribute/nouislider.min.js",
+            "assets/bower_components/libLink/jquery.liblink.js",
+            "assets/bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js",
+            "assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+            "assets/bower_components/dropzone/dist/min/dropzone.min.js",
+            "assets/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js",
+            "assets/bower_components/jquery-maskedinput/dist/jquery.maskedinput.min.js",
+            "assets/bower_components/summernote/dist/summernote.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
