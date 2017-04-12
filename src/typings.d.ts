@@ -9,8 +9,8 @@ declare const PR: any;
 // declare const require:any;
 // declare const global:any;
 declare const $: any;
-declare var moment: any;
-declare var Morris: any;
+declare const moment: any;
+declare const Morris: any;
 
 declare module jasmine
 {
