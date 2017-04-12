@@ -8,6 +8,10 @@ export class ControlsService
 {
     public InitControls(): any
     {
+        $(function (): any
+        {
+            $('.selectpicker').selectpicker();
+        });
         // PANEL WITH BUTTONS - LOADING OVERLAY
         // =================================================================
         // Require Nifty Admin Javascript
