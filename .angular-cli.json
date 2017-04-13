@@ -76,7 +76,6 @@
             "assets/bower_components/tag-it/js/tag-it.min.js",
             "assets/bower_components/chosen/chosen.jquery.js",
             "assets/bower_components/noUiSlider/distribute/nouislider.min.js",
-            "assets/bower_components/libLink/jquery.liblink.js",
             "assets/bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js",
             "assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
             "assets/bower_components/dropzone/dist/min/dropzone.min.js",

@@ -16,7 +16,7 @@ const dashboard: Sidenav[] = [
 const ecommerce: Sidenav[] = [
     { name: 'Dashboard', icon: 'fa fa-caret-right', url: '/ecommerce/dashboard', isCategory: false, children: [] },
     { name: 'Order', icon: 'fa fa-caret-right', url: '/ecommerce/order', isCategory: false, children: [] },
-    { name: 'Orders View', icon: 'fa fa-caret-right', url: '/ecommerce/ordersview', isCategory: false, children: [] },
+    { name: 'Orders View', icon: 'fa fa-caret-right', url: '/ecommerce/orderview', isCategory: false, children: [] },
     { name: 'Product List', icon: 'fa fa-caret-right', url: '/ecommerce/products', isCategory: false, children: [] }
 ];
 

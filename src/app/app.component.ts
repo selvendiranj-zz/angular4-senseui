@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { SenseUIScripts } from './shared/senseui-scripts';
+import { AppService } from './shared/app.service';
 import { ScriptService } from './shared/script.service';
 
 @Component({
