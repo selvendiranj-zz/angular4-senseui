@@ -73,7 +73,7 @@ const tables: Sidenav[] = [
 
 const forms: Sidenav[] = [
     { name: 'Form Layout', icon: 'fa fa-caret-right', url: '/forms/layout', isCategory: false, children: [] },
-    { name: 'Form Switchery', icon: 'fa fa-caret-right', url: '/forms/swithery', isCategory: false, children: [] },
+    { name: 'Form Switchery', icon: 'fa fa-caret-right', url: '/forms/switchery', isCategory: false, children: [] },
     { name: 'Form Components', icon: 'fa fa-caret-right', url: '/forms/components', isCategory: false, children: [] },
     { name: 'Form Validation', icon: 'fa fa-caret-right', url: '/forms/validation', isCategory: false, children: [] },
     { name: 'Form Wizard', icon: 'fa fa-caret-right', url: '/forms/wizard', isCategory: false, children: [] }

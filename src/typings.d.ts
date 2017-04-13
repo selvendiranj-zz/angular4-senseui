@@ -13,6 +13,7 @@ declare const moment: any;
 declare const Morris: any;
 declare const Dropzone: any;
 declare const noUiSlider: any;
+declare const Switchery: any;
 
 declare module jasmine
 {

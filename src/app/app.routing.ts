@@ -5,6 +5,10 @@ export const routes = [
     { path: 'charts/flot', data: ['Flot'], loadChildren: './components/charts/flot/flot.module#FlotModule' },
     { path: 'charts/morris', data: ['Morris'], loadChildren: './components/charts/morris/morris.module#MorrisModule' },
     { path: 'forms/components', data: ['Components'], loadChildren: './components/forms/controls/controls.module#ControlsModule' },
+    { path: 'forms/layout', data: ['Layout'], loadChildren: './components/forms/layout/layout.module#LayoutModule' },
+    { path: 'forms/switchery', data: ['Switchery'], loadChildren: './components/forms/switchery/switchery.module#SwitcheryModule' },
+    { path: 'forms/validation', data: ['Validation'], loadChildren: './components/forms/validation/validation.module#ValidationModule' },
+    { path: 'forms/wizard', data: ['Wizard'], loadChildren: './components/forms/wizard/wizard.module#WizardModule' },
     { path: 'calendar', data: ['Calendar'], loadChildren: './components/calendar/calendar.module#CalendarModule' },
     { path: '**', redirectTo: '/' }
 ];

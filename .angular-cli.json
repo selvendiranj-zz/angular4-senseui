@@ -82,6 +82,7 @@
             "assets/bower_components/dropzone/dist/min/dropzone.min.js",
             "assets/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js",
             "assets/bower_components/jquery-maskedinput/dist/jquery.maskedinput.min.js",
+            "assets/bower_components/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js",
             "assets/bower_components/summernote/dist/summernote.min.js"
         ],
         "environmentSource": "environments/environment.ts",
