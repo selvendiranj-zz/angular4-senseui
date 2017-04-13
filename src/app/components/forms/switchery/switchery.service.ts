@@ -16,14 +16,6 @@ export class SwitcheryService
         // tslint:disable-next-line:no-unused-new
         new Switchery(document.getElementById('demo-sw-default'));
 
-        // SWITCHERY - CHECKED BY DEFAULT
-        // =================================================================
-        // Require Switchery
-        // http://abpetkov.github.io/switchery/
-        // =================================================================
-        // tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-checked'));
-
         // SWITCHERY - UNCHECKED BY DEFAULT
         // =================================================================
         // Require Switchery
@@ -61,21 +53,6 @@ export class SwitcheryService
         new Switchery(document.getElementById('demo-sw-mint'), { color: '#2cd0a7' });// tslint:disable-next-line:no-unused-new
         new Switchery(document.getElementById('demo-sw-purple'), { color: '#8669cc' });// tslint:disable-next-line:no-unused-new
         new Switchery(document.getElementById('demo-sw-pink'), { color: '#ef6eb6' });
-
-        // SWITCHERY - COLORED
-        // =================================================================
-        // Require Switchery
-        // http://abpetkov.github.io/switchery/
-        // =================================================================
-        // tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr1'), { color: '#489eed' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr2'), { color: '#35b9e7' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr3'), { color: '#44ba56' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr4'), { color: '#f0a238' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr5'), { color: '#e33a4b' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr6'), { color: '#2cd0a7' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr7'), { color: '#8669cc' });// tslint:disable-next-line:no-unused-new
-        new Switchery(document.getElementById('demo-sw-clr8'), { color: '#ef6eb6' });
 
         // SWITCHERY - SIZES
         // =================================================================

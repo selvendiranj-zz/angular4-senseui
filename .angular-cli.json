@@ -83,7 +83,11 @@
             "assets/bower_components/ion.rangeslider/js/ion.rangeSlider.min.js",
             "assets/bower_components/jquery-maskedinput/dist/jquery.maskedinput.min.js",
             "assets/bower_components/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js",
-            "assets/bower_components/summernote/dist/summernote.min.js"
+            "assets/bower_components/summernote/dist/summernote.min.js",
+            "assets/bower_components/datatable/media/js/dataTables.bootstrap.min.js",
+            "assets/bower_components/datatable/media/js/jquery.dataTables.min.js",
+            "assets/bower_components/editable-table/mindmup-editabletable.js",
+            "assets/bower_components/editable-table/numeric-input-example.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

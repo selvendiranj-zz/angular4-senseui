@@ -65,6 +65,7 @@
         "flot-spline": "0.8.2",
         "flot.tooltip": "0.9.0",
         "flot.orderbars": "1.0.0",
-        "libLink": "liblink#undefined"
+        "jquery-migrate-official": "3.0.0",
+        "libLink": "*"
     }
 }

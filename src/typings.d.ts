@@ -14,6 +14,7 @@ declare const Morris: any;
 declare const Dropzone: any;
 declare const noUiSlider: any;
 declare const Switchery: any;
+declare const jQuery:any;
 
 declare module jasmine
 {
