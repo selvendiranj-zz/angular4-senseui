@@ -13,6 +13,8 @@ export const routes = [
     { path: 'ecommerce/order', data: ['Order'], loadChildren: './components/ecommerce/order/order.module#OrderModule' },
     { path: 'ecommerce/orderview', data: ['OrderView'], loadChildren: './components/ecommerce/orderview/orderview.module#OrderviewModule' },
     { path: 'ecommerce/products', data: ['Products'], loadChildren: './components/ecommerce/products/products.module#ProductsModule' },
+    { path: 'mail/compose', data: ['Compose'], loadChildren: './components/mail/compose/compose.module#ComposeModule' },
+    { path: 'mail/inbox', data: ['Inbox'], loadChildren: './components/mail/inbox/inbox.module#InboxModule' },
     { path: 'calendar', data: ['Calendar'], loadChildren: './components/calendar/calendar.module#CalendarModule' },
     { path: '**', redirectTo: '/' }
 ];

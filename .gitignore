@@ -1,6 +1,6 @@
 node_modules/
 bower_components/
-demo/dist/**
+dist/**
 src/**/*.js
 src/**/*.map
 npm-debug.log
