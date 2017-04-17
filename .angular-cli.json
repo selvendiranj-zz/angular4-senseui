@@ -86,7 +86,8 @@
             "assets/bower_components/datatable/media/js/dataTables.bootstrap.min.js",
             "assets/bower_components/datatable/media/js/jquery.dataTables.min.js",
             "assets/bower_components/editable-table/mindmup-editabletable.js",
-            "assets/bower_components/editable-table/numeric-input-example.js"
+            "assets/bower_components/editable-table/numeric-input-example.js",
+            "assets/bower_components/skycons-html5/skycons.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
