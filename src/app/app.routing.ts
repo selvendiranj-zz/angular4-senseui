@@ -15,6 +15,10 @@ export const routes = [
     { path: 'ecommerce/products', data: ['Products'], loadChildren: './components/ecommerce/products/products.module#ProductsModule' },
     { path: 'mail/compose', data: ['Compose'], loadChildren: './components/mail/compose/compose.module#ComposeModule' },
     { path: 'mail/inbox', data: ['Inbox'], loadChildren: './components/mail/inbox/inbox.module#InboxModule' },
+    { path: 'mail/mailview', data: ['Mailview'], loadChildren: './components/mail/mailview/mailview.module#MailviewModule' },
+    { path: 'maps/gmap', data: ['GMap'], loadChildren: './components/maps/gmap/gmap.module#GMapModule' },
+    { path: 'maps/vectormap', data: ['VectorMap'], loadChildren: './components/maps/vectormap/vectormap.module#VectormapModule' },
+    { path: 'ui/widgets', data: ['Widgets'], loadChildren: './components/ui/widgets/widgets.module#WidgetsModule' },
     { path: 'calendar', data: ['Calendar'], loadChildren: './components/calendar/calendar.module#CalendarModule' },
     { path: '**', redirectTo: '/' }
 ];

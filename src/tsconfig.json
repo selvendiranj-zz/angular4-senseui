@@ -16,7 +16,8 @@
         "outDir": "../dist",
         "types": [
             "jasmine",
-            "webpack"
+            "webpack",
+            "googlemaps"
         ],
         "typeRoots": [
             "../node_modules/@types"

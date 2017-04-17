@@ -66,6 +66,7 @@
         "flot.tooltip": "0.9.0",
         "flot.orderbars": "1.0.0",
         "jquery-migrate-official": "3.0.0",
+        "googlemaps-amd": "1.0.2",
         "libLink": "*"
     }
 }
