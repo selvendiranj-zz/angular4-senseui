@@ -21,10 +21,6 @@ export class AppComponent implements AfterViewInit
     public ngAfterViewInit(): void
     {
         this.scriptSvc.loadCompScript('AppComponent');
-        let that = this;
-        $(function (): any
-        {
-            that.appSvc.InitApp();
-        });
+        this.appSvc.InitApp();
     }
 }
