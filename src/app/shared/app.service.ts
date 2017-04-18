@@ -48,6 +48,13 @@ export class AppService
         this.Overlay();
         this.Notify();
         this.Check();
+        this.Popover();
+        this.InitMainnav();
+        this.InitAsidebar();
+        this.InitLangSelector();
+        this.InitAffix();
+        this.InitProfile();
+        this.SetUserOptions();
     }
 
     /* ========================================================================
@@ -276,7 +283,7 @@ export class AppService
         let notyContainer: any;
         let addNew = false;
 
-        $.jasmineNoty = function (options: any): any
+        $.fn.jasmineNoty = function (options: any): any
         {
             let defaults: any = {
                 type: 'primary',
@@ -574,12 +581,10 @@ export class AppService
             {
                 if (methods[method])
                 {
-                    chk = methods[method].apply($(this)
-                        .find('input'), Array.prototype.slice.call(arguments, 1));
+                    chk = methods[method].apply($(this).find('input'), Array.prototype.slice.call(arguments, 1));
                 } else if (typeof method === 'object' || !method)
                 {
                     formElement($(this));
-                    ;
                 }
             });
             return chk;
@@ -594,9 +599,7 @@ export class AppService
         this.jasmine.document.on('change', '.btn-file :file', function (): any
         {
             let input = $(this);
-            let numFiles = input.get(0)
-                .files ? input.get(0)
-                    .files.length : 1;
+            let numFiles = input.get(0).files ? input.get(0).files.length : 1;
             let label = input.val()
                 .replace(/\\/g, '/')
                 .replace(/.*\//, '');
@@ -623,5 +626,979 @@ export class AppService
 
             input.trigger('fileselect', [numFiles, label, fileSize]);
         });
+    }
+
+    /* ========================================================================
+     * NAVIGATION SHORTCUT BUTTONS
+     * Require Bootstrap Popover
+     * http://getbootstrap.com/javascript/#popovers
+     * ========================================================================*/
+    public Popover(): any
+    {
+        this.jasmine.window.on('load', function (): any
+        {
+            let shortcutBtn = $('#mainnav-shortcut');
+
+            if (shortcutBtn.length)
+            {
+                shortcutBtn.find('li')
+                    .each(function (): any
+                    {
+                        let $el = $(this);
+                        $el.popover({
+                            animation: false,
+                            trigger: 'hover focus',
+                            placement: 'bottom',
+                            container: '#mainnav-container',
+                            template: '<div class="popover mainnav-shortcut"><div class="arrow"></div><div class="popover-content"></div>'
+                        });
+                    });
+            }
+        });
+    }
+
+    public InitMainnav(): any
+    {
+        let $menulink = $('#mainnav-menu > li > a, #mainnav-menu-wrap .mainnav-widget a[data-toggle="menu-widget"]');
+        let mainNavHeight = $('#mainnav').height();
+        let scrollbar: any = null;
+        let updateMethod: any = false;
+        let isSmallNav = false;
+        let screenCat: any = null;
+        let defaultSize: any = null;
+
+        // Determine and bind hover or "touch" event
+        // ===============================================
+        let bindSmallNav = function (): any
+        {
+            let hidePopover: any;
+
+            $menulink.each(function (): any
+            {
+                let $el = $(this);
+                let $listTitle = $el.children('.menu-title');
+                let $listSub = $el.siblings('.collapse');
+                let $listWidget = $($el.attr('data-target'));
+                let $listWidgetParent = ($listWidget.length) ? $listWidget.parent() : null;
+                let $popover: any = null;
+                let $poptitle: any = null;
+                let $popcontent: any = null;
+                let $popoverSub = null;
+                let popoverPosBottom = 0;
+                let popoverCssBottom = 0;
+                let elPadding = $el.outerHeight() - $el.height() / 4;
+                let listSubScroll = false;
+                let elHasSub = function (): any
+                {
+                    if ($listWidget.length)
+                    {
+                        $el.on('click', function (e: any): any
+                        {
+                            e.preventDefault();
+                        });
+                    }
+                    if ($listSub.length)
+                    {
+                        // $listSub.removeClass('in').removeAttr('style');
+                        $el.on('click', function (e: any): any
+                        {
+                            e.preventDefault();
+                        })
+                            .parent('li')
+                            .removeClass('active');
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }();
+
+                let updateScrollInterval: any = null;
+                let updateScrollBar = function (el: any): any
+                {
+                    clearInterval(updateScrollInterval);
+                    updateScrollInterval = setInterval(function (): any
+                    {
+                        el.nanoScroller({
+                            preventPageScrolling: true,
+                            alwaysVisible: true
+                        });
+                        clearInterval(updateScrollInterval);
+                    }, 700);
+                };
+
+                $(document)
+                    .click(function (event: any): any
+                    {
+                        if (!$(event.target).closest('#mainnav-container').length)
+                        {
+                            $el.removeClass('hover').popover('hide');
+                        }
+                    });
+
+                $('#mainnav-menu-wrap > .nano')
+                    .on('update', function (event: any, values: any): any
+                    {
+                        $el.removeClass('hover')
+                            .popover('hide');
+                    });
+
+                $el.popover({
+                    animation: false,
+                    trigger: 'manual',
+                    container: '#mainnav',
+                    viewport: $el,
+                    html: true,
+                    title(): any
+                    {
+                        if (elHasSub) { return $listTitle.html(); }
+                        return null;
+                    },
+                    content(): any
+                    {
+                        let $content;
+                        if (elHasSub)
+                        {
+                            $content = $('<div class="sub-menu"></div>');
+                            $listSub.addClass('pop-in')
+                                .wrap('<div class="nano-content"></div>')
+                                .parent()
+                                .appendTo($content);
+                        } else if ($listWidget.length)
+                        {
+                            $content = $('<div class="sidebar-widget-popover"></div>');
+                            $listWidget.wrap('<div class="nano-content"></div>')
+                                .parent()
+                                .appendTo($content);
+                        } else
+                        {
+                            $content = '<span class="single-content">' + $listTitle.html() + '</span>';
+                        }
+                        return $content;
+                    },
+                    template: '<div class="popover menu-popover"><h4 class="popover-title"></h4><div class="popover-content"></div></div>'
+                }).on('show.bs.popover', function (): any
+                {
+                    if (!$popover)
+                    {
+                        $popover = $el.data('bs.popover').tip();
+                        $poptitle = $popover.find('.popover-title');
+                        $popcontent = $popover.children('.popover-content');
+
+                        if (!elHasSub && $listWidget.length === 0) { return; }
+                        $popoverSub = $popcontent.children('.sub-menu');
+                    }
+                    if (!elHasSub && $listWidget.length === 0) { return; }
+                }).on('shown.bs.popover', function (): any
+                {
+                    if (!elHasSub && $listWidget.length === 0)
+                    {
+                        let margintop = 0 - (0.5 * $el.outerHeight());
+                        $popcontent.css({
+                            'margin-top': margintop + 'px',
+                            width: 'auto'
+                        });
+                        return;
+                    }
+
+                    let offsetTop = parseInt($popover.css('top'), 10);
+                    let elHeight = $el.outerHeight();
+                    let offsetBottom = function (): any
+                    {
+                        if (this.jasmine.container.hasClass('mainnav-fixed'))
+                        {
+                            return $(window).outerHeight() - offsetTop - elHeight;
+                        } else
+                        {
+                            return $(document).height() - offsetTop - elHeight;
+                        }
+                    }();
+                    let popoverHeight = $popcontent.find('.nano-content')
+                        .children()
+                        .css('height', 'auto')
+                        .outerHeight();
+                    $popcontent.find('.nano-content')
+                        .children()
+                        .css('height', '');
+
+                    if (offsetTop > offsetBottom)
+                    {
+                        if ($poptitle.length && !$poptitle.is(':visible'))
+                        { elHeight = Math.round(0 - (0.5 * elHeight)); }
+                        offsetTop -= 5;
+                        $popcontent.css({
+                            top: '',
+                            bottom: elHeight + 'px',
+                            height: offsetTop
+                        }).children()
+                            .addClass('nano')
+                            .css({ width: '100%' })
+                            .nanoScroller({ preventPageScrolling: true });
+                        updateScrollBar($popcontent.find('.nano'));
+                    } else
+                    {
+                        if (!this.jasmine.container.hasClass('navbar-fixed')
+                            && this.jasmine.mainNav.hasClass('affix-top'))
+                        {
+                            offsetBottom -= 50;
+                        }
+                        if (popoverHeight > offsetBottom)
+                        {
+                            if (this.jasmine.container.hasClass('navbar-fixed') || this.jasmine.mainNav.hasClass('affix-top'))
+                            {
+                                offsetBottom -= (elHeight + 5);
+                            }
+
+                            offsetBottom -= 5;
+                            $popcontent.css({
+                                top: elHeight + 'px',
+                                bottom: '',
+                                height: offsetBottom
+                            })
+                                .children()
+                                .addClass('nano')
+                                .css({
+                                    width: '100%'
+                                })
+                                .nanoScroller({
+                                    preventPageScrolling: true
+                                });
+
+                            updateScrollBar($popcontent.find('.nano'));
+                        } else
+                        {
+                            if ($poptitle.length && !$poptitle.is(':visible'))
+                            {
+                                elHeight = Math.round(0 - (0.5 * elHeight));
+                            }
+                            $popcontent.css({
+                                top: elHeight + 'px',
+                                bottom: '',
+                                height: 'auto'
+                            });
+                        }
+                    }
+                    if ($poptitle.length) { $poptitle.css('height', $el.outerHeight()); }
+                    $popcontent.on('click', function (): any
+                    {
+                        $popcontent.find('.nano-pane').hide();
+                        updateScrollBar($popcontent.find('.nano'));
+                    });
+                }).on('hidden.bs.popover', function (): any
+                {
+                    // detach from popover, fire event then clean up data
+                    $el.removeClass('hover');
+                    if (elHasSub)
+                    {
+                        $listSub.removeAttr('style').appendTo($el.parent());
+                    } else if ($listWidget.length)
+                    {
+                        $listWidget.appendTo($listWidgetParent);
+                    }
+                    clearInterval(hidePopover);
+                }).on('click', function (): any
+                {
+                    if (!this.jasmine.container.hasClass('mainnav-sm')) { return; }
+                    $menulink.popover('hide');
+                    $el.addClass('hover').popover('show');
+                }).hover(
+                    function (): any
+                    {
+                        $menulink.popover('hide');
+                        $el.addClass('hover').popover('show');
+                    },
+                    function (): any
+                    {
+                        clearInterval(hidePopover);
+                        hidePopover = setInterval(function (): any
+                        {
+                            if ($popover)
+                            {
+                                $popover.one('mouseleave', function (): any
+                                {
+                                    $el.removeClass('hover').popover('hide');
+                                });
+                                if (!$popover.is(':hover'))
+                                {
+                                    $el.removeClass('hover').popover('hide');
+                                }
+                            }
+                            clearInterval(hidePopover);
+                        }, 500);
+                    }
+                    );
+            });
+            isSmallNav = true;
+        };
+        let unbindSmallNav = function (): any
+        {
+            let colapsed = $('#mainnav-menu')
+                .find('.collapse');
+            if (colapsed.length)
+            {
+                colapsed.each(function (): any
+                {
+                    let cl = $(this);
+                    if (cl.hasClass('in'))
+                    {
+                        cl.parent('li')
+                            .addClass('active');
+                    } else
+                    {
+                        cl.parent('li')
+                            .removeClass('active');
+                    }
+                });
+            }
+            if (scrollbar != null && scrollbar.length)
+            {
+                scrollbar.nanoScroller({
+                    stop: true
+                });
+            }
+
+            $menulink.popover('destroy')
+                .unbind('mouseenter mouseleave');
+            isSmallNav = false;
+        };
+
+        let updateSize = function (): any
+        {
+            // if(!defaultSize) return;
+
+            let sw = this.jasmine.container.width();
+            let currentScreen;
+
+            if (sw <= 740)
+            {
+                currentScreen = 'xs';
+            } else if (sw > 740 && sw < 992)
+            {
+                currentScreen = 'sm';
+            } else if (sw >= 992 && sw <= 1200)
+            {
+                currentScreen = 'md';
+            } else
+            {
+                currentScreen = 'lg';
+            }
+
+            if (screenCat !== currentScreen)
+            {
+                screenCat = currentScreen;
+                this.jasmine.screenSize = currentScreen;
+
+                if (this.jasmine.screenSize === 'sm' && this.jasmine.container.hasClass('mainnav-lg'))
+                {
+                    $.jasmineNav('collapse');
+                }
+            }
+        };
+
+        let updateNav = function (e: any): any
+        {
+            this.jasmine.mainNav.jasmineAffix('update');
+
+            unbindSmallNav();
+            updateSize();
+
+            if (updateMethod === 'collapse' || this.jasmine.container.hasClass('mainnav-sm'))
+            {
+                this.jasmine.container.removeClass('mainnav-in mainnav-out mainnav-lg');
+                bindSmallNav();
+            }
+
+            mainNavHeight = $('#mainnav')
+                .height();
+            updateMethod = false;
+            return null;
+        };
+
+        let init = function (): any
+        {
+            if (!defaultSize)
+            {
+                defaultSize = {
+                    xs: 'mainnav-out',
+                    sm: this.jasmine.mainNav.data('sm') || this.jasmine.mainNav.data('all'),
+                    md: this.jasmine.mainNav.data('md') || this.jasmine.mainNav.data('all'),
+                    lg: this.jasmine.mainNav.data('lg') || this.jasmine.mainNav.data('all')
+                };
+
+                let hasData = false;
+                for (let item in defaultSize)
+                {
+                    if (defaultSize[item])
+                    {
+                        hasData = true;
+                        break;
+                    }
+                }
+
+                if (!hasData) { defaultSize = null; }
+                updateSize();
+            }
+        };
+
+        let methods: any = {
+            revealToggle(): any
+            {
+                if (!this.jasmine.container.hasClass('reveal'))
+                {
+                    this.jasmine.container.addClass('reveal');
+                }
+                this.jasmine.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            revealIn(): any
+            {
+                if (!this.jasmine.container.hasClass('reveal')) { this.jasmine.container.addClass('reveal'); }
+                this.jasmine.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            revealOut(): any
+            {
+                if (!this.jasmine.container.hasClass('reveal')) { this.jasmine.container.addClass('reveal'); }
+                this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            slideToggle(): any
+            {
+                if (!this.jasmine.container.hasClass('slide')) { this.jasmine.container.addClass('slide'); }
+                this.jasmine.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            slideIn(): any
+            {
+                if (!this.jasmine.container.hasClass('slide')) { this.jasmine.container.addClass('slide'); }
+                this.jasmine.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            slideOut(): any
+            {
+                if (!this.jasmine.container.hasClass('slide')) { this.jasmine.container.addClass('slide'); }
+                this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            pushToggle(): any
+            {
+                this.jasmine.container.toggleClass('mainnav-in mainnav-out')
+                    .removeClass('mainnav-lg mainnav-sm');
+                if (this.jasmine.container.hasClass('mainnav-in mainnav-out'))
+                {
+                    this.jasmine.container.removeClass('mainnav-in');
+                }
+                // if (jasmine.container.hasClass('mainnav-in')) //jasmine.container.removeClass('aside-in');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            pushIn(): any
+            {
+                this.jasmine.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            pushOut(): any
+            {
+                this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                if (isSmallNav) { unbindSmallNav(); }
+                return;
+            },
+            colExpToggle(): any
+            {
+                if (this.jasmine.container.hasClass('mainnav-lg mainnav-sm'))
+                {
+                    this.jasmine.container.removeClass('mainnav-lg');
+                }
+                this.jasmine.container.toggleClass('mainnav-lg mainnav-sm').removeClass('mainnav-in mainnav-out');
+                return this.jasmine.window.trigger('resize');
+            },
+            collapse(): any
+            {
+                this.jasmine.container.addClass('mainnav-sm').removeClass('mainnav-lg mainnav-in mainnav-out');
+                updateMethod = 'collapse';
+                return this.jasmine.window.trigger('resize');
+            },
+            expand(): any
+            {
+                this.jasmine.container.removeClass('mainnav-sm mainnav-in mainnav-out').addClass('mainnav-lg');
+                return this.jasmine.window.trigger('resize');
+            },
+            togglePosition(): any
+            {
+                this.jasmine.container.toggleClass('mainnav-fixed');
+                this.jasmine.mainNav.jasmineAffix('update');
+            },
+            fixedPosition(): any
+            {
+                this.jasmine.container.addClass('mainnav-fixed');
+                this.jasmine.mainNav.jasmineAffix('update');
+            },
+            staticPosition(): any
+            {
+                this.jasmine.container.removeClass('mainnav-fixed');
+                this.jasmine.mainNav.jasmineAffix('update');
+            },
+            update: updateNav,
+            forceUpdate: updateSize,
+            getScreenSize(): any
+            {
+                return screenCat;
+            }
+        };
+
+        $.fn.jasmineNav = function (method: any, complete: any): any
+        {
+            if (methods[method])
+            {
+                if (method === 'colExpToggle' || method === 'expand' || method === 'collapse')
+                {
+                    if (this.jasmine.screenSize === 'xs' && method === 'collapse')
+                    {
+                        method = 'pushOut';
+                    } else if ((this.jasmine.screenSize === 'xs' || this.jasmine.screenSize === 'sm') && (method ===
+                        'colExpToggle' ||
+                        method === 'expand') && this.jasmine.container.hasClass('mainnav-sm'))
+                    {
+                        method = 'pushIn';
+                    }
+                }
+                let val = methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+                if (complete)
+                {
+                    return complete();
+                } else if (val)
+                {
+                    return val;
+                }
+            }
+            return null;
+        };
+
+        $.fn.isOnScreen = function (): any
+        {
+            let viewport: any = {
+                top: this.jasmine.window.scrollTop(),
+                left: this.jasmine.window.scrollLeft()
+            };
+            viewport.right = viewport.left + this.jasmine.window.width();
+            viewport.bottom = viewport.top + this.jasmine.window.height();
+
+            let bounds = this.offset();
+            bounds.right = bounds.left + this.outerWidth();
+            bounds.bottom = bounds.top + this.outerHeight();
+
+            return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom <
+                bounds.bottom ||
+                viewport.top > bounds.top));
+
+        };
+
+        this.jasmine.window.on('resizeEnd', updateNav).trigger('resize');
+
+        this.jasmine.window.on('load', function (): any
+        {
+            let toggleBtn = $('.mainnav-toggle');
+            if (toggleBtn.length)
+            {
+                toggleBtn.on('click', function (e: any): any
+                {
+                    e.preventDefault();
+
+                    if (toggleBtn.hasClass('push'))
+                    {
+                        $.jasmineNav('pushToggle');
+                    } else if (toggleBtn.hasClass('slide'))
+                    {
+                        $.jasmineNav('slideToggle');
+                    } else if (toggleBtn.hasClass('reveal'))
+                    {
+                        $.jasmineNav('revealToggle');
+                    } else
+                    {
+                        $.jasmineNav('colExpToggle');
+                    }
+                });
+            }
+
+            let menu = $('#mainnav-menu');
+            if (menu.length)
+            {
+                // COLLAPSIBLE MENU LIST
+                // =================================================================
+                // Require MetisMenu
+                // http://demo.onokumus.com/metisMenu/
+                // =================================================================
+                $('#mainnav-menu').metisMenu({ toggle: true });
+
+                // STYLEABLE SCROLLBARS
+                // =================================================================
+                // Require nanoScroller
+                // http://jamesflorentino.github.io/nanoScrollerJS/
+                // =================================================================
+                scrollbar = this.jasmine.mainNav.find('.nano');
+                if (scrollbar.length)
+                {
+                    scrollbar.nanoScroller({ preventPageScrolling: true });
+                }
+            }
+        });
+    }
+
+    /* ========================================================================
+     * JASMINE ASIDE v1.0.1
+     * -------------------------------------------------------------------------
+     * ========================================================================*/
+    public InitAsidebar(): any
+    {
+        let toggleNav = function (): any
+        {
+            if (this.jasmine.container.hasClass('mainnav-in') && this.jasmine.screenSize !== 'xs')
+            {
+                if (this.jasmine.screenSize === 'sm')
+                {
+                    $.jasmineNav('collapse');
+                } else
+                {
+                    this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                }
+            }
+        };
+        let asideMethods: any = {
+            toggleHideShow(): any
+            {
+                this.jasmine.container.toggleClass('aside-in');
+                this.jasmine.window.trigger('resize');
+                if (this.jasmine.container.hasClass('aside-in'))
+                {
+                    toggleNav();
+                }
+            },
+            show(): any
+            {
+                this.jasmine.container.addClass('aside-in');
+                this.jasmine.window.trigger('resize');
+                toggleNav();
+            },
+            hide(): any
+            {
+                this.jasmine.container.removeClass('aside-in');
+                this.jasmine.window.trigger('resize');
+            },
+            toggleAlign(): any
+            {
+                this.jasmine.container.toggleClass('aside-left');
+                this.jasmine.aside.jasmineAffix('update');
+            },
+            alignLeft(): any
+            {
+                this.jasmine.container.addClass('aside-left');
+                this.jasmine.aside.jasmineAffix('update');
+            },
+            alignRight(): any
+            {
+                this.jasmine.container.removeClass('aside-left');
+                this.jasmine.aside.jasmineAffix('update');
+            },
+            togglePosition(): any
+            {
+                this.jasmine.container.toggleClass('aside-fixed');
+                this.jasmine.aside.jasmineAffix('update');
+            },
+            fixedPosition(): any
+            {
+                this.jasmine.container.addClass('aside-fixed');
+                this.jasmine.aside.jasmineAffix('update');
+            },
+            staticPosition(): any
+            {
+                this.jasmine.container.removeClass('aside-fixed');
+                this.jasmine.aside.jasmineAffix('update');
+            },
+            toggleTheme(): any
+            {
+                this.jasmine.container.toggleClass('aside-bright');
+            },
+            brightTheme(): any
+            {
+                this.jasmine.container.addClass('aside-bright');
+            },
+            darkTheme(): any
+            {
+                this.jasmine.container.removeClass('aside-bright');
+            }
+        };
+
+        $.jasmineAside = function (method: any, complete: any): any
+        {
+            if (asideMethods[method])
+            {
+                asideMethods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+                if (complete) { return complete(); }
+            }
+            return null;
+        };
+
+        this.jasmine.window.on('load', function (): any
+        {
+            if (this.jasmine.aside.length)
+            {
+                // STYLEABLE SCROLLBARS
+                // =================================================================
+                // Require nanoScroller
+                // http://jamesflorentino.github.io/nanoScrollerJS/
+                // =================================================================
+                this.jasmine.aside.find('.nano').nanoScroller({
+                    preventPageScrolling: true,
+                    alwaysVisible: false
+                });
+
+                let toggleBtn = $('.aside-toggle');
+                if (toggleBtn.length)
+                {
+                    toggleBtn.on('click', function (e: any): any
+                    {
+                        $.jasmineAside('toggleHideShow');
+                    });
+                }
+            }
+        });
+    }
+
+    /* ========================================================================
+     * JASMINE LANGUAGE SELECTOR v1.0
+     * -------------------------------------------------------------------------
+     * Require Bootstrap Dropdowns
+     * http://getbootstrap.com/components/#dropdowns
+     * ========================================================================*/
+    public InitLangSelector(): any
+    {
+        let defaults: any = {
+            dynamicMode: true,
+            selectedOn: null,
+            onChange: null
+        };
+
+        let langSelector = function (el: any, opt: any): any
+        {
+            let options = $.extend({}, defaults, opt);
+            let $el = el.find('.lang-selected');
+            let $langMenu = $el.parent('.lang-selector').siblings('.dropdown-menu');
+            let $langBtn = $langMenu.find('a');
+            let selectedID = $langBtn.filter('.active').find('.lang-id').text();
+            let selectedName = $langBtn.filter('.active').find('.lang-name').text();
+
+            let changeTo = function (te: any): any
+            {
+                $langBtn.removeClass('active');
+                te.addClass('active');
+                $el.html(te.html());
+
+                selectedID = te.find('.lang-id').text();
+                selectedName = te.find('.lang-name').text();
+                el.trigger('onChange', [{
+                    id: selectedID,
+                    name: selectedName
+                }]);
+
+                if (typeof options.onChange === 'function')
+                {
+                    options.onChange.call(this, {
+                        id: selectedID,
+                        name: selectedName
+                    });
+                }
+            };
+
+            $langBtn.on('click', function (e: any): any
+            {
+                if (options.dynamicMode)
+                {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                el.dropdown('toggle');
+                changeTo($(this));
+            });
+
+            if (options.selectedOn) { changeTo($(options.selectedOn)); }
+
+        };
+        let methods: any = {
+            getSelectedID(): any
+            {
+                return $(this).find('.lang-id').text();
+            },
+            getSelectedName(): any
+            {
+                return $(this).find('.lang-name').text();
+            },
+            getSelected(): any
+            {
+                let el = $(this);
+                return {
+                    id: el.find('.lang-id').text(),
+                    name: el.find('.lang-name').text()
+                };
+            },
+            setDisable(): any
+            {
+                $(this).addClass('disabled');
+                return null;
+            },
+            setEnable(el: any): any
+            {
+                $(this).removeClass('disabled');
+                return null;
+            }
+        };
+
+        $.fn.jasmineLanguage = function (method: any): any
+        {
+            let chk = false;
+            this.each(function (): any
+            {
+                if (methods[method])
+                {
+                    chk = methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+                } else if (typeof method === 'object' || !method)
+                {
+                    langSelector($(this), method);
+                }
+            });
+            return chk;
+        };
+    }
+
+    /* ========================================================================
+     * JASMINE AFFIX v1.0
+     * -------------------------------------------------------------------------
+     * Require Bootstrap Affix
+     * http://getbootstrap.com/javascript/#affix
+     * ========================================================================*/
+
+    public InitAffix(): any
+    {
+        $.fn.jasmineAffix = function (method: any): any
+        {
+            return this.each(function (): any
+            {
+                let el = $(this);
+                let className;
+
+                if (typeof method === 'object' || !method)
+                {
+                    className = method.className;
+                    el.data('jasmine.af.class', method.className);
+                } else if (method === 'update')
+                {
+                    className = el.data('jasmine.af.class');
+                }
+
+                if (this.jasmine.container.hasClass(className) &&
+                    !this.jasmine.container.hasClass('navbar-fixed'))
+                {
+                    el.affix({
+                        offset: {
+                            top: $('#navbar').outerHeight()
+                        }
+                    });
+                } else if (!this.jasmine.container.hasClass(className) ||
+                    this.jasmine.container.hasClass('navbar-fixed'))
+                {
+                    this.jasmine.window.off(el.attr('id') + '.affix');
+                    el.removeClass('affix affix-top affix-bottom').removeData('bs.affix');
+                }
+            });
+        };
+
+        this.jasmine.window.on('load', function (): any
+        {
+            if (this.jasmine.mainNav.length)
+            {
+                this.jasmine.mainNav.jasmineAffix({ className: 'mainnav-fixed' });
+            }
+
+            if (this.jasmine.aside.length)
+            {
+                this.jasmine.aside.jasmineAffix({ className: 'aside-fixed' });
+            }
+        });
+    }
+
+    /* ========================================================================
+     * JASMINE PROFILE
+     * -------------------------------------------------------------------------
+     * ========================================================================*/
+    public InitProfile(): any
+    {
+        $('.inbox-star').click(function (): any
+        {
+            $(this).toggleClass('starred');
+        });
+
+        $('#profilebtn').click(function (): any
+        {
+            $('#profilebody').slideToggle();
+        });
+    }
+
+    /* ========================================================================
+     * Set user options
+     * -------------------------------------------------------------------------
+     * ========================================================================*/
+    public SetUserOptions(): any
+    {
+        let elems = Array.prototype.slice.call(document.querySelectorAll('.demo-switch'));
+        elems.forEach(function (html: any): any
+        {
+            let switchery = new Switchery(html);
+        });
+
+        // ASIDE
+        // =================================================================
+        // Toggle Visibe
+        // =================================================================
+        $('#demo-toggle-aside').on('click', function (ev: any): any
+        {
+            let asdVisCheckbox: any = $('#demo-toggle-aside');
+            ev.preventDefault();
+            if (!this.jasmine.container.hasClass('aside-in'))
+            {
+                $.jasmineAside('show');
+                asdVisCheckbox.jasmineCheck('toggleOn');
+            } else
+            {
+                $.jasmineAside('hide');
+                asdVisCheckbox.jasmineCheck('toggleOff');
+            }
+        });
+
+        // Fullscreen
+        // ==========
+        $('[data-toggle="fullscreen"]').click(function (): any
+        {
+            if (screenfull.enabled)
+            {
+                screenfull.toggle();
+            }
+
+            return false;
+        });
+
+        if (screenfull.enabled)
+        {
+            document.addEventListener(screenfull.raw.fullscreenchange, function (): any
+            {
+                $('[data-toggle="fullscreen"]').toggleClass('active', screenfull.isFullscreen);
+            });
+        }
     }
 }

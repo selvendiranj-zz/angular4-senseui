@@ -67,6 +67,8 @@
         "flot.orderbars": "1.0.0",
         "jquery-migrate-official": "3.0.0",
         "googlemaps-amd": "1.0.2",
-        "libLink": "*"
+        "nanoscroller": "0.8.7",
+        "metismenu": "2.7.0",
+        "resizeend": "1.2.1"
     }
 }

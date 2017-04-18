@@ -37,20 +37,21 @@
             "assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
             "assets/bower_components/dropzone/dist/min/dropzone.min.css",
             "assets/bower_components/summernote/dist/summernote.css",
-            "assets/bower_components/pace/themes/green/pace-theme-flat-top.css"
+            "assets/bower_components/pace/themes/green/pace-theme-minimal.css"
         ],
         "scripts": [
             "assets/bower_components/pace/pace.min.js",
             "assets/bower_components/jquery/dist/jquery.min.js",
-            "assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
-            "assets/bower_components/fastclick/lib/fastclick.js",
-            "assets/bower_components/switchery/dist/switchery.min.js",
-            "assets/bower_components/parsleyjs/dist/parsley.min.js",
+            "assets/bower_components/jquery-ui/jquery-ui.min.js",
             "assets/bower_components/jquery-steps/build/jquery.steps.min.js",
+            "assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
             "assets/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js",
             "assets/bower_components/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
             "assets/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js",
             "assets/bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
+            "assets/bower_components/fastclick/lib/fastclick.js",
+            "assets/bower_components/switchery/dist/switchery.min.js",
+            "assets/bower_components/parsleyjs/dist/parsley.min.js",
             "assets/bower_components/jquery-flot/jquery.flot.js",
             "assets/bower_components/jquery-flot/jquery.flot.categories.js",
             "assets/bower_components/jquery-flot/jquery.flot.resize.js",
@@ -68,7 +69,6 @@
             "assets/bower_components/screenfull/dist/screenfull.min.js",
             "assets/bower_components/moment/min/moment.min.js",
             "assets/bower_components/moment-range/lib/moment-range.min.js",
-            "assets/bower_components/jquery-ui/jquery-ui.min.js",
             "assets/bower_components/fullcalendar/dist/fullcalendar.min.js",
             "assets/bower_components/morris.js/morris.min.js",
             "assets/bower_components/raphael/raphael.min.js",
@@ -87,7 +87,10 @@
             "assets/bower_components/datatable/media/js/jquery.dataTables.min.js",
             "assets/bower_components/editable-table/mindmup-editabletable.js",
             "assets/bower_components/editable-table/numeric-input-example.js",
-            "assets/bower_components/skycons-html5/skycons.js"
+            "assets/bower_components/skycons-html5/skycons.js",
+            "assets/bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js",
+            "assets/bower_components/metismenu/dist/metisMenu.min.js",
+            "assets/bower_components/resizeend/resizeend.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

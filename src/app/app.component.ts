@@ -9,15 +9,22 @@ import { ScriptService } from './shared/script.service';
 
 export class AppComponent implements AfterViewInit
 {
+    private appSvc: AppService;
     private scriptSvc: ScriptService;
 
-    public constructor(scriptSvc: ScriptService)
+    public constructor(appSvc: AppService, scriptSvc: ScriptService)
     {
+        this.appSvc = appSvc;
         this.scriptSvc = scriptSvc;
     }
 
     public ngAfterViewInit(): void
     {
         this.scriptSvc.loadCompScript('AppComponent');
+        let that = this;
+        $(function (): any
+        {
+            that.appSvc.InitApp();
+        });
     }
 }

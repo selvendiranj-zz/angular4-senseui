@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { SenseuiCommonModule } from './common/senseui-common.module';
 
+import { AppService } from './shared/app.service';
 import { ScriptService } from './shared/script.service';
 import { routes } from './app.routing';
 
@@ -21,7 +22,7 @@ import { AppComponent } from './app.component';
         RouterModule.forRoot(routes, { useHash: true })
     ],
     providers: [
-        ScriptService
+        AppService, ScriptService
     ],
     bootstrap: [AppComponent]
 })
