@@ -1,42 +1,15 @@
 // tslint:disable-next-line:max-file-line-count
 import { Injectable } from '@angular/core';
+import { Senseui } from './senseui';
 
 @Injectable()
 export class AppService
 {
-    private jasmine: any;
+    private jasmine: Senseui;
 
     public InitApp(): any
     {
-        this.jasmine = {
-            container: $('#container'),
-            contentContainer: $('#content-container'),
-            navbar: $('#navbar'),
-            mainNav: $('#mainnav-container'),
-            aside: $('#aside-container'),
-            footer: $('#footer'),
-            scrollTop: $('#scroll-top'),
-            window: $(window),
-            body: $('body'),
-            bodyHtml: $('body, html'),
-            document: $(document),
-            screenSize: '', // return value xs, sm, md, lg
-            isMobile: function (): any
-            {
-                return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-            }(),
-            randomInt(min: any, max: any): any
-            {
-                return Math.floor(Math.random() * (max - min + 1) + min);
-            },
-            transition: function (): any
-            {
-                let thisBody = document.body || document.documentElement;
-                let thisStyle = thisBody.style;
-                let support = thisStyle.transition !== undefined || thisStyle.webkitTransition !== undefined;
-                return support;
-            }()
-        };
+        this.jasmine = Senseui.Instance;
 
         // attach jasmine to window object
         (window as any).jasmine = this.jasmine;
@@ -90,9 +63,9 @@ export class AppService
             }
 
             // Update nancoscroller
-            $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown', function (): any
+            $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown', function (event: JQueryEventObject): any
             {
-                $(this).find('.nano').nanoScroller({
+                $(event.currentTarget).find('.nano').nanoScroller({
                     preventPageScrolling: true
                 });
             });
@@ -118,7 +91,7 @@ export class AppService
                 closebtn.one('click', function (e: any): any
                 {
                     e.preventDefault();
-                    let el = $(this).parents('.panel');
+                    let el = $(e.currentTarget).parents('.panel');
 
                     el.addClass('remove').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
                         function (e2: any): any
@@ -217,11 +190,9 @@ export class AppService
                 let ovId = 'jasmine-overlay-' + uID() + uID() + '-' + uID();
                 let panelOv = $('<div id="' + ovId + '" class="panel-overlay"></div>');
 
-                el.prop('disabled', true)
-                    .data('jasmineOverlay', ovId);
+                el.prop('disabled', true).data('jasmineOverlay', ovId);
                 target.addClass('panel-overlay-wrap');
-                panelOv.appendTo(target)
-                    .html(el.data('overlayTemplate'));
+                panelOv.appendTo(target).html(el.data('overlayTemplate'));
                 return null;
             },
             hide(el: any): any
@@ -233,8 +204,7 @@ export class AppService
                 {
                     el.prop('disabled', false);
                     target.removeClass('panel-overlay-wrap');
-                    boxLoad.hide()
-                        .remove();
+                    boxLoad.hide().remove();
                 }
                 return null;
             }
@@ -261,7 +231,9 @@ export class AppService
             if (methods[method])
             {
                 return methods[method](this);
-            } else if (typeof method === 'object' || !method)
+            }
+            // tslint:disable-next-line:one-line
+            else if (typeof method === 'object' || !method)
             {
                 return this.each(function (): any
                 {
@@ -283,7 +255,7 @@ export class AppService
         let notyContainer: any;
         let addNew = false;
 
-        $.fn.jasmineNoty = function (options: any): any
+        $.jasmineNoty = function (options: any): any
         {
             let defaults: any = {
                 type: 'primary',
@@ -513,9 +485,9 @@ export class AppService
             {
                 if (input.type === 'radio' && $groupInput.length)
                 {
-                    $groupInput.each(function (): any
+                    $groupInput.each(function (event: JQueryEventObject): any
                     {
-                        let $gi = $(this);
+                        let $gi = $(event.currentTarget);
                         if ($gi.hasClass('active')) { $gi.trigger('jasmine.ch.unchecked'); }
                         $gi.removeClass('active');
                     });
@@ -577,14 +549,14 @@ export class AppService
         $.fn.jasmineCheck = function (method: any): any
         {
             let chk = false;
-            this.each(function (): any
+            this.each(function (event: JQueryEventObject): any
             {
                 if (methods[method])
                 {
-                    chk = methods[method].apply($(this).find('input'), Array.prototype.slice.call(arguments, 1));
+                    chk = methods[method].apply($(event.currentTarget).find('input'), Array.prototype.slice.call(arguments, 1));
                 } else if (typeof method === 'object' || !method)
                 {
-                    formElement($(this));
+                    formElement($(event.currentTarget));
                 }
             });
             return chk;
@@ -596,9 +568,9 @@ export class AppService
             if (allFormEl.length) { allFormEl.jasmineCheck(); }
         });
 
-        this.jasmine.document.on('change', '.btn-file :file', function (): any
+        this.jasmine.document.on('change', '.btn-file :file', function (event: JQueryEventObject): any
         {
-            let input = $(this);
+            let input = $(event.currentTarget);
             let numFiles = input.get(0).files ? input.get(0).files.length : 1;
             let label = input.val()
                 .replace(/\\/g, '/')
@@ -641,18 +613,17 @@ export class AppService
 
             if (shortcutBtn.length)
             {
-                shortcutBtn.find('li')
-                    .each(function (): any
-                    {
-                        let $el = $(this);
-                        $el.popover({
-                            animation: false,
-                            trigger: 'hover focus',
-                            placement: 'bottom',
-                            container: '#mainnav-container',
-                            template: '<div class="popover mainnav-shortcut"><div class="arrow"></div><div class="popover-content"></div>'
-                        });
+                shortcutBtn.find('li').each(function (event: JQueryEventObject): any
+                {
+                    let $el = $(event.currentTarget);
+                    $el.popover({
+                        animation: false,
+                        trigger: 'hover focus',
+                        placement: 'bottom',
+                        container: '#mainnav-container',
+                        template: '<div class="popover mainnav-shortcut"><div class="arrow"></div><div class="popover-content"></div>'
                     });
+                });
             }
         });
     }
@@ -673,9 +644,9 @@ export class AppService
         {
             let hidePopover: any;
 
-            $menulink.each(function (): any
+            $menulink.each(function (event: JQueryEventObject): any
             {
-                let $el = $(this);
+                let $el = $(event.currentTarget);
                 let $listTitle = $el.children('.menu-title');
                 let $listSub = $el.siblings('.collapse');
                 let $listWidget = $($el.attr('data-target'));
@@ -936,9 +907,9 @@ export class AppService
                 .find('.collapse');
             if (colapsed.length)
             {
-                colapsed.each(function (): any
+                colapsed.each(function (event: JQueryEventObject): any
                 {
-                    let cl = $(this);
+                    let cl = $(event.currentTarget);
                     if (cl.hasClass('in'))
                     {
                         cl.parent('li')
@@ -1153,7 +1124,7 @@ export class AppService
             }
         };
 
-        $.fn.jasmineNav = function (method: any, complete: any): any
+        $.jasmineNav = function (method: any, complete: any): any
         {
             if (methods[method])
             {
@@ -1416,7 +1387,7 @@ export class AppService
                 }
             };
 
-            $langBtn.on('click', function (e: any): any
+            $langBtn.on('click', function (e: JQueryEventObject): any
             {
                 if (options.dynamicMode)
                 {
@@ -1425,7 +1396,7 @@ export class AppService
                 }
 
                 el.dropdown('toggle');
-                changeTo($(this));
+                changeTo($(e.currentTarget));
             });
 
             if (options.selectedOn) { changeTo($(options.selectedOn)); }

@@ -18,6 +18,8 @@
         "styles": [
             "assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
             "assets/css/style.css",
+            "assets/bower_components/nanoscroller/bin/css/nanoscroller.css",
+            "assets/bower_components/metismenu/dist/metisMenu.min.css",
             "assets/bower_components/font-awesome/css/font-awesome.min.css",
             "assets/bower_components/switchery/dist/switchery.min.css",
             "assets/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css",
