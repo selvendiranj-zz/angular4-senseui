@@ -7,27 +7,30 @@ export class AppService
 {
     private jasmine: Senseui;
 
+    public constructor(senseui: Senseui)
+    {
+        this.jasmine = senseui;
+    }
     public InitApp(): any
     {
-        this.jasmine = Senseui.Instance;
-
+        this.jasmine.InitSenseui();
         // attach jasmine to window object
         (window as any).jasmine = this.jasmine;
 
         // call app init methids
-        this.InitSelectorCache();
-        this.RemovePanel();
-        this.ScrollToTop();
-        this.Overlay();
-        this.Notify();
-        this.Check();
-        this.Popover();
-        this.InitMainnav();
-        this.InitAsidebar();
-        this.InitLangSelector();
-        this.InitAffix();
-        this.InitProfile();
-        this.SetUserOptions();
+        try { this.InitSelectorCache(); } catch (ex) { console.log(); }
+        try { this.RemovePanel(); } catch (ex) { console.log(); }
+        try { this.ScrollToTop(); } catch (ex) { console.log(); }
+        try { this.Overlay(); } catch (ex) { console.log(); }
+        try { this.Notify(); } catch (ex) { console.log(); }
+        try { this.Check(); } catch (ex) { console.log(); }
+        try { this.Popover(); } catch (ex) { console.log(); }
+        try { this.InitMainnav(); } catch (ex) { console.log(); }
+        try { this.InitAsidebar(); } catch (ex) { console.log(); }
+        try { this.InitLangSelector(); } catch (ex) { console.log(); }
+        try { this.InitAffix(); } catch (ex) { console.log(); }
+        try { this.InitProfile(); } catch (ex) { console.log(); }
+        try { this.SetUserOptions(); } catch (ex) { console.log(); }
     }
 
     /* ========================================================================

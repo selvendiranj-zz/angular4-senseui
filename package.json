@@ -71,7 +71,6 @@
     },
     "homepage": "https://github.com/valor-software/ng2-bootstrap#readme",
     "dependencies": {
-        "jquery": "3.2.1",
         "moment": "2.18.1",
         "ng2-bootstrap": "1.6.3"
     },

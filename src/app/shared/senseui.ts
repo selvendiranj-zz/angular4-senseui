@@ -1,28 +1,36 @@
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Senseui
 {
-    private static _instance: Senseui;
-
-    public container: any = $('#container');
-    public contentContainer: any = $('#content-container');
-    public navbar: any = $('#navbar');
-    public mainNav: any = $('#mainnav-container');
-    public aside: any = $('#aside-container');
-    public footer: any = $('#footer');
-    public scrollTop: any = $('#scroll-top');
-    public window: any = $(window);
-    public body: any = $('body');
-    public bodyHtml: any = $('body, html');
-    public document: any = $(document);
-    public screenSize: any = ''; // return value xs, sm, md, lg
-
-    public static get Instance(): Senseui
-    {
-        return Senseui._instance || (Senseui._instance = new Senseui());
-    }
+    public container: any;
+    public contentContainer: any;
+    public navbar: any;
+    public mainNav: any;
+    public aside: any;
+    public footer: any;
+    public scrollTop: any;
+    public window: any;
+    public body: any;
+    public bodyHtml: any;
+    public document: any;
+    public screenSize: any; // return value xs, sm, md, lg
 
     public InitSenseui(): any
     {
+        this.container = $('#container');
+        this.contentContainer = $('#content-container');
+        this.navbar = $('#navbar');
+        this.mainNav = $('#mainnav-container');
+        this.aside = $('#aside-container');
+        this.footer = $('#footer');
+        this.scrollTop = $('#scroll-top');
+        this.window = $(window);
+        this.body = $('body');
+        this.bodyHtml = $('body, html');
+        this.document = $(document);
+        this.screenSize = ''; // return value xs, sm, md, lg
+
         this.isMobile();
         this.transition();
     }
@@ -44,6 +52,4 @@ export class Senseui
         let support = thisStyle.transition !== undefined || thisStyle.webkitTransition !== undefined;
         return support;
     }
-
-    private constructor() { }
 }

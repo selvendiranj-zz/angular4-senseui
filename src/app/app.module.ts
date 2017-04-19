@@ -7,6 +7,7 @@ import { SenseuiCommonModule } from './common/senseui-common.module';
 
 import { AppService } from './shared/app.service';
 import { ScriptService } from './shared/script.service';
+import { Senseui } from './shared/senseui';
 import { routes } from './app.routing';
 
 import { AppComponent } from './app.component';
@@ -22,7 +23,7 @@ import { AppComponent } from './app.component';
         RouterModule.forRoot(routes, { useHash: true })
     ],
     providers: [
-        AppService, ScriptService
+        AppService, ScriptService, Senseui
     ],
     bootstrap: [AppComponent]
 })
