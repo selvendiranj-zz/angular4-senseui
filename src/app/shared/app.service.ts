@@ -66,12 +66,13 @@ export class AppService
             }
 
             // Update nancoscroller
-            $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown', function (event: JQueryEventObject): any
-            {
-                $(this).find('.nano').nanoScroller({
-                    preventPageScrolling: true
+            $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown',
+                function (event: JQueryEventObject): any
+                {
+                    $(this).find('.nano').nanoScroller({
+                        preventPageScrolling: true
+                    });
                 });
-            });
 
             _this.senseui.body.addClass('page-effect');
         });
@@ -107,7 +108,6 @@ export class AppService
                 });
             }
         });
-
     }
 
     /* ========================================================================
@@ -132,7 +132,8 @@ export class AppService
                         _this.senseui.navbar.addClass('shadow');
                         _this.senseui.scrollTop.addClass('in');
                         isVisible = true;
-                    } else if (_this.senseui.window.scrollTop() < offsetTop && isVisible)
+                    }
+                    else if (_this.senseui.window.scrollTop() < offsetTop && isVisible)
                     {
                         _this.senseui.navbar.removeClass('shadow');
                         _this.senseui.scrollTop.removeClass('in');
@@ -143,7 +144,6 @@ export class AppService
                 _this.senseui.scrollTop.on('click', function (e: any): any
                 {
                     e.preventDefault();
-
                     _this.senseui.bodyHtml.animate({ scrollTop: 0 }, 500);
                 });
 
@@ -310,8 +310,8 @@ export class AppService
                 let icon = '';
                 if (options && options.icon)
                 {
-                    icon =
-                        '<div class="media-left"><span class="icon-wrap icon-wrap-xs icon-circle alert-icon"><i class="' +
+                    icon = '<div class="media-left">' +
+                        '<span class="icon-wrap icon-wrap-xs icon-circle alert-icon"><i class="' +
                         opt.icon + '"></i></span></div>';
                 }
                 return icon;
@@ -357,12 +357,10 @@ export class AppService
             };
             let focusElement = function (pos: any): any
             {
-                _this.senseui.bodyHtml.animate({
-                    scrollTop: pos
-                }, 300, function (): any
-                    {
-                        el.addClass('in');
-                    });
+                _this.senseui.bodyHtml.animate({ scrollTop: pos }, 300, function (): any
+                {
+                    el.addClass('in');
+                });
             };
             let init = function (): any
             {
@@ -408,7 +406,8 @@ export class AppService
                         if ($panelhd.length)
                         {
                             $panelhd.after(notyContainer);
-                        } else
+                        }
+                        else
                         {
                             $ct.prepend(notyContainer);
                         }
@@ -430,8 +429,14 @@ export class AppService
             {
                 notyContainer.append(el.html(template));
                 el.find('[data-dismiss="noty"]').one('click', closeAlert);
-                if (opt.closeBtn) { el.find('.close').one('click', closeAlert); }
-                if (opt.timer > 0) { alertTimer = setInterval(closeAlert, opt.timer); }
+                if (opt.closeBtn)
+                {
+                    el.find('.close').one('click', closeAlert);
+                }
+                if (opt.timer > 0)
+                {
+                    alertTimer = setInterval(closeAlert, opt.timer);
+                }
                 if (!opt.focus)
                 {
                     let addIn = setInterval(function (): any
@@ -456,13 +461,15 @@ export class AppService
             if (el.data('jasmine-check'))
             {
                 return;
-            } else
+            }
+            else
             {
                 el.data('jasmine-check', true);
                 if (el.text().trim().length)
                 {
                     el.addClass('form-text');
-                } else
+                }
+                else
                 {
                     el.removeClass('form-text');
                 }
@@ -491,19 +498,20 @@ export class AppService
                     $groupInput.each(function (event: JQueryEventObject): any
                     {
                         let $gi = $(this);
-                        if ($gi.hasClass('active')) { $gi.trigger('jasmine.ch.unchecked'); }
+                        if ($gi.hasClass('active'))
+                        {
+                            $gi.trigger('jasmine.ch.unchecked');
+                        }
                         $gi.removeClass('active');
                     });
                 }
 
                 if (input.checked)
                 {
-                    el.addClass('active')
-                        .trigger('jasmine.ch.checked');
+                    el.addClass('active').trigger('jasmine.ch.checked');
                 } else
                 {
-                    el.removeClass('active')
-                        .trigger('jasmine.ch.unchecked');
+                    el.removeClass('active').trigger('jasmine.ch.unchecked');
                 }
             };
 
@@ -557,7 +565,8 @@ export class AppService
                 if (methods[method])
                 {
                     chk = methods[method].apply($(this).find('input'), Array.prototype.slice.call(arguments, 1));
-                } else if (typeof method === 'object' || !method)
+                }
+                else if (typeof method === 'object' || !method)
                 {
                     formElement($(this));
                 }
@@ -568,7 +577,10 @@ export class AppService
         _this.senseui.document.ready(function (): any
         {
             allFormEl = $('.form-checkbox, .form-radio');
-            if (allFormEl.length) { allFormEl.jasmineCheck(); }
+            if (allFormEl.length)
+            {
+                allFormEl.jasmineCheck();
+            }
         });
 
         _this.senseui.document.on('change', '.btn-file :file', function (event: JQueryEventObject): any
@@ -624,7 +636,8 @@ export class AppService
                         trigger: 'hover focus',
                         placement: 'bottom',
                         container: '#mainnav-container',
-                        template: '<div class="popover mainnav-shortcut"><div class="arrow"></div><div class="popover-content"></div>'
+                        template: '<div class="popover mainnav-shortcut">' +
+                        '<div class="arrow"></div><div class="popover-content"></div>'
                     });
                 });
             }
@@ -679,7 +692,8 @@ export class AppService
                             e.preventDefault();
                         }).parent('li').removeClass('active');
                         return true;
-                    } else
+                    }
+                    else
                     {
                         return false;
                     }
@@ -709,8 +723,7 @@ export class AppService
 
                 $('#mainnav-menu-wrap > .nano').on('update', function (event2: any, values: any): any
                 {
-                    $el.removeClass('hover')
-                        .popover('hide');
+                    $el.removeClass('hover').popover('hide');
                 });
 
                 $el.popover({
@@ -734,19 +747,22 @@ export class AppService
                                 .wrap('<div class="nano-content"></div>')
                                 .parent()
                                 .appendTo($content);
-                        } else if ($listWidget.length)
+                        }
+                        else if ($listWidget.length)
                         {
                             $content = $('<div class="sidebar-widget-popover"></div>');
                             $listWidget.wrap('<div class="nano-content"></div>')
                                 .parent()
                                 .appendTo($content);
-                        } else
+                        }
+                        else
                         {
                             $content = '<span class="single-content">' + $listTitle.html() + '</span>';
                         }
                         return $content;
                     },
-                    template: '<div class="popover menu-popover"><h4 class="popover-title"></h4><div class="popover-content"></div></div>'
+                    template: '<div class="popover menu-popover">' +
+                    '<h4 class="popover-title"></h4><div class="popover-content"></div></div>'
                 }).on('show.bs.popover', function (): any
                 {
                     if (!$popover)
@@ -778,7 +794,8 @@ export class AppService
                         if (_this.senseui.container.hasClass('mainnav-fixed'))
                         {
                             return $(window).outerHeight() - offsetTop - elHeight;
-                        } else
+                        }
+                        else
                         {
                             return $(document).height() - offsetTop - elHeight;
                         }
@@ -794,7 +811,9 @@ export class AppService
                     if (offsetTop > offsetBottom)
                     {
                         if ($poptitle.length && !$poptitle.is(':visible'))
-                        { elHeight = Math.round(0 - (0.5 * elHeight)); }
+                        {
+                            elHeight = Math.round(0 - (0.5 * elHeight));
+                        }
                         offsetTop -= 5;
                         $popcontent.css({
                             top: '',
@@ -805,7 +824,8 @@ export class AppService
                             .css({ width: '100%' })
                             .nanoScroller({ preventPageScrolling: true });
                         updateScrollBar($popcontent.find('.nano'));
-                    } else
+                    }
+                    else
                     {
                         if (!_this.senseui.container.hasClass('navbar-fixed')
                             && _this.senseui.mainNav.hasClass('affix-top'))
@@ -814,7 +834,8 @@ export class AppService
                         }
                         if (popoverHeight > offsetBottom)
                         {
-                            if (_this.senseui.container.hasClass('navbar-fixed') || _this.senseui.mainNav.hasClass('affix-top'))
+                            if (_this.senseui.container.hasClass('navbar-fixed') ||
+                                _this.senseui.mainNav.hasClass('affix-top'))
                             {
                                 offsetBottom -= (elHeight + 5);
                             }
@@ -824,18 +845,17 @@ export class AppService
                                 top: elHeight + 'px',
                                 bottom: '',
                                 height: offsetBottom
-                            })
-                                .children()
+                            }).children()
                                 .addClass('nano')
                                 .css({
                                     width: '100%'
-                                })
-                                .nanoScroller({
+                                }).nanoScroller({
                                     preventPageScrolling: true
                                 });
 
                             updateScrollBar($popcontent.find('.nano'));
-                        } else
+                        }
+                        else
                         {
                             if ($poptitle.length && !$poptitle.is(':visible'))
                             {
@@ -848,7 +868,10 @@ export class AppService
                             });
                         }
                     }
-                    if ($poptitle.length) { $poptitle.css('height', $el.outerHeight()); }
+                    if ($poptitle.length)
+                    {
+                        $poptitle.css('height', $el.outerHeight());
+                    }
                     $popcontent.on('click', function (): any
                     {
                         $popcontent.find('.nano-pane').hide();
@@ -861,14 +884,18 @@ export class AppService
                     if (elHasSub)
                     {
                         $listSub.removeAttr('style').appendTo($el.parent());
-                    } else if ($listWidget.length)
+                    }
+                    else if ($listWidget.length)
                     {
                         $listWidget.appendTo($listWidgetParent);
                     }
                     clearInterval(hidePopover);
                 }).on('click', function (): any
                 {
-                    if (!_this.senseui.container.hasClass('mainnav-sm')) { return; }
+                    if (!_this.senseui.container.hasClass('mainnav-sm'))
+                    {
+                        return;
+                    }
                     $menulink.popover('hide');
                     $el.addClass('hover').popover('show');
                 }).hover(
@@ -911,7 +938,8 @@ export class AppService
                     if (cl.hasClass('in'))
                     {
                         cl.parent('li').addClass('active');
-                    } else
+                    }
+                    else
                     {
                         cl.parent('li').removeClass('active');
                     }
@@ -924,8 +952,7 @@ export class AppService
                 });
             }
 
-            $menulink.popover('destroy')
-                .unbind('mouseenter mouseleave');
+            $menulink.popover('destroy').unbind('mouseenter mouseleave');
             isSmallNav = false;
         };
 
@@ -939,13 +966,16 @@ export class AppService
             if (sw <= 740)
             {
                 currentScreen = 'xs';
-            } else if (sw > 740 && sw < 992)
+            }
+            else if (sw > 740 && sw < 992)
             {
                 currentScreen = 'sm';
-            } else if (sw >= 992 && sw <= 1200)
+            }
+            else if (sw >= 992 && sw <= 1200)
             {
                 currentScreen = 'md';
-            } else
+            }
+            else
             {
                 currentScreen = 'lg';
             }
@@ -975,8 +1005,7 @@ export class AppService
                 bindSmallNav();
             }
 
-            mainNavHeight = $('#mainnav')
-                .height();
+            mainNavHeight = $('#mainnav').height();
             updateMethod = false;
             return null;
         };
@@ -1055,8 +1084,7 @@ export class AppService
             },
             pushToggle(): any
             {
-                _this.senseui.container.toggleClass('mainnav-in mainnav-out')
-                    .removeClass('mainnav-lg mainnav-sm');
+                _this.senseui.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
                 if (_this.senseui.container.hasClass('mainnav-in mainnav-out'))
                 {
                     _this.senseui.container.removeClass('mainnav-in');
@@ -1129,18 +1157,22 @@ export class AppService
                     if (_this.senseui.screenSize === 'xs' && method === 'collapse')
                     {
                         method = 'pushOut';
-                    } else if ((_this.senseui.screenSize === 'xs' || _this.senseui.screenSize === 'sm') && (method ===
-                        'colExpToggle' ||
-                        method === 'expand') && _this.senseui.container.hasClass('mainnav-sm'))
+                    }
+                    else if ((_this.senseui.screenSize === 'xs' || _this.senseui.screenSize === 'sm') &&
+                        (method === 'colExpToggle' || method === 'expand') &&
+                        _this.senseui.container.hasClass('mainnav-sm'))
                     {
                         method = 'pushIn';
                     }
                 }
+
                 let val = methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+
                 if (complete)
                 {
                     return complete();
-                } else if (val)
+                }
+                else if (val)
                 {
                     return val;
                 }
@@ -1161,10 +1193,8 @@ export class AppService
             bounds.right = bounds.left + this.outerWidth();
             bounds.bottom = bounds.top + this.outerHeight();
 
-            return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom <
-                bounds.bottom ||
-                viewport.top > bounds.top));
-
+            return (!(viewport.right < bounds.left || viewport.left > bounds.right ||
+                viewport.bottom < bounds.bottom || viewport.top > bounds.top));
         };
 
         _this.senseui.window.on('resizeEnd', updateNav).trigger('resize');
@@ -1181,13 +1211,16 @@ export class AppService
                     if (toggleBtn.hasClass('push'))
                     {
                         $.jasmineNav('pushToggle');
-                    } else if (toggleBtn.hasClass('slide'))
+                    }
+                    else if (toggleBtn.hasClass('slide'))
                     {
                         $.jasmineNav('slideToggle');
-                    } else if (toggleBtn.hasClass('reveal'))
+                    }
+                    else if (toggleBtn.hasClass('reveal'))
                     {
                         $.jasmineNav('revealToggle');
-                    } else
+                    }
+                    else
                     {
                         $.jasmineNav('colExpToggle');
                     }
@@ -1231,21 +1264,20 @@ export class AppService
                 if (_this.senseui.screenSize === 'sm')
                 {
                     $.jasmineNav('collapse');
-                } else
+                }
+                else
                 {
                     _this.senseui.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
                 }
             }
         };
+
         let asideMethods: any = {
             toggleHideShow(): any
             {
                 _this.senseui.container.toggleClass('aside-in');
                 _this.senseui.window.trigger('resize');
-                if (_this.senseui.container.hasClass('aside-in'))
-                {
-                    toggleNav();
-                }
+                if (_this.senseui.container.hasClass('aside-in')) { toggleNav(); }
             },
             show(): any
             {
@@ -1307,7 +1339,10 @@ export class AppService
             if (asideMethods[method])
             {
                 asideMethods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-                if (complete) { return complete(); }
+                if (complete)
+                {
+                    return complete();
+                }
             }
             return null;
         };
@@ -1395,9 +1430,13 @@ export class AppService
                 changeTo($(e.currentTarget));
             });
 
-            if (options.selectedOn) { changeTo($(options.selectedOn)); }
+            if (options.selectedOn)
+            {
+                changeTo($(options.selectedOn));
+            }
 
         };
+
         let methods: any = {
             getSelectedID(): any
             {
@@ -1435,7 +1474,8 @@ export class AppService
                 if (methods[method])
                 {
                     chk = methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-                } else if (typeof method === 'object' || !method)
+                }
+                else if (typeof method === 'object' || !method)
                 {
                     langSelector($(this), method);
                 }
@@ -1464,7 +1504,8 @@ export class AppService
                 {
                     className = method.className;
                     el.data('jasmine.af.class', method.className);
-                } else if (method === 'update')
+                }
+                else if (method === 'update')
                 {
                     className = el.data('jasmine.af.class');
                 }
@@ -1477,7 +1518,8 @@ export class AppService
                             top: $('#navbar').outerHeight()
                         }
                     });
-                } else if (!_this.senseui.container.hasClass(className) ||
+                }
+                else if (!_this.senseui.container.hasClass(className) ||
                     _this.senseui.container.hasClass('navbar-fixed'))
                 {
                     _this.senseui.window.off(el.attr('id') + '.affix');
@@ -1537,11 +1579,13 @@ export class AppService
         {
             let asdVisCheckbox: any = $('#demo-toggle-aside');
             ev.preventDefault();
+
             if (!_this.senseui.container.hasClass('aside-in'))
             {
                 $.jasmineAside('show');
                 asdVisCheckbox.jasmineCheck('toggleOn');
-            } else
+            }
+            else
             {
                 $.jasmineAside('hide');
                 asdVisCheckbox.jasmineCheck('toggleOff');

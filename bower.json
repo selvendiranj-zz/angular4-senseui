@@ -69,6 +69,6 @@
         "googlemaps-amd": "1.0.2",
         "nanoscroller": "0.8.7",
         "metismenu": "2.7.0",
-        "resizeend": "1.2.1"
+        "jquery.resizeend": "0.2.1"
     }
 }

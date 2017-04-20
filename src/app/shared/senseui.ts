@@ -15,6 +15,8 @@ export class Senseui
     public bodyHtml: any;
     public document: any;
     public screenSize: any; // return value xs, sm, md, lg
+    public isMobile: any;
+    public transition: any;
 
     public InitSenseui(): any
     {
@@ -31,11 +33,11 @@ export class Senseui
         this.document = $(document);
         this.screenSize = ''; // return value xs, sm, md, lg
 
-        this.isMobile();
-        this.transition();
+        this.isMobile = this.getIsMobile();
+        this.transition = this.getTransition();
     }
 
-    public isMobile(): any
+    public getIsMobile(): any
     {
         return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     }
@@ -45,7 +47,7 @@ export class Senseui
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    public transition(): any
+    public getTransition(): any
     {
         let thisBody = document.body || document.documentElement;
         let thisStyle = thisBody.style;
