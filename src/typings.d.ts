@@ -15,7 +15,6 @@ declare const Dropzone: any;
 declare const noUiSlider: any;
 declare const Switchery: any;
 declare const GMaps: any;
-declare const google: any;
 declare const Skycons: any;
 declare const screenfull: any;
 

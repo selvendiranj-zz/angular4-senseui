@@ -5,32 +5,32 @@ import { Senseui } from './senseui';
 @Injectable()
 export class AppService
 {
-    private jasmine: Senseui;
+    private senseui: Senseui;
 
     public constructor(senseui: Senseui)
     {
-        this.jasmine = senseui;
+        this.senseui = senseui;
     }
     public InitApp(): any
     {
-        this.jasmine.InitSenseui();
+        this.senseui.InitSenseui();
         // attach jasmine to window object
-        (window as any).jasmine = this.jasmine;
+        (window as any).jasmine = this.senseui;
 
         // call app init methids
-        try { this.InitSelectorCache(); } catch (ex) { console.log(); }
-        try { this.RemovePanel(); } catch (ex) { console.log(); }
-        try { this.ScrollToTop(); } catch (ex) { console.log(); }
-        try { this.Overlay(); } catch (ex) { console.log(); }
-        try { this.Notify(); } catch (ex) { console.log(); }
-        try { this.Check(); } catch (ex) { console.log(); }
-        try { this.Popover(); } catch (ex) { console.log(); }
-        try { this.InitMainnav(); } catch (ex) { console.log(); }
-        try { this.InitAsidebar(); } catch (ex) { console.log(); }
-        try { this.InitLangSelector(); } catch (ex) { console.log(); }
-        try { this.InitAffix(); } catch (ex) { console.log(); }
-        try { this.InitProfile(); } catch (ex) { console.log(); }
-        try { this.SetUserOptions(); } catch (ex) { console.log(); }
+        try { this.InitSelectorCache(this); } catch (ex) { console.log(); }
+        try { this.RemovePanel(this); } catch (ex) { console.log(); }
+        try { this.ScrollToTop(this); } catch (ex) { console.log(); }
+        try { this.Overlay(this); } catch (ex) { console.log(); }
+        try { this.Notify(this); } catch (ex) { console.log(); }
+        try { this.Check(this); } catch (ex) { console.log(); }
+        try { this.Popover(this); } catch (ex) { console.log(); }
+        try { this.InitMainnav(this); } catch (ex) { console.log(); }
+        try { this.InitAsidebar(this); } catch (ex) { console.log(); }
+        try { this.InitLangSelector(this); } catch (ex) { console.log(); }
+        try { this.InitAffix(this); } catch (ex) { console.log(); }
+        try { this.InitProfile(this); } catch (ex) { console.log(); }
+        try { this.SetUserOptions(this); } catch (ex) { console.log(); }
     }
 
     /* ========================================================================
@@ -41,9 +41,9 @@ export class AppService
      * for the main selector has been cached and used in all of plugins, just need to call the variables.
      */
 
-    public InitSelectorCache(): any
+    public InitSelectorCache(_this: AppService): any
     {
-        this.jasmine.window.on('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
             // Activate the Bootstrap tooltips
             let tooltip = $('.add-tooltip');
@@ -68,12 +68,12 @@ export class AppService
             // Update nancoscroller
             $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown', function (event: JQueryEventObject): any
             {
-                $(event.currentTarget).find('.nano').nanoScroller({
+                $(this).find('.nano').nanoScroller({
                     preventPageScrolling: true
                 });
             });
 
-            this.jasmine.body.addClass('page-effect');
+            _this.senseui.body.addClass('page-effect');
         });
     }
 
@@ -83,9 +83,9 @@ export class AppService
      * Optional Font Icon : By Font Awesome
      * http://fortawesome.github.io/Font-Awesome/
      * ========================================================================*/
-    public RemovePanel(): any
+    public RemovePanel(_this: AppService): any
     {
-        this.jasmine.window.on('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
             let closebtn = $('[data-dismiss="panel"]');
 
@@ -116,35 +116,35 @@ export class AppService
      * Optional Font Icon : By Font Awesome
      * http://fortawesome.github.io/Font-Awesome/
      * ========================================================================*/
-    public ScrollToTop(): any
+    public ScrollToTop(_this: AppService): any
     {
-        this.jasmine.window.one('load', function (): any
+        _this.senseui.window.one('load', function (): any
         {
-            if (this.jasmine.scrollTop.length && !this.jasmine.isMobile)
+            if (_this.senseui.scrollTop.length && !_this.senseui.isMobile)
             {
                 let isVisible = true;
                 let offsetTop = 250;
 
-                this.jasmine.window.scroll(function (): any
+                _this.senseui.window.scroll(function (): any
                 {
-                    if (this.jasmine.window.scrollTop() > offsetTop && !isVisible)
+                    if (_this.senseui.window.scrollTop() > offsetTop && !isVisible)
                     {
-                        this.jasmine.navbar.addClass('shadow');
-                        this.jasmine.scrollTop.addClass('in');
+                        _this.senseui.navbar.addClass('shadow');
+                        _this.senseui.scrollTop.addClass('in');
                         isVisible = true;
-                    } else if (this.jasmine.window.scrollTop() < offsetTop && isVisible)
+                    } else if (_this.senseui.window.scrollTop() < offsetTop && isVisible)
                     {
-                        this.jasmine.navbar.removeClass('shadow');
-                        this.jasmine.scrollTop.removeClass('in');
+                        _this.senseui.navbar.removeClass('shadow');
+                        _this.senseui.scrollTop.removeClass('in');
                         isVisible = false;
                     }
                 });
 
-                this.jasmine.scrollTop.on('click', function (e: any): any
+                _this.senseui.scrollTop.on('click', function (e: any): any
                 {
                     e.preventDefault();
 
-                    this.jasmine.bodyHtml.animate({ scrollTop: 0 }, 500);
+                    _this.senseui.bodyHtml.animate({ scrollTop: 0 }, 500);
                 });
 
             }
@@ -157,7 +157,7 @@ export class AppService
      * Optional Font Icon : By Font Awesome
      * http://fortawesome.github.io/Font-Awesome/
      * ========================================================================*/
-    public Overlay(): any
+    public Overlay(_this: AppService): any
     {
         let defaults = {
             displayIcon: true,
@@ -251,7 +251,7 @@ export class AppService
      * JASMINE NOTIFICATION v1.1
      * -------------------------------------------------------------------------
      * ========================================================================*/
-    public Notify(): any
+    public Notify(_this: AppService): any
     {
         let pageHolder: any;
         let floatContainer: any = {};
@@ -338,7 +338,7 @@ export class AppService
                 if (opt.container === 'floating' && opt.floating.animationOut)
                 {
                     el.removeClass(opt.floating.animationIn).addClass(opt.floating.animationOut);
-                    if (!this.jasmine.transition)
+                    if (!_this.senseui.transition)
                     {
                         el.remove();
                     }
@@ -357,7 +357,7 @@ export class AppService
             };
             let focusElement = function (pos: any): any
             {
-                this.jasmine.bodyHtml.animate({
+                _this.senseui.bodyHtml.animate({
                     scrollTop: pos
                 }, 300, function (): any
                     {
@@ -371,7 +371,7 @@ export class AppService
                     if (!pageHolder)
                     {
                         pageHolder = $('<div id="page-alert"></div>');
-                        this.jasmine.contentContainer.prepend(pageHolder);
+                        _this.senseui.contentContainer.prepend(pageHolder);
                     }
 
                     notyContainer = pageHolder;
@@ -383,7 +383,7 @@ export class AppService
                     {
                         floatContainer[opt.floating.position] = $('<div id="floating-' + opt.floating.position +
                             '" class="floating-container"></div>');
-                        this.jasmine.container.append(floatContainer[opt.floating.position]);
+                        _this.senseui.container.append(floatContainer[opt.floating.position]);
                     }
 
                     notyContainer = floatContainer[opt.floating.position];
@@ -448,7 +448,7 @@ export class AppService
      * JASMINE CHECK v1.1
      * -------------------------------------------------------------------------
      * ========================================================================*/
-    public Check(): any
+    public Check(_this: AppService): any
     {
         let allFormEl;
         let formElement = function (el: any): any
@@ -490,7 +490,7 @@ export class AppService
                 {
                     $groupInput.each(function (event: JQueryEventObject): any
                     {
-                        let $gi = $(event.currentTarget);
+                        let $gi = $(this);
                         if ($gi.hasClass('active')) { $gi.trigger('jasmine.ch.unchecked'); }
                         $gi.removeClass('active');
                     });
@@ -521,28 +521,28 @@ export class AppService
         let methods: any = {
             isChecked(): any
             {
-                return this[0].checked;
+                return this.checked;
             },
             toggle(): any
             {
-                this[0].checked = !this[0].checked;
+                this.checked = !this.checked;
                 this.trigger('change');
                 return null;
             },
             toggleOn(): any
             {
-                if (!this[0].checked)
+                if (!this.checked)
                 {
-                    this[0].checked = true;
+                    this.checked = true;
                     this.trigger('change');
                 }
                 return null;
             },
             toggleOff(): any
             {
-                if (this[0].checked && this[0].type === 'checkbox')
+                if (this.checked && this.type === 'checkbox')
                 {
-                    this[0].checked = false;
+                    this.checked = false;
                     this.trigger('change');
                 }
                 return null;
@@ -556,24 +556,24 @@ export class AppService
             {
                 if (methods[method])
                 {
-                    chk = methods[method].apply($(event.currentTarget).find('input'), Array.prototype.slice.call(arguments, 1));
+                    chk = methods[method].apply($(this).find('input'), Array.prototype.slice.call(arguments, 1));
                 } else if (typeof method === 'object' || !method)
                 {
-                    formElement($(event.currentTarget));
+                    formElement($(this));
                 }
             });
             return chk;
         };
 
-        this.jasmine.document.ready(function (): any
+        _this.senseui.document.ready(function (): any
         {
             allFormEl = $('.form-checkbox, .form-radio');
             if (allFormEl.length) { allFormEl.jasmineCheck(); }
         });
 
-        this.jasmine.document.on('change', '.btn-file :file', function (event: JQueryEventObject): any
+        _this.senseui.document.on('change', '.btn-file :file', function (event: JQueryEventObject): any
         {
-            let input = $(event.currentTarget);
+            let input = $(this);
             let numFiles = input.get(0).files ? input.get(0).files.length : 1;
             let label = input.val()
                 .replace(/\\/g, '/')
@@ -608,9 +608,9 @@ export class AppService
      * Require Bootstrap Popover
      * http://getbootstrap.com/javascript/#popovers
      * ========================================================================*/
-    public Popover(): any
+    public Popover(_this: AppService): any
     {
-        this.jasmine.window.on('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
             let shortcutBtn = $('#mainnav-shortcut');
 
@@ -618,7 +618,7 @@ export class AppService
             {
                 shortcutBtn.find('li').each(function (event: JQueryEventObject): any
                 {
-                    let $el = $(event.currentTarget);
+                    let $el = $(this);
                     $el.popover({
                         animation: false,
                         trigger: 'hover focus',
@@ -631,7 +631,7 @@ export class AppService
         });
     }
 
-    public InitMainnav(): any
+    public InitMainnav(_this: AppService): any
     {
         let $menulink = $('#mainnav-menu > li > a, #mainnav-menu-wrap .mainnav-widget a[data-toggle="menu-widget"]');
         let mainNavHeight = $('#mainnav').height();
@@ -649,7 +649,7 @@ export class AppService
 
             $menulink.each(function (event: JQueryEventObject): any
             {
-                let $el = $(event.currentTarget);
+                let $el = $(this);
                 let $listTitle = $el.children('.menu-title');
                 let $listSub = $el.siblings('.collapse');
                 let $listWidget = $($el.attr('data-target'));
@@ -677,9 +677,7 @@ export class AppService
                         $el.on('click', function (e: any): any
                         {
                             e.preventDefault();
-                        })
-                            .parent('li')
-                            .removeClass('active');
+                        }).parent('li').removeClass('active');
                         return true;
                     } else
                     {
@@ -701,21 +699,19 @@ export class AppService
                     }, 700);
                 };
 
-                $(document)
-                    .click(function (event: any): any
+                $(document).click(function (event2: JQueryEventObject): any
+                {
+                    if (!$(event2.currentTarget).closest('#mainnav-container').length)
                     {
-                        if (!$(event.target).closest('#mainnav-container').length)
-                        {
-                            $el.removeClass('hover').popover('hide');
-                        }
-                    });
+                        $el.removeClass('hover').popover('hide');
+                    }
+                });
 
-                $('#mainnav-menu-wrap > .nano')
-                    .on('update', function (event: any, values: any): any
-                    {
-                        $el.removeClass('hover')
-                            .popover('hide');
-                    });
+                $('#mainnav-menu-wrap > .nano').on('update', function (event2: any, values: any): any
+                {
+                    $el.removeClass('hover')
+                        .popover('hide');
+                });
 
                 $el.popover({
                     animation: false,
@@ -779,7 +775,7 @@ export class AppService
                     let elHeight = $el.outerHeight();
                     let offsetBottom = function (): any
                     {
-                        if (this.jasmine.container.hasClass('mainnav-fixed'))
+                        if (_this.senseui.container.hasClass('mainnav-fixed'))
                         {
                             return $(window).outerHeight() - offsetTop - elHeight;
                         } else
@@ -811,14 +807,14 @@ export class AppService
                         updateScrollBar($popcontent.find('.nano'));
                     } else
                     {
-                        if (!this.jasmine.container.hasClass('navbar-fixed')
-                            && this.jasmine.mainNav.hasClass('affix-top'))
+                        if (!_this.senseui.container.hasClass('navbar-fixed')
+                            && _this.senseui.mainNav.hasClass('affix-top'))
                         {
                             offsetBottom -= 50;
                         }
                         if (popoverHeight > offsetBottom)
                         {
-                            if (this.jasmine.container.hasClass('navbar-fixed') || this.jasmine.mainNav.hasClass('affix-top'))
+                            if (_this.senseui.container.hasClass('navbar-fixed') || _this.senseui.mainNav.hasClass('affix-top'))
                             {
                                 offsetBottom -= (elHeight + 5);
                             }
@@ -872,7 +868,7 @@ export class AppService
                     clearInterval(hidePopover);
                 }).on('click', function (): any
                 {
-                    if (!this.jasmine.container.hasClass('mainnav-sm')) { return; }
+                    if (!_this.senseui.container.hasClass('mainnav-sm')) { return; }
                     $menulink.popover('hide');
                     $el.addClass('hover').popover('show');
                 }).hover(
@@ -906,21 +902,18 @@ export class AppService
         };
         let unbindSmallNav = function (): any
         {
-            let colapsed = $('#mainnav-menu')
-                .find('.collapse');
+            let colapsed = $('#mainnav-menu').find('.collapse');
             if (colapsed.length)
             {
                 colapsed.each(function (event: JQueryEventObject): any
                 {
-                    let cl = $(event.currentTarget);
+                    let cl = $(this);
                     if (cl.hasClass('in'))
                     {
-                        cl.parent('li')
-                            .addClass('active');
+                        cl.parent('li').addClass('active');
                     } else
                     {
-                        cl.parent('li')
-                            .removeClass('active');
+                        cl.parent('li').removeClass('active');
                     }
                 });
             }
@@ -940,7 +933,7 @@ export class AppService
         {
             // if(!defaultSize) return;
 
-            let sw = this.jasmine.container.width();
+            let sw = _this.senseui.container.width();
             let currentScreen;
 
             if (sw <= 740)
@@ -960,9 +953,9 @@ export class AppService
             if (screenCat !== currentScreen)
             {
                 screenCat = currentScreen;
-                this.jasmine.screenSize = currentScreen;
+                _this.senseui.screenSize = currentScreen;
 
-                if (this.jasmine.screenSize === 'sm' && this.jasmine.container.hasClass('mainnav-lg'))
+                if (_this.senseui.screenSize === 'sm' && _this.senseui.container.hasClass('mainnav-lg'))
                 {
                     $.jasmineNav('collapse');
                 }
@@ -971,14 +964,14 @@ export class AppService
 
         let updateNav = function (e: any): any
         {
-            this.jasmine.mainNav.jasmineAffix('update');
+            _this.senseui.mainNav.jasmineAffix('update');
 
             unbindSmallNav();
             updateSize();
 
-            if (updateMethod === 'collapse' || this.jasmine.container.hasClass('mainnav-sm'))
+            if (updateMethod === 'collapse' || _this.senseui.container.hasClass('mainnav-sm'))
             {
-                this.jasmine.container.removeClass('mainnav-in mainnav-out mainnav-lg');
+                _this.senseui.container.removeClass('mainnav-in mainnav-out mainnav-lg');
                 bindSmallNav();
             }
 
@@ -994,9 +987,9 @@ export class AppService
             {
                 defaultSize = {
                     xs: 'mainnav-out',
-                    sm: this.jasmine.mainNav.data('sm') || this.jasmine.mainNav.data('all'),
-                    md: this.jasmine.mainNav.data('md') || this.jasmine.mainNav.data('all'),
-                    lg: this.jasmine.mainNav.data('lg') || this.jasmine.mainNav.data('all')
+                    sm: _this.senseui.mainNav.data('sm') || _this.senseui.mainNav.data('all'),
+                    md: _this.senseui.mainNav.data('md') || _this.senseui.mainNav.data('all'),
+                    lg: _this.senseui.mainNav.data('lg') || _this.senseui.mainNav.data('all')
                 };
 
                 let hasData = false;
@@ -1017,56 +1010,56 @@ export class AppService
         let methods: any = {
             revealToggle(): any
             {
-                if (!this.jasmine.container.hasClass('reveal'))
+                if (!_this.senseui.container.hasClass('reveal'))
                 {
-                    this.jasmine.container.addClass('reveal');
+                    _this.senseui.container.addClass('reveal');
                 }
-                this.jasmine.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
+                _this.senseui.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             revealIn(): any
             {
-                if (!this.jasmine.container.hasClass('reveal')) { this.jasmine.container.addClass('reveal'); }
-                this.jasmine.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
+                if (!_this.senseui.container.hasClass('reveal')) { _this.senseui.container.addClass('reveal'); }
+                _this.senseui.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             revealOut(): any
             {
-                if (!this.jasmine.container.hasClass('reveal')) { this.jasmine.container.addClass('reveal'); }
-                this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                if (!_this.senseui.container.hasClass('reveal')) { _this.senseui.container.addClass('reveal'); }
+                _this.senseui.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             slideToggle(): any
             {
-                if (!this.jasmine.container.hasClass('slide')) { this.jasmine.container.addClass('slide'); }
-                this.jasmine.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
+                if (!_this.senseui.container.hasClass('slide')) { _this.senseui.container.addClass('slide'); }
+                _this.senseui.container.toggleClass('mainnav-in mainnav-out').removeClass('mainnav-lg mainnav-sm');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             slideIn(): any
             {
-                if (!this.jasmine.container.hasClass('slide')) { this.jasmine.container.addClass('slide'); }
-                this.jasmine.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
+                if (!_this.senseui.container.hasClass('slide')) { _this.senseui.container.addClass('slide'); }
+                _this.senseui.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             slideOut(): any
             {
-                if (!this.jasmine.container.hasClass('slide')) { this.jasmine.container.addClass('slide'); }
-                this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                if (!_this.senseui.container.hasClass('slide')) { _this.senseui.container.addClass('slide'); }
+                _this.senseui.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             pushToggle(): any
             {
-                this.jasmine.container.toggleClass('mainnav-in mainnav-out')
+                _this.senseui.container.toggleClass('mainnav-in mainnav-out')
                     .removeClass('mainnav-lg mainnav-sm');
-                if (this.jasmine.container.hasClass('mainnav-in mainnav-out'))
+                if (_this.senseui.container.hasClass('mainnav-in mainnav-out'))
                 {
-                    this.jasmine.container.removeClass('mainnav-in');
+                    _this.senseui.container.removeClass('mainnav-in');
                 }
                 // if (jasmine.container.hasClass('mainnav-in')) //jasmine.container.removeClass('aside-in');
                 if (isSmallNav) { unbindSmallNav(); }
@@ -1074,50 +1067,50 @@ export class AppService
             },
             pushIn(): any
             {
-                this.jasmine.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
+                _this.senseui.container.addClass('mainnav-in').removeClass('mainnav-out mainnav-lg mainnav-sm');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             pushOut(): any
             {
-                this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                _this.senseui.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
                 if (isSmallNav) { unbindSmallNav(); }
                 return;
             },
             colExpToggle(): any
             {
-                if (this.jasmine.container.hasClass('mainnav-lg mainnav-sm'))
+                if (_this.senseui.container.hasClass('mainnav-lg mainnav-sm'))
                 {
-                    this.jasmine.container.removeClass('mainnav-lg');
+                    _this.senseui.container.removeClass('mainnav-lg');
                 }
-                this.jasmine.container.toggleClass('mainnav-lg mainnav-sm').removeClass('mainnav-in mainnav-out');
-                return this.jasmine.window.trigger('resize');
+                _this.senseui.container.toggleClass('mainnav-lg mainnav-sm').removeClass('mainnav-in mainnav-out');
+                return _this.senseui.window.trigger('resize');
             },
             collapse(): any
             {
-                this.jasmine.container.addClass('mainnav-sm').removeClass('mainnav-lg mainnav-in mainnav-out');
+                _this.senseui.container.addClass('mainnav-sm').removeClass('mainnav-lg mainnav-in mainnav-out');
                 updateMethod = 'collapse';
-                return this.jasmine.window.trigger('resize');
+                return _this.senseui.window.trigger('resize');
             },
             expand(): any
             {
-                this.jasmine.container.removeClass('mainnav-sm mainnav-in mainnav-out').addClass('mainnav-lg');
-                return this.jasmine.window.trigger('resize');
+                _this.senseui.container.removeClass('mainnav-sm mainnav-in mainnav-out').addClass('mainnav-lg');
+                return _this.senseui.window.trigger('resize');
             },
             togglePosition(): any
             {
-                this.jasmine.container.toggleClass('mainnav-fixed');
-                this.jasmine.mainNav.jasmineAffix('update');
+                _this.senseui.container.toggleClass('mainnav-fixed');
+                _this.senseui.mainNav.jasmineAffix('update');
             },
             fixedPosition(): any
             {
-                this.jasmine.container.addClass('mainnav-fixed');
-                this.jasmine.mainNav.jasmineAffix('update');
+                _this.senseui.container.addClass('mainnav-fixed');
+                _this.senseui.mainNav.jasmineAffix('update');
             },
             staticPosition(): any
             {
-                this.jasmine.container.removeClass('mainnav-fixed');
-                this.jasmine.mainNav.jasmineAffix('update');
+                _this.senseui.container.removeClass('mainnav-fixed');
+                _this.senseui.mainNav.jasmineAffix('update');
             },
             update: updateNav,
             forceUpdate: updateSize,
@@ -1133,12 +1126,12 @@ export class AppService
             {
                 if (method === 'colExpToggle' || method === 'expand' || method === 'collapse')
                 {
-                    if (this.jasmine.screenSize === 'xs' && method === 'collapse')
+                    if (_this.senseui.screenSize === 'xs' && method === 'collapse')
                     {
                         method = 'pushOut';
-                    } else if ((this.jasmine.screenSize === 'xs' || this.jasmine.screenSize === 'sm') && (method ===
+                    } else if ((_this.senseui.screenSize === 'xs' || _this.senseui.screenSize === 'sm') && (method ===
                         'colExpToggle' ||
-                        method === 'expand') && this.jasmine.container.hasClass('mainnav-sm'))
+                        method === 'expand') && _this.senseui.container.hasClass('mainnav-sm'))
                     {
                         method = 'pushIn';
                     }
@@ -1158,11 +1151,11 @@ export class AppService
         $.fn.isOnScreen = function (): any
         {
             let viewport: any = {
-                top: this.jasmine.window.scrollTop(),
-                left: this.jasmine.window.scrollLeft()
+                top: _this.senseui.window.scrollTop(),
+                left: _this.senseui.window.scrollLeft()
             };
-            viewport.right = viewport.left + this.jasmine.window.width();
-            viewport.bottom = viewport.top + this.jasmine.window.height();
+            viewport.right = viewport.left + _this.senseui.window.width();
+            viewport.bottom = viewport.top + _this.senseui.window.height();
 
             let bounds = this.offset();
             bounds.right = bounds.left + this.outerWidth();
@@ -1174,9 +1167,9 @@ export class AppService
 
         };
 
-        this.jasmine.window.on('resizeEnd', updateNav).trigger('resize');
+        _this.senseui.window.on('resizeEnd', updateNav).trigger('resize');
 
-        this.jasmine.window.on('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
             let toggleBtn = $('.mainnav-toggle');
             if (toggleBtn.length)
@@ -1216,7 +1209,7 @@ export class AppService
                 // Require nanoScroller
                 // http://jamesflorentino.github.io/nanoScrollerJS/
                 // =================================================================
-                scrollbar = this.jasmine.mainNav.find('.nano');
+                scrollbar = _this.senseui.mainNav.find('.nano');
                 if (scrollbar.length)
                 {
                     scrollbar.nanoScroller({ preventPageScrolling: true });
@@ -1229,83 +1222,83 @@ export class AppService
      * JASMINE ASIDE v1.0.1
      * -------------------------------------------------------------------------
      * ========================================================================*/
-    public InitAsidebar(): any
+    public InitAsidebar(_this: AppService): any
     {
         let toggleNav = function (): any
         {
-            if (this.jasmine.container.hasClass('mainnav-in') && this.jasmine.screenSize !== 'xs')
+            if (_this.senseui.container.hasClass('mainnav-in') && _this.senseui.screenSize !== 'xs')
             {
-                if (this.jasmine.screenSize === 'sm')
+                if (_this.senseui.screenSize === 'sm')
                 {
                     $.jasmineNav('collapse');
                 } else
                 {
-                    this.jasmine.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
+                    _this.senseui.container.removeClass('mainnav-in mainnav-lg mainnav-sm').addClass('mainnav-out');
                 }
             }
         };
         let asideMethods: any = {
             toggleHideShow(): any
             {
-                this.jasmine.container.toggleClass('aside-in');
-                this.jasmine.window.trigger('resize');
-                if (this.jasmine.container.hasClass('aside-in'))
+                _this.senseui.container.toggleClass('aside-in');
+                _this.senseui.window.trigger('resize');
+                if (_this.senseui.container.hasClass('aside-in'))
                 {
                     toggleNav();
                 }
             },
             show(): any
             {
-                this.jasmine.container.addClass('aside-in');
-                this.jasmine.window.trigger('resize');
+                _this.senseui.container.addClass('aside-in');
+                _this.senseui.window.trigger('resize');
                 toggleNav();
             },
             hide(): any
             {
-                this.jasmine.container.removeClass('aside-in');
-                this.jasmine.window.trigger('resize');
+                _this.senseui.container.removeClass('aside-in');
+                _this.senseui.window.trigger('resize');
             },
             toggleAlign(): any
             {
-                this.jasmine.container.toggleClass('aside-left');
-                this.jasmine.aside.jasmineAffix('update');
+                _this.senseui.container.toggleClass('aside-left');
+                _this.senseui.aside.jasmineAffix('update');
             },
             alignLeft(): any
             {
-                this.jasmine.container.addClass('aside-left');
-                this.jasmine.aside.jasmineAffix('update');
+                _this.senseui.container.addClass('aside-left');
+                _this.senseui.aside.jasmineAffix('update');
             },
             alignRight(): any
             {
-                this.jasmine.container.removeClass('aside-left');
-                this.jasmine.aside.jasmineAffix('update');
+                _this.senseui.container.removeClass('aside-left');
+                _this.senseui.aside.jasmineAffix('update');
             },
             togglePosition(): any
             {
-                this.jasmine.container.toggleClass('aside-fixed');
-                this.jasmine.aside.jasmineAffix('update');
+                _this.senseui.container.toggleClass('aside-fixed');
+                _this.senseui.aside.jasmineAffix('update');
             },
             fixedPosition(): any
             {
-                this.jasmine.container.addClass('aside-fixed');
-                this.jasmine.aside.jasmineAffix('update');
+                _this.senseui.container.addClass('aside-fixed');
+                _this.senseui.aside.jasmineAffix('update');
             },
             staticPosition(): any
             {
-                this.jasmine.container.removeClass('aside-fixed');
-                this.jasmine.aside.jasmineAffix('update');
+                _this.senseui.container.removeClass('aside-fixed');
+                _this.senseui.aside.jasmineAffix('update');
             },
             toggleTheme(): any
             {
-                this.jasmine.container.toggleClass('aside-bright');
+                _this.senseui.container.toggleClass('aside-bright');
             },
             brightTheme(): any
             {
-                this.jasmine.container.addClass('aside-bright');
+                _this.senseui.container.addClass('aside-bright');
             },
             darkTheme(): any
             {
-                this.jasmine.container.removeClass('aside-bright');
+                _this.senseui.container.removeClass('aside-bright');
             }
         };
 
@@ -1319,16 +1312,16 @@ export class AppService
             return null;
         };
 
-        this.jasmine.window.on('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
-            if (this.jasmine.aside.length)
+            if (_this.senseui.aside.length)
             {
                 // STYLEABLE SCROLLBARS
                 // =================================================================
                 // Require nanoScroller
                 // http://jamesflorentino.github.io/nanoScrollerJS/
                 // =================================================================
-                this.jasmine.aside.find('.nano').nanoScroller({
+                _this.senseui.aside.find('.nano').nanoScroller({
                     preventPageScrolling: true,
                     alwaysVisible: false
                 });
@@ -1351,7 +1344,7 @@ export class AppService
      * Require Bootstrap Dropdowns
      * http://getbootstrap.com/components/#dropdowns
      * ========================================================================*/
-    public InitLangSelector(): any
+    public InitLangSelector(_this: AppService): any
     {
         let defaults: any = {
             dynamicMode: true,
@@ -1458,7 +1451,7 @@ export class AppService
      * http://getbootstrap.com/javascript/#affix
      * ========================================================================*/
 
-    public InitAffix(): any
+    public InitAffix(_this: AppService): any
     {
         $.fn.jasmineAffix = function (method: any): any
         {
@@ -1476,33 +1469,33 @@ export class AppService
                     className = el.data('jasmine.af.class');
                 }
 
-                if (this.jasmine.container.hasClass(className) &&
-                    !this.jasmine.container.hasClass('navbar-fixed'))
+                if (_this.senseui.container.hasClass(className) &&
+                    !_this.senseui.container.hasClass('navbar-fixed'))
                 {
                     el.affix({
                         offset: {
                             top: $('#navbar').outerHeight()
                         }
                     });
-                } else if (!this.jasmine.container.hasClass(className) ||
-                    this.jasmine.container.hasClass('navbar-fixed'))
+                } else if (!_this.senseui.container.hasClass(className) ||
+                    _this.senseui.container.hasClass('navbar-fixed'))
                 {
-                    this.jasmine.window.off(el.attr('id') + '.affix');
+                    _this.senseui.window.off(el.attr('id') + '.affix');
                     el.removeClass('affix affix-top affix-bottom').removeData('bs.affix');
                 }
             });
         };
 
-        this.jasmine.window.on('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
-            if (this.jasmine.mainNav.length)
+            if (_this.senseui.mainNav.length)
             {
-                this.jasmine.mainNav.jasmineAffix({ className: 'mainnav-fixed' });
+                _this.senseui.mainNav.jasmineAffix({ className: 'mainnav-fixed' });
             }
 
-            if (this.jasmine.aside.length)
+            if (_this.senseui.aside.length)
             {
-                this.jasmine.aside.jasmineAffix({ className: 'aside-fixed' });
+                _this.senseui.aside.jasmineAffix({ className: 'aside-fixed' });
             }
         });
     }
@@ -1511,7 +1504,7 @@ export class AppService
      * JASMINE PROFILE
      * -------------------------------------------------------------------------
      * ========================================================================*/
-    public InitProfile(): any
+    public InitProfile(_this: AppService): any
     {
         $('.inbox-star').click(function (): any
         {
@@ -1528,7 +1521,7 @@ export class AppService
      * Set user options
      * -------------------------------------------------------------------------
      * ========================================================================*/
-    public SetUserOptions(): any
+    public SetUserOptions(_this: AppService): any
     {
         let elems = Array.prototype.slice.call(document.querySelectorAll('.demo-switch'));
         elems.forEach(function (html: any): any
@@ -1544,7 +1537,7 @@ export class AppService
         {
             let asdVisCheckbox: any = $('#demo-toggle-aside');
             ev.preventDefault();
-            if (!this.jasmine.container.hasClass('aside-in'))
+            if (!_this.senseui.container.hasClass('aside-in'))
             {
                 $.jasmineAside('show');
                 asdVisCheckbox.jasmineCheck('toggleOn');
