@@ -118,7 +118,7 @@ export class AppService
      * ========================================================================*/
     public ScrollToTop(_this: AppService): any
     {
-        _this.senseui.window.one('load', function (): any
+        _this.senseui.window.on('load', function (): any
         {
             if (_this.senseui.scrollTop.length && !_this.senseui.isMobile)
             {

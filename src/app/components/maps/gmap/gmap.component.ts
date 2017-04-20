@@ -1,5 +1,4 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { ScriptService } from '../../../shared/script.service';
 import { GMapService } from './gmap.service';
 
 @Component({
