@@ -90,7 +90,8 @@
             "assets/bower_components/datatables-responsive/js/dataTables.responsive.js",
             "assets/bower_components/editable-table/mindmup-editabletable.js",
             "assets/bower_components/editable-table/numeric-input-example.js",
-            "assets/bower_components/skycons-html5/skycons.js"
+            "assets/bower_components/skycons-html5/skycons.js",
+            "assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
