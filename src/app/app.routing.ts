@@ -13,7 +13,7 @@ export const routes = [
     { path: 'forms/switchery', data: ['Switchery'], loadChildren: './components/forms/switchery/switchery.module#SwitcheryModule' },
     { path: 'forms/validation', data: ['Validation'], loadChildren: './components/forms/validation/validation.module#ValidationModule' },
     { path: 'forms/wizard', data: ['Wizard'], loadChildren: './components/forms/wizard/wizard.module#WizardModule' },
-    { path: 'layouts/appv2', data: ['AppV2'], loadChildren: './components/layouts/appv2/appv2.module#AppV2Module' },
+    { path: 'layouts/appv2', data: ['AppV2'], loadChildren: './components/layouts/app-v2/appv2.module#AppV2Module' },
     { path: 'mail/compose', data: ['Compose'], loadChildren: './components/mail/compose/compose.module#ComposeModule' },
     { path: 'mail/inbox', data: ['Inbox'], loadChildren: './components/mail/inbox/inbox.module#InboxModule' },
     { path: 'mail/mailview', data: ['Mailview'], loadChildren: './components/mail/mailview/mailview.module#MailviewModule' },
