@@ -17,6 +17,7 @@ declare const Switchery: any;
 declare const GMaps: any;
 declare const Skycons: any;
 declare const screenfull: any;
+declare const Gamma: any;
 
 declare module jasmine
 {
