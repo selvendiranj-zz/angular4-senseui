@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AppService } from './shared/app.service';
 import { ScriptService } from './shared/script.service';
 
@@ -7,7 +7,7 @@ import { ScriptService } from './shared/script.service';
     templateUrl: './app.component.html'
 })
 
-export class AppComponent implements AfterViewInit
+export class AppComponent implements OnInit, AfterViewInit
 {
     private appSvc: AppService;
     private scriptSvc: ScriptService;
@@ -18,9 +18,13 @@ export class AppComponent implements AfterViewInit
         this.scriptSvc = scriptSvc;
     }
 
-    public ngAfterViewInit(): void
+    public ngOnInit(): void
     {
         this.scriptSvc.loadCompScript('AppComponent');
+    }
+
+    public ngAfterViewInit(): void
+    {
         this.appSvc.InitApp();
     }
 }

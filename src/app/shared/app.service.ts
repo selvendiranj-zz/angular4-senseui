@@ -16,24 +16,29 @@ export class AppService
     }
     public InitApp(): any
     {
-        this.senseui.InitSenseui();
-        // attach jasmine to window object
-        (window as any).jasmine = this.senseui;
+        let _this = this;
 
-        // call app init methids
-        try { this.InitSelectorCache(this); } catch (ex) { console.log(); }
-        try { this.RemovePanel(this); } catch (ex) { console.log(); }
-        try { this.ScrollToTop(this); } catch (ex) { console.log(); }
-        try { this.Overlay(this); } catch (ex) { console.log(); }
-        try { this.Notify(this); } catch (ex) { console.log(); }
-        try { this.Check(this); } catch (ex) { console.log(); }
-        try { this.Popover(this); } catch (ex) { console.log(); }
-        try { this.mainnavSvc.InitMainnav(); } catch (ex) { console.log(); }
-        try { this.InitAsidebar(this); } catch (ex) { console.log(); }
-        try { this.InitLangSelector(this); } catch (ex) { console.log(); }
-        try { this.InitAffix(this); } catch (ex) { console.log(); }
-        try { this.InitProfile(this); } catch (ex) { console.log(); }
-        try { this.SetUserOptions(this); } catch (ex) { console.log(); }
+        _this.senseui.InitSenseui();
+        // attach jasmine to window object
+        (window as any).jasmine = _this.senseui;
+
+        _this.senseui.window.on('load', () =>
+        {
+            // call app init methids
+            try { _this.InitSelectorCache(_this); } catch (ex) { console.log(); }
+            try { _this.RemovePanel(_this); } catch (ex) { console.log(); }
+            try { _this.ScrollToTop(_this); } catch (ex) { console.log(); }
+            try { _this.Overlay(_this); } catch (ex) { console.log(); }
+            try { _this.Notify(_this); } catch (ex) { console.log(); }
+            try { _this.Check(_this); } catch (ex) { console.log(); }
+            try { _this.Popover(_this); } catch (ex) { console.log(); }
+            try { _this.mainnavSvc.InitMainnav(); } catch (ex) { console.log(); }
+            try { _this.InitAsidebar(_this); } catch (ex) { console.log(); }
+            try { _this.InitLangSelector(_this); } catch (ex) { console.log(); }
+            try { _this.InitAffix(_this); } catch (ex) { console.log(); }
+            try { _this.InitProfile(_this); } catch (ex) { console.log(); }
+            try { _this.SetUserOptions(_this); } catch (ex) { console.log(); }
+        });
     }
 
     /* ========================================================================
@@ -46,39 +51,36 @@ export class AppService
 
     public InitSelectorCache(_this: AppService): any
     {
-        _this.senseui.window.on('load', function (): any
+        // Activate the Bootstrap tooltips
+        let tooltip = $('.add-tooltip');
+        if (tooltip.length) { tooltip.tooltip(); }
+
+        let popover = $('.add-popover');
+        if (popover.length) { popover.popover(); }
+
+        // STYLEABLE SCROLLBARS
+        // =================================================================
+        // Require nanoScroller
+        // http://jamesflorentino.github.io/nanoScrollerJS/
+        // =================================================================
+        let nano = $('.nano');
+        if (nano.length)
         {
-            // Activate the Bootstrap tooltips
-            let tooltip = $('.add-tooltip');
-            if (tooltip.length) { tooltip.tooltip(); }
+            nano.nanoScroller({
+                preventPageScrolling: true
+            });
+        }
 
-            let popover = $('.add-popover');
-            if (popover.length) { popover.popover(); }
-
-            // STYLEABLE SCROLLBARS
-            // =================================================================
-            // Require nanoScroller
-            // http://jamesflorentino.github.io/nanoScrollerJS/
-            // =================================================================
-            let nano = $('.nano');
-            if (nano.length)
+        // Update nancoscroller
+        $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown',
+            function (event: JQueryEventObject): any
             {
-                nano.nanoScroller({
+                $(this).find('.nano').nanoScroller({
                     preventPageScrolling: true
                 });
-            }
+            });
 
-            // Update nancoscroller
-            $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown',
-                function (event: JQueryEventObject): any
-                {
-                    $(this).find('.nano').nanoScroller({
-                        preventPageScrolling: true
-                    });
-                });
-
-            _this.senseui.body.addClass('page-effect');
-        });
+        _this.senseui.body.addClass('page-effect');
     }
 
     /* ========================================================================
@@ -89,28 +91,25 @@ export class AppService
      * ========================================================================*/
     public RemovePanel(_this: AppService): any
     {
-        _this.senseui.window.on('load', function (): any
+        let closebtn = $('[data-dismiss="panel"]');
+
+        if (closebtn.length)
         {
-            let closebtn = $('[data-dismiss="panel"]');
-
-            if (closebtn.length)
+            closebtn.one('click', function (e: any): any
             {
-                closebtn.one('click', function (e: any): any
-                {
-                    e.preventDefault();
-                    let el = $(e.currentTarget).parents('.panel');
+                e.preventDefault();
+                let el = $(e.currentTarget).parents('.panel');
 
-                    el.addClass('remove').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
-                        function (e2: any): any
+                el.addClass('remove').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
+                    function (e2: any): any
+                    {
+                        if (e2.originalEvent.propertyName === 'opacity')
                         {
-                            if (e2.originalEvent.propertyName === 'opacity')
-                            {
-                                el.remove();
-                            }
-                        });
-                });
-            }
-        });
+                            el.remove();
+                        }
+                    });
+            });
+        }
     }
 
     /* ========================================================================
@@ -121,37 +120,34 @@ export class AppService
      * ========================================================================*/
     public ScrollToTop(_this: AppService): any
     {
-        _this.senseui.window.on('load', function (): any
+        if (_this.senseui.scrollTop.length && !_this.senseui.isMobile)
         {
-            if (_this.senseui.scrollTop.length && !_this.senseui.isMobile)
+            let isVisible = true;
+            let offsetTop = 250;
+
+            _this.senseui.window.scroll(function (): any
             {
-                let isVisible = true;
-                let offsetTop = 250;
-
-                _this.senseui.window.scroll(function (): any
+                if (_this.senseui.window.scrollTop() > offsetTop && !isVisible)
                 {
-                    if (_this.senseui.window.scrollTop() > offsetTop && !isVisible)
-                    {
-                        _this.senseui.navbar.addClass('shadow');
-                        _this.senseui.scrollTop.addClass('in');
-                        isVisible = true;
-                    }
-                    else if (_this.senseui.window.scrollTop() < offsetTop && isVisible)
-                    {
-                        _this.senseui.navbar.removeClass('shadow');
-                        _this.senseui.scrollTop.removeClass('in');
-                        isVisible = false;
-                    }
-                });
-
-                _this.senseui.scrollTop.on('click', function (e: any): any
+                    _this.senseui.navbar.addClass('shadow');
+                    _this.senseui.scrollTop.addClass('in');
+                    isVisible = true;
+                }
+                else if (_this.senseui.window.scrollTop() < offsetTop && isVisible)
                 {
-                    e.preventDefault();
-                    _this.senseui.bodyHtml.animate({ scrollTop: 0 }, 500);
-                });
+                    _this.senseui.navbar.removeClass('shadow');
+                    _this.senseui.scrollTop.removeClass('in');
+                    isVisible = false;
+                }
+            });
 
-            }
-        });
+            _this.senseui.scrollTop.on('click', function (e: any): any
+            {
+                e.preventDefault();
+                _this.senseui.bodyHtml.animate({ scrollTop: 0 }, 500);
+            });
+
+        }
     }
 
     /* ========================================================================
@@ -625,26 +621,23 @@ export class AppService
      * ========================================================================*/
     public Popover(_this: AppService): any
     {
-        _this.senseui.window.on('load', function (): any
-        {
-            let shortcutBtn = $('#mainnav-shortcut');
+        let shortcutBtn = $('#mainnav-shortcut');
 
-            if (shortcutBtn.length)
+        if (shortcutBtn.length)
+        {
+            shortcutBtn.find('li').each(function (event: JQueryEventObject): any
             {
-                shortcutBtn.find('li').each(function (event: JQueryEventObject): any
-                {
-                    let $el = $(this);
-                    $el.popover({
-                        animation: false,
-                        trigger: 'hover focus',
-                        placement: 'bottom',
-                        container: '#mainnav-container',
-                        template: '<div class="popover mainnav-shortcut">' +
-                        '<div class="arrow"></div><div class="popover-content"></div>'
-                    });
+                let $el = $(this);
+                $el.popover({
+                    animation: false,
+                    trigger: 'hover focus',
+                    placement: 'bottom',
+                    container: '#mainnav-container',
+                    template: '<div class="popover mainnav-shortcut">' +
+                    '<div class="arrow"></div><div class="popover-content"></div>'
                 });
-            }
-        });
+            });
+        }
     }
 
     /* ========================================================================
@@ -743,30 +736,27 @@ export class AppService
             return null;
         };
 
-        _this.senseui.window.on('load', function (): any
+        if (_this.senseui.aside.length)
         {
-            if (_this.senseui.aside.length)
-            {
-                // STYLEABLE SCROLLBARS
-                // =================================================================
-                // Require nanoScroller
-                // http://jamesflorentino.github.io/nanoScrollerJS/
-                // =================================================================
-                _this.senseui.aside.find('.nano').nanoScroller({
-                    preventPageScrolling: true,
-                    alwaysVisible: false
-                });
+            // STYLEABLE SCROLLBARS
+            // =================================================================
+            // Require nanoScroller
+            // http://jamesflorentino.github.io/nanoScrollerJS/
+            // =================================================================
+            _this.senseui.aside.find('.nano').nanoScroller({
+                preventPageScrolling: true,
+                alwaysVisible: false
+            });
 
-                let toggleBtn = $('.aside-toggle');
-                if (toggleBtn.length)
+            let toggleBtn = $('.aside-toggle');
+            if (toggleBtn.length)
+            {
+                toggleBtn.on('click', function (e: any): any
                 {
-                    toggleBtn.on('click', function (e: any): any
-                    {
-                        $.jasmineAside('toggleHideShow');
-                    });
-                }
+                    $.jasmineAside('toggleHideShow');
+                });
             }
-        });
+        }
     }
 
     /* ========================================================================
@@ -924,18 +914,15 @@ export class AppService
             });
         };
 
-        _this.senseui.window.on('load', function (): any
+        if (_this.senseui.mainNav.length)
         {
-            if (_this.senseui.mainNav.length)
-            {
-                _this.senseui.mainNav.jasmineAffix({ className: 'mainnav-fixed' });
-            }
+            _this.senseui.mainNav.jasmineAffix({ className: 'mainnav-fixed' });
+        }
 
-            if (_this.senseui.aside.length)
-            {
-                _this.senseui.aside.jasmineAffix({ className: 'aside-fixed' });
-            }
-        });
+        if (_this.senseui.aside.length)
+        {
+            _this.senseui.aside.jasmineAffix({ className: 'aside-fixed' });
+        }
     }
 
     /* ========================================================================

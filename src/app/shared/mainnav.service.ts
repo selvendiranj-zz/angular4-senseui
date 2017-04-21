@@ -23,18 +23,18 @@ export class MainnavService
     {
         let _this = this;
 
-        this.$menulink = $('#mainnav-menu > li > a, #mainnav-menu-wrap .mainnav-widget a[data-toggle="menu-widget"]');
-        this.mainNavHeight = $('#mainnav').height();
-        this.scrollbar = null;
-        this.updateMethod = false;
-        this.isSmallNav = false;
-        this.screenCat = null;
-        this.defaultSize = null;
+        _this.$menulink = $('#mainnav-menu > li > a, #mainnav-menu-wrap .mainnav-widget a[data-toggle="menu-widget"]');
+        _this.mainNavHeight = $('#mainnav').height();
+        _this.scrollbar = null;
+        _this.updateMethod = false;
+        _this.isSmallNav = false;
+        _this.screenCat = null;
+        _this.defaultSize = null;
 
         _this.initJasmineNav();
         _this.addIsOnScreen();
-        _this.senseui.window.on('resizeEnd', _this.updateNav).trigger('resize');
-        _this.senseui.window.on('load', ()=> _this.initMetisMenu());
+        _this.senseui.window.on('resizeend', (e: any) => _this.updateNav(e)).trigger('resize');
+        _this.initMetisMenu();
     }
 
     // Determine and bind hover or "touch" event
@@ -292,8 +292,7 @@ export class MainnavService
                         }
                         clearInterval(hidePopover);
                     }, 500);
-                }
-                );
+                });
         });
         _this.isSmallNav = true;
     };
@@ -417,7 +416,7 @@ export class MainnavService
         let methods: any = {
             revealToggle(): any
             {
-                if (!this.senseui.container.hasClass('reveal'))
+                if (!_this.senseui.container.hasClass('reveal'))
                 {
                     _this.senseui.container.addClass('reveal');
                 }
@@ -573,10 +572,8 @@ export class MainnavService
             bounds.right = bounds.left + this.outerWidth();
             bounds.bottom = bounds.top + this.outerHeight();
 
-            return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom <
-                bounds.bottom ||
-                viewport.top > bounds.top));
-
+            return (!(viewport.right < bounds.left || viewport.left > bounds.right ||
+                viewport.bottom < bounds.bottom || viewport.top > bounds.top));
         };
     }
 
