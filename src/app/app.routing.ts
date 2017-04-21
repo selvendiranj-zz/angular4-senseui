@@ -18,6 +18,9 @@ export const routes = [
     { path: 'mail/mailview', data: ['Mailview'], loadChildren: './components/mail/mailview/mailview.module#MailviewModule' },
     { path: 'maps/gmap', data: ['GMap'], loadChildren: './components/maps/gmap/gmap.module#GMapModule' },
     { path: 'maps/vectormap', data: ['VectorMap'], loadChildren: './components/maps/vectormap/vectormap.module#VectormapModule' },
+    { path: 'tables/datatable', data: ['Datatable'], loadChildren: './components/tables/datatable/datatable.module#DatatableModule' },
+    { path: 'tables/footable', data: ['Footable'], loadChildren: './components/tables/footable/footable.module#FootableModule' },
+    { path: 'tables/static', data: ['static'], loadChildren: './components/tables/static/staticTable.module#StaticTableModule' },
     { path: 'ui/widgets', data: ['Widgets'], loadChildren: './components/ui/widgets/widgets.module#WidgetsModule' },
     { path: 'calendar', data: ['Calendar'], loadChildren: './components/calendar/calendar.module#CalendarModule' },
     { path: '**', redirectTo: '/' }

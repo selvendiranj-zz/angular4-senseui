@@ -39,7 +39,7 @@
         "bootstrap-timepicker": "0.5.2",
         "bootstrap-editable": "*",
         "chosen": "1.7.0",
-        "datatable": "1.10.13",
+        "datatables": "1.10.13",
         "dropzone": "4.3.0",
         "editable-table": "*",
         "footable": "3.1.4",
@@ -69,6 +69,7 @@
         "googlemaps-amd": "1.0.2",
         "nanoscroller": "0.8.7",
         "metismenu": "2.7.0",
-        "jquery.resizeend": "0.2.1"
+        "jquery.resizeend": "0.2.1",
+        "datatables-responsive": "2.1.1"
     }
 }
