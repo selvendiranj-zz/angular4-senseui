@@ -590,13 +590,16 @@ export class MainnavService
                 if (toggleBtn.hasClass('push'))
                 {
                     $.jasmineNav('pushToggle');
-                } else if (toggleBtn.hasClass('slide'))
+                }
+                else if (toggleBtn.hasClass('slide'))
                 {
                     $.jasmineNav('slideToggle');
-                } else if (toggleBtn.hasClass('reveal'))
+                }
+                else if (toggleBtn.hasClass('reveal'))
                 {
                     $.jasmineNav('revealToggle');
-                } else
+                }
+                else
                 {
                     $.jasmineNav('colExpToggle');
                 }

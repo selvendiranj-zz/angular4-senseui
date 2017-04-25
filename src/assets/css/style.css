@@ -512,6 +512,14 @@ p {
     top: 0
 }
 
+.navbar-boxed {
+    width: 1140px !important;
+    z-index: 10;
+    background-color: #3c763d;
+    left: auto !important;
+    top: 0
+}
+
 #navbar-container {
     box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.1)
 }
