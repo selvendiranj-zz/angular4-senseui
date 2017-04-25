@@ -39,6 +39,9 @@
             "assets/bower_components/summernote/dist/summernote.css",
             "assets/bower_components/datatables/media/css/dataTables.bootstrap.min.css",
             "assets/bower_components/datatables-responsive/css/responsive.dataTables.scss",
+            "assets/bower_components/animate.css/animate.min.css",
+            "assets/bower_components/weather-icons/css/weather-icons.min.css",
+            "assets/bower_components/bootstrap-editable/src/css/bootstrap-editable.css",
             "assets/bower_components/pace/themes/green/pace-theme-minimal.css"
         ],
         "scripts": [
@@ -91,7 +94,9 @@
             "assets/bower_components/editable-table/mindmup-editabletable.js",
             "assets/bower_components/editable-table/numeric-input-example.js",
             "assets/bower_components/skycons-html5/skycons.js",
-            "assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"
+            "assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
+            "assets/bower_components/nestable/jquery.nestable.js",
+            "assets/bower_components/bootstrap-editable/src/js/bootstrap-editable.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

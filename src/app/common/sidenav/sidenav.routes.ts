@@ -34,21 +34,21 @@ const layouts: Sidenav[] = [
 ];
 
 const uielements: Sidenav[] = [
+    { name: 'Accordions', icon: 'fa fa-caret-right', url: '/ui/accordion', isCategory: false, children: [] },
     { name: 'CSS3 Animation', icon: 'fa fa-caret-right', url: '/ui/animation', isCategory: false, children: [] },
-    { name: 'Panel', icon: 'fa fa-caret-right', url: '/ui/panel', isCategory: false, children: [] },
-    { name: 'Xeditable', icon: 'fa fa-caret-right', url: '/ui/xeditable', isCategory: false, children: [] },
-    { name: 'Buttons', icon: 'fa fa-caret-right', url: '/ui/buttons', isCategory: false, children: [] },
-    { name: 'Fontawesome', icon: 'fa fa-caret-right', url: '/ui/fontawesome', isCategory: false, children: [] },
-    { name: 'Icons', icon: 'fa fa-caret-right', url: '/ui/icons', isCategory: false, children: [] },
+    { name: 'Buttons', icon: 'fa fa-caret-right', url: '/ui/button', isCategory: false, children: [] },
     { name: 'Components', icon: 'fa fa-caret-right', url: '/ui/components', isCategory: false, children: [] },
-    { name: 'Widgets', icon: 'fa fa-caret-right', url: '/ui/widgets', isCategory: false, children: [] },
-    { name: 'Timeline', icon: 'fa fa-caret-right', url: '/ui/timeline', isCategory: false, children: [] },
-    { name: 'Nested Lists', icon: 'fa fa-caret-right', url: '/ui/nestedlist', isCategory: false, children: [] },
-    { name: 'Grids', icon: 'fa fa-caret-right', url: '/ui/grids', isCategory: false, children: [] },
-    { name: 'Tab', icon: 'fa fa-caret-right', url: '/ui/tab', isCategory: false, children: [] },
-    { name: 'Accordions', icon: 'fa fa-caret-right', url: '/ui/accordions', isCategory: false, children: [] },
     { name: 'Draggable Panel', icon: 'fa fa-caret-right', url: '/ui/dragdrop', isCategory: false, children: [] },
-    { name: 'Typography', icon: 'fa fa-caret-right', url: '/ui/typography', isCategory: false, children: [] }
+    { name: 'Fontawesome', icon: 'fa fa-caret-right', url: '/ui/fontawesome', isCategory: false, children: [] },
+    { name: 'Grids', icon: 'fa fa-caret-right', url: '/ui/grids', isCategory: false, children: [] },
+    { name: 'Icons', icon: 'fa fa-caret-right', url: '/ui/icons', isCategory: false, children: [] },
+    { name: 'Nested List', icon: 'fa fa-caret-right', url: '/ui/nestedlist', isCategory: false, children: [] },
+    { name: 'Panel', icon: 'fa fa-caret-right', url: '/ui/panel', isCategory: false, children: [] },
+    { name: 'Tab', icon: 'fa fa-caret-right', url: '/ui/tab', isCategory: false, children: [] },
+    { name: 'Timeline', icon: 'fa fa-caret-right', url: '/ui/timeline', isCategory: false, children: [] },
+    { name: 'Typography', icon: 'fa fa-caret-right', url: '/ui/typography', isCategory: false, children: [] },
+    { name: 'Widgets', icon: 'fa fa-caret-right', url: '/ui/widgets', isCategory: false, children: [] },
+    { name: 'Xeditable', icon: 'fa fa-caret-right', url: '/ui/xeditable', isCategory: false, children: [] }
 ];
 
 const pages: Sidenav[] = [

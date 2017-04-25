@@ -3,9 +3,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class XEditableService
+export class XeditableService
 {
-    public initXEditable(): any
+    public initXeditable(): any
     {
         // defaults
         $.fn.editable.defaults.mode = 'popover';

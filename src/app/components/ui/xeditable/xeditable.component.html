@@ -1,0 +1,211 @@
+<header class="pageheader">
+    <h3><i class="fa fa-home"></i> Xeditable </h3>
+    <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+            <li> <a href="#"> Home </a> </li>
+            <li class="active"> Xeditable </li>
+        </ol>
+    </div>
+</header>
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Popover editor</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered">
+                        <div class="form-group">
+                            <div class="col-md-5"> Simple text field </div>
+                            <div class="col-md-7">
+                                <a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username">superuser</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Empty text field, required </div>
+                            <div class="col-md-7">
+                                <a href="#" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Select, local array, custom display </div>
+                            <div class="col-md-7">
+                                <a href="#" id="sex" data-type="select" data-pk="1" data-value="" data-title="Select sex"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Combodate (date) </div>
+                            <div class="col-md-7">
+                                <a href="#" id="dob" data-type="date" data-pk="1" data-title="Select date">15/05/1984</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Combodate </div>
+                            <div class="col-md-7">
+                                <a href="#" id="combodate" data-type="combodate" data-pk="1" data-value="1984-05-15" data-title="Select date"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Email </div>
+                            <div class="col-md-7">
+                                <a href="#" id="email" data-type="email" data-pk="1">admin@example.com</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Password </div>
+
+                            <div class="col-md-7">
+                                <a href="#" id="password" data-type="password" data-pk="1">Enter Password</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> URL </div>
+                            <div class="col-md-7">
+                                <a href="#" id="url" data-type="url" data-pk="1">Type URL</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Number </div>
+                            <div class="col-md-7">
+                                <a href="#" id="number" data-type="number" data-pk="1">Enter Number</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Range </div>
+                            <div class="col-md-7">
+                                <a href="#" id="range" data-type="range" data-pk="1">Range</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Time </div>
+                            <div class="col-md-7">
+                                <a href="#" id="time" data-type="time" data-pk="1">Enter Time</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Checklist </div>
+                            <div class="col-md-7">
+                                <a href="#" id="options" data-type="checklist" data-pk="1" data-title="Select options"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Textarea, buttons below. Submit by ctrl+enter </div>
+                            <div class="col-md-7">
+                                <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments">awesome
+                                                    user!</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5"> Checklist </div>
+                            <div class="col-md-7">
+                                <a href="#" id="fruits" data-type="checklist" data-value="2,3" data-title="Select fruits"></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Inline editor</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered">
+                        <div class="form-group">
+                            <div class="col-md-4"> Simple text field </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">superuser</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Empty text field, required </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Select, local array, custom display </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-sex" data-type="select" data-pk="1" data-value="" data-title="Select sex"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Combodate (date) </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-dob" data-type="date" data-pk="1" data-title="Select date">15/05/1984</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Combodate </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-combodate" data-type="combodate" data-pk="1" data-value="1984-05-15" data-title="Select date"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Email </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-email" data-type="email" data-pk="1">admin@example.com</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Password </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-password" data-type="password" data-pk="1">Enter Password</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> URL </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-url" data-type="url" data-pk="1">Type URL</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Number </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-number" data-type="number" data-pk="1">Enter Number</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Range </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-range" data-type="range" data-pk="1">Range</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Time </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-time" data-type="time" data-pk="1">Enter Time</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Checklist </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-options" data-type="checklist" data-pk="1" data-title="Select options"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Textarea, buttons below. Submit by ctrl+enter </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments">awesome
+                                                    user!</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4"> Checklist </div>
+                            <div class="col-md-8">
+                                <a href="#" id="inline-fruits" data-type="checklist" data-value="2,3" data-title="Select fruits"></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--===================================================-->
+<!--End page content-->
