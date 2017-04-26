@@ -67,6 +67,7 @@
             "assets/bower_components/jquery-flot/jquery.flot.selection.js",
             "assets/bower_components/jquery-flot/jquery.flot.time.js",
             "assets/bower_components/jquery-flot/jquery.flot.stack.js",
+            "assets/bower_components/flot-spline/js/jquery.flot.spline.min.js",
             "assets/bower_components/jvectormap/jquery.jvectormap.min.js",
             "assets/bower_components/jvectormap/tests/assets/jquery-jvectormap-us-aea-en.js",
             "assets/bower_components/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js",
