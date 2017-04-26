@@ -20,7 +20,7 @@ export class AppService
 
         _this.senseui.InitSenseui();
         // attach jasmine to window object
-        (window as any).jasmine = _this.senseui;
+        (window as any).wSenseui = _this.senseui;
 
         _this.senseui.window.on('load', () =>
         {
@@ -228,7 +228,7 @@ export class AppService
             return null;
         };
 
-        $.fn.jasmineOverlay = function (method: any): any
+        $.fn.senseuiOverlay = function (method: any): any
         {
             if (methods[method])
             {
@@ -257,7 +257,7 @@ export class AppService
         let notyContainer: any;
         let addNew = false;
 
-        $.jasmineNoty = function (options: any): any
+        $.senseuiNoty = function (options: any): any
         {
             let defaults: any = {
                 type: 'primary',
@@ -499,7 +499,7 @@ export class AppService
                         let $gi = $(this);
                         if ($gi.hasClass('active'))
                         {
-                            $gi.trigger('jasmine.ch.unchecked');
+                            $gi.trigger('wSenseui.ch.unchecked');
                         }
                         $gi.removeClass('active');
                     });
@@ -507,10 +507,10 @@ export class AppService
 
                 if (input.checked)
                 {
-                    el.addClass('active').trigger('jasmine.ch.checked');
+                    el.addClass('active').trigger('wSenseui.ch.checked');
                 } else
                 {
-                    el.removeClass('active').trigger('jasmine.ch.unchecked');
+                    el.removeClass('active').trigger('wSenseui.ch.unchecked');
                 }
             };
 
@@ -556,7 +556,7 @@ export class AppService
             }
         };
 
-        $.fn.jasmineCheck = function (method: any): any
+        $.fn.senseuiCheck = function (method: any): any
         {
             let chk = false;
             this.each(function (event: JQueryEventObject): any
@@ -578,7 +578,7 @@ export class AppService
             allFormEl = $('.form-checkbox, .form-radio');
             if (allFormEl.length)
             {
-                allFormEl.jasmineCheck();
+                allFormEl.senseuiCheck();
             }
         });
 
@@ -652,7 +652,7 @@ export class AppService
             {
                 if (_this.senseui.screenSize === 'sm')
                 {
-                    $.jasmineNav('collapse');
+                    $.senseuiNav('collapse');
                 }
                 else
                 {
@@ -682,32 +682,32 @@ export class AppService
             toggleAlign(): any
             {
                 _this.senseui.container.toggleClass('aside-left');
-                _this.senseui.aside.jasmineAffix('update');
+                _this.senseui.aside.senseuiAffix('update');
             },
             alignLeft(): any
             {
                 _this.senseui.container.addClass('aside-left');
-                _this.senseui.aside.jasmineAffix('update');
+                _this.senseui.aside.senseuiAffix('update');
             },
             alignRight(): any
             {
                 _this.senseui.container.removeClass('aside-left');
-                _this.senseui.aside.jasmineAffix('update');
+                _this.senseui.aside.senseuiAffix('update');
             },
             togglePosition(): any
             {
                 _this.senseui.container.toggleClass('aside-fixed');
-                _this.senseui.aside.jasmineAffix('update');
+                _this.senseui.aside.senseuiAffix('update');
             },
             fixedPosition(): any
             {
                 _this.senseui.container.addClass('aside-fixed');
-                _this.senseui.aside.jasmineAffix('update');
+                _this.senseui.aside.senseuiAffix('update');
             },
             staticPosition(): any
             {
                 _this.senseui.container.removeClass('aside-fixed');
-                _this.senseui.aside.jasmineAffix('update');
+                _this.senseui.aside.senseuiAffix('update');
             },
             toggleTheme(): any
             {
@@ -723,7 +723,7 @@ export class AppService
             }
         };
 
-        $.jasmineAside = function (method: any, complete: any): any
+        $.senseuiAside = function (method: any, complete: any): any
         {
             if (asideMethods[method])
             {
@@ -753,7 +753,7 @@ export class AppService
             {
                 toggleBtn.on('click', function (e: any): any
                 {
-                    $.jasmineAside('toggleHideShow');
+                    $.senseuiAside('toggleHideShow');
                 });
             }
         }
@@ -852,7 +852,7 @@ export class AppService
             }
         };
 
-        $.fn.jasmineLanguage = function (method: any): any
+        $.fn.senseuiLanguage = function (method: any): any
         {
             let chk = false;
             this.each(function (): any
@@ -879,7 +879,7 @@ export class AppService
 
     public InitAffix(_this: AppService): any
     {
-        $.fn.jasmineAffix = function (method: any): any
+        $.fn.senseuiAffix = function (method: any): any
         {
             return this.each(function (): any
             {
@@ -889,11 +889,11 @@ export class AppService
                 if (typeof method === 'object' || !method)
                 {
                     className = method.className;
-                    el.data('jasmine.af.class', method.className);
+                    el.data('wSenseui.af.class', method.className);
                 }
                 else if (method === 'update')
                 {
-                    className = el.data('jasmine.af.class');
+                    className = el.data('wSenseui.af.class');
                 }
 
                 if (_this.senseui.container.hasClass(className) &&
@@ -916,12 +916,12 @@ export class AppService
 
         if (_this.senseui.mainNav.length)
         {
-            _this.senseui.mainNav.jasmineAffix({ className: 'mainnav-fixed' });
+            _this.senseui.mainNav.senseuiAffix({ className: 'mainnav-fixed' });
         }
 
         if (_this.senseui.aside.length)
         {
-            _this.senseui.aside.jasmineAffix({ className: 'aside-fixed' });
+            _this.senseui.aside.senseuiAffix({ className: 'aside-fixed' });
         }
     }
 
@@ -965,13 +965,13 @@ export class AppService
 
             if (!_this.senseui.container.hasClass('aside-in'))
             {
-                $.jasmineAside('show');
-                asdVisCheckbox.jasmineCheck('toggleOn');
+                $.senseuiAside('show');
+                asdVisCheckbox.senseuiCheck('toggleOn');
             }
             else
             {
-                $.jasmineAside('hide');
-                asdVisCheckbox.jasmineCheck('toggleOff');
+                $.senseuiAside('hide');
+                asdVisCheckbox.senseuiCheck('toggleOff');
             }
         });
 

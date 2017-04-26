@@ -62,13 +62,13 @@ export class AppModule
                         $('#container').addClass('effect mainnav-lg navbar-fixed mainnav-fixed');
                         break;
                     case '/layouts/pushmenu':
-                        $.jasmineNav('pushToggle');
+                        $.senseuiNav('pushToggle');
                         break;
                     case '/layouts/slidemenu':
-                        $.jasmineNav('slideToggle');
+                        $.senseuiNav('slideToggle');
                         break;
                     case '/layouts/sidebar':
-                        $.jasmineNav('colExpToggle');
+                        $.senseuiNav('colExpToggle');
                         break;
                     default:
                         break;

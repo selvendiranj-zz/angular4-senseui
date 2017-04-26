@@ -28,7 +28,7 @@ export class GMapService
             title: 'Location',
             click(e: any): any
             {
-                $.jasmineNoty({
+                $.senseuiNoty({
                     type: 'info',
                     icon: 'fa fa-info',
                     message: 'You clicked in the marker',

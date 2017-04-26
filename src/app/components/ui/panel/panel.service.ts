@@ -87,7 +87,7 @@ export class PanelService
         // =================================================================
         $('#demo-panel-alert').on('click', function (): any
         {
-            $.jasmineNoty({
+            $.senseuiNoty({
                 type: 'primary',
                 container: '#demo-panel-w-alert',
                 html: '<strong>Well done!</strong> You successfully read this important alert message.',
@@ -102,7 +102,7 @@ export class PanelService
         // =================================================================
         $('#demo-panel-alert2').on('click', function (): any
         {
-            $.jasmineNoty({
+            $.senseuiNoty({
                 type: 'success',
                 container: '#demo-panel-w-alert',
                 html: `

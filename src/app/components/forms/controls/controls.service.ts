@@ -17,18 +17,18 @@ export class ControlsService
         // Require Nifty Admin Javascript
         // http://www.themeon.net/
         // =================================================================
-        $('.demo-panel-ref-btn').jasmineOverlay().on('click', function (): any
+        $('.demo-panel-ref-btn').senseuiOverlay().on('click', function (): any
         {
             let $el = $(this);
             let relTime: any;
-            $el.jasmineOverlay('show');
+            $el.senseuiOverlay('show');
 
             // Do something...
 
             relTime = setInterval(function (): any
             {
                 // Hide the screen overlay
-                $el.jasmineOverlay('hide');
+                $el.senseuiOverlay('hide');
 
                 clearInterval(relTime);
             }, 2000);

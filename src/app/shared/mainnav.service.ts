@@ -356,7 +356,7 @@ export class MainnavService
 
             if (_this.senseui.screenSize === 'sm' && _this.senseui.container.hasClass('mainnav-lg'))
             {
-                $.jasmineNav('collapse');
+                $.senseuiNav('collapse');
             }
         }
     };
@@ -365,7 +365,7 @@ export class MainnavService
     {
         let _this = this;
 
-        _this.senseui.mainNav.jasmineAffix('update');
+        _this.senseui.mainNav.senseuiAffix('update');
         _this.unbindSmallNav();
         _this.updateSize();
 
@@ -466,7 +466,7 @@ export class MainnavService
                 {
                     _this.senseui.container.removeClass('mainnav-in');
                 }
-                // if (jasmine.container.hasClass('mainnav-in')) //jasmine.container.removeClass('aside-in');
+                // if (wSenseui.container.hasClass('mainnav-in')) //wSenseui.container.removeClass('aside-in');
                 if (_this.isSmallNav) { _this.unbindSmallNav(); }
                 return;
             },
@@ -505,17 +505,17 @@ export class MainnavService
             togglePosition(): any
             {
                 _this.senseui.container.toggleClass('mainnav-fixed');
-                _this.senseui.mainNav.jasmineAffix('update');
+                _this.senseui.mainNav.senseuiAffix('update');
             },
             fixedPosition(): any
             {
                 _this.senseui.container.addClass('mainnav-fixed');
-                _this.senseui.mainNav.jasmineAffix('update');
+                _this.senseui.mainNav.senseuiAffix('update');
             },
             staticPosition(): any
             {
                 _this.senseui.container.removeClass('mainnav-fixed');
-                _this.senseui.mainNav.jasmineAffix('update');
+                _this.senseui.mainNav.senseuiAffix('update');
             },
             update: _this.updateNav,
             forceUpdate: _this.updateSize,
@@ -525,7 +525,7 @@ export class MainnavService
             }
         };
 
-        $.jasmineNav = function (method: any, complete: any): any
+        $.senseuiNav = function (method: any, complete: any): any
         {
             if (methods[method])
             {
@@ -589,19 +589,19 @@ export class MainnavService
 
                 if (toggleBtn.hasClass('push'))
                 {
-                    $.jasmineNav('pushToggle');
+                    $.senseuiNav('pushToggle');
                 }
                 else if (toggleBtn.hasClass('slide'))
                 {
-                    $.jasmineNav('slideToggle');
+                    $.senseuiNav('slideToggle');
                 }
                 else if (toggleBtn.hasClass('reveal'))
                 {
-                    $.jasmineNav('revealToggle');
+                    $.senseuiNav('revealToggle');
                 }
                 else
                 {
-                    $.jasmineNav('colExpToggle');
+                    $.senseuiNav('colExpToggle');
                 }
             });
         }
