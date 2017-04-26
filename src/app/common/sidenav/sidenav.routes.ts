@@ -52,17 +52,17 @@ const uielements: Sidenav[] = [
 ];
 
 const pages: Sidenav[] = [
+    { name: 'Directory', icon: 'fa fa-caret-right', url: '/pages/directory', isCategory: false, children: [] },
+    { name: '404 Error', icon: 'fa fa-caret-right', url: '/pages/error404', isCategory: false, children: [] },
+    { name: '500 Error', icon: 'fa fa-caret-right', url: '/pages/error500', isCategory: false, children: [] },
     { name: 'FAQ', icon: 'fa fa-caret-right', url: '/pages/faq', isCategory: false, children: [] },
     { name: 'Gallery', icon: 'fa fa-caret-right', url: '/pages/gallery', isCategory: false, children: [] },
-    { name: 'Directory', icon: 'fa fa-caret-right', url: '/pages/directory', isCategory: false, children: [] },
-    { name: 'User Profile', icon: 'fa fa-caret-right', url: '/pages/profile', isCategory: false, children: [] },
     { name: 'Invoice', icon: 'fa fa-caret-right', url: '/pages/invoice', isCategory: false, children: [] },
-    { name: 'Login', icon: 'fa fa-caret-right', url: '/pages/login', isCategory: false, children: [] },
-    { name: 'Register', icon: 'fa fa-caret-right', url: '/pages/register', isCategory: false, children: [] },
-    { name: 'Password Reminder', icon: 'fa fa-caret-right', url: '/pages/password', isCategory: false, children: [] },
     { name: 'Lock Screen', icon: 'fa fa-caret-right', url: '/pages/lockscreen', isCategory: false, children: [] },
-    { name: '404 Error', icon: 'fa fa-caret-right', url: '/pages/error404', isCategory: false, children: [] },
-    { name: '500 Error', icon: 'fa fa-caret-right', url: '/pages/error500', isCategory: false, children: [] }
+    { name: 'Login', icon: 'fa fa-caret-right', url: '/pages/login', isCategory: false, children: [] },
+    { name: 'User Profile', icon: 'fa fa-caret-right', url: '/pages/profile', isCategory: false, children: [] },
+    { name: 'Password Reminder', icon: 'fa fa-caret-right', url: '/pages/pwdreminder', isCategory: false, children: [] },
+    { name: 'Register', icon: 'fa fa-caret-right', url: '/pages/register', isCategory: false, children: [] }
 ];
 
 const tables: Sidenav[] = [
