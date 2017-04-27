@@ -11,12 +11,11 @@ interface CompScripts
 }
 
 export const ScriptStore: Scripts[] = [
-    { name: 'senseui-scripts', src: '../scripts/scripts.js' },
-    { name: 'senseui-nanoscroller', src: 'assets/bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js' },
-    { name: 'senseui-metisMenu', src: 'assets/bower_components/metismenu/dist/metisMenu.min.js' },
-    { name: 'senseui-resizeend', src: 'assets/bower_components/jquery.resizeend/dist/jquery.resizeend.min.js' },
+    { name: 'senseui-nanoscroller', src: '../bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js' },
+    { name: 'senseui-metisMenu', src: '../bower_components/metismenu/dist/metisMenu.min.js' },
+    { name: 'senseui-resizeend', src: '../bower_components/jquery.resizeend/dist/jquery.resizeend.min.js' },
     { name: 'senseui-googlemaps', src: 'https://maps.googleapis.com/maps/api/js?v=3' },
-    { name: 'senseui-gmaps', src: 'assets/bower_components/gmaps/gmaps.js' }
+    { name: 'senseui-gmaps', src: '../bower_components/gmaps/gmaps.js' }
 ];
 
 export const CompScriptsStore: CompScripts[] = [

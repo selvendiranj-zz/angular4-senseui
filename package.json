@@ -19,7 +19,7 @@
         "flow.github-release": "conventional-github-releaser -p angular",
         "build": "ngm build -p src --clean",
         "build.watch": "ngm build -p src --watch --skip-bundles",
-        "start": "ng serve --aot --host localhost",
+        "start": "ng serve --host localhost",
         "generate-bs4": "node scripts/generate-bs4.js",
         "pretest": "run-s lint build link",
         "test": "ng test -sr",
@@ -71,6 +71,7 @@
     },
     "homepage": "https://github.com/valor-software/ng2-bootstrap#readme",
     "dependencies": {
+        "jquery": "3.2.1",
         "moment": "2.18.1",
         "ng2-bootstrap": "1.6.3"
     },
