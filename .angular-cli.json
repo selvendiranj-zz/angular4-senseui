@@ -105,7 +105,11 @@
             "../bower_components/gamma/js/jquery.history.js",
             "../bower_components/gamma/js/js-url.min.js",
             "../bower_components/gamma/js/jquerypp.custom.js",
-            "../bower_components/gamma/js/gamma.js"
+            "../bower_components/gamma/js/gamma.js",
+            "../bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js",
+            "../bower_components/metismenu/dist/metisMenu.min.js",
+            "../bower_components/jquery.resizeend/dist/jquery.resizeend.min.js",
+            "../bower_components/gmaps/gmaps.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

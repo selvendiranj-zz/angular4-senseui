@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit
 
     public ngOnInit(): void
     {
-        this.scriptSvc.loadCompScript('AppComponent');
+        // this.scriptSvc.loadCompScript('AppComponent');
     }
 
     public ngAfterViewInit(): void
