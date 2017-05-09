@@ -19,7 +19,7 @@ export class AppService
         let _this = this;
 
         _this.senseui.InitSenseui();
-        // attach jasmine to window object
+        // attach senseui to window object
         (window as any).wSenseui = _this.senseui;
 
         _this.senseui.window.on('load', () =>
@@ -151,7 +151,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE OVERLAY v1.0
+     * SENSEUI OVERLAY v1.0
      * -------------------------------------------------------------------------
      * Optional Font Icon : By Font Awesome
      * http://fortawesome.github.io/Font-Awesome/
@@ -189,10 +189,10 @@ export class AppService
             show(el: any): any
             {
                 let target = $(el.attr('data-target'));
-                let ovId = 'jasmine-overlay-' + uID() + uID() + '-' + uID();
+                let ovId = 'senseui-overlay-' + uID() + uID() + '-' + uID();
                 let panelOv = $('<div id="' + ovId + '" class="panel-overlay"></div>');
 
-                el.prop('disabled', true).data('jasmineOverlay', ovId);
+                el.prop('disabled', true).data('senseuiOverlay', ovId);
                 target.addClass('panel-overlay-wrap');
                 panelOv.appendTo(target).html(el.data('overlayTemplate'));
                 return null;
@@ -200,7 +200,7 @@ export class AppService
             hide(el: any): any
             {
                 let target = $(el.attr('data-target'));
-                let boxLoad = $('#' + el.data('jasmineOverlay'));
+                let boxLoad = $('#' + el.data('senseuiOverlay'));
 
                 if (boxLoad.length)
                 {
@@ -247,7 +247,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE NOTIFICATION v1.1
+     * SSENSEUI NOTIFICATION v1.1
      * -------------------------------------------------------------------------
      * ========================================================================*/
     public Notify(_this: AppService): any
@@ -449,7 +449,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE CHECK v1.1
+     * SENSEUI CHECK v1.1
      * -------------------------------------------------------------------------
      * ========================================================================*/
     public Check(_this: AppService): any
@@ -457,13 +457,13 @@ export class AppService
         let allFormEl;
         let formElement = function (el: any): any
         {
-            if (el.data('jasmine-check'))
+            if (el.data('senseui-check'))
             {
                 return;
             }
             else
             {
-                el.data('jasmine-check', true);
+                el.data('senseui-check', true);
                 if (el.text().trim().length)
                 {
                     el.addClass('form-text');
@@ -641,7 +641,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE ASIDE v1.0.1
+     * SENSEUI ASIDE v1.0.1
      * -------------------------------------------------------------------------
      * ========================================================================*/
     public InitAsidebar(_this: AppService): any
@@ -760,7 +760,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE LANGUAGE SELECTOR v1.0
+     * SENSEUI LANGUAGE SELECTOR v1.0
      * -------------------------------------------------------------------------
      * Require Bootstrap Dropdowns
      * http://getbootstrap.com/components/#dropdowns
@@ -871,7 +871,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE AFFIX v1.0
+     * SENSEUI AFFIX v1.0
      * -------------------------------------------------------------------------
      * Require Bootstrap Affix
      * http://getbootstrap.com/javascript/#affix
@@ -926,7 +926,7 @@ export class AppService
     }
 
     /* ========================================================================
-     * JASMINE PROFILE
+     * SENSEUI PROFILE
      * -------------------------------------------------------------------------
      * ========================================================================*/
     public InitProfile(_this: AppService): any

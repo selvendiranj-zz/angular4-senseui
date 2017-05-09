@@ -31,7 +31,7 @@ export class MainnavService
         _this.screenCat = null;
         _this.defaultSize = null;
 
-        _this.initJasmineNav();
+        _this.initSenseuiNav();
         _this.addIsOnScreen();
         _this.senseui.window.on('resizeend', (e: any) => _this.updateNav(e)).trigger('resize');
         _this.initMetisMenu();
@@ -409,7 +409,7 @@ export class MainnavService
         }
     };
 
-    public initJasmineNav(): any
+    public initSenseuiNav(): any
     {
         let _this = this;
 
