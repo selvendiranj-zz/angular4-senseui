@@ -1,6 +1,6 @@
 {
     "project": {
-        "name": "angular2-senseui"
+        "name": "angular4-senseui"
     },
     "apps": [{
         "root": "src",
@@ -11,10 +11,11 @@
         ],
         "index": "index.html",
         "main": "main.ts",
-        "test": "../../scripts/test.ts",
-        "tsconfig": "tsconfig.json",
-        "prefix": "",
-        "mobile": false,
+        "polyfills": "polyfills.ts",
+        "test": "test.ts",
+        "tsconfig": "tsconfig.app.json",
+        "testTsconfig": "tsconfig.spec.json",
+        "prefix": "app",
         "styles": [
             "../bower_components/bootstrap/dist/css/bootstrap.min.css",
             "assets/css/style.css",
@@ -75,7 +76,7 @@
             "../bower_components/footable/compiled/footable.min.js",
             "../bower_components/screenfull/dist/screenfull.min.js",
             "../bower_components/moment/min/moment.min.js",
-            "../bower_components/moment-range/dist/moment-range.js",
+            "../bower_components/moment-range/dist/moment-range.min.js",
             "../bower_components/fullcalendar/dist/fullcalendar.min.js",
             "../bower_components/morris.js/morris.min.js",
             "../bower_components/raphael/raphael.min.js",
@@ -116,16 +117,27 @@
     "packages": [],
     "e2e": {
         "protractor": {
-            "config": "protractor.conf.js"
+            "config": "./protractor.conf.js"
         }
     },
+    "lint": [{
+            "project": "src/tsconfig.app.json"
+        },
+        {
+            "project": "src/tsconfig.spec.json"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json"
+        }
+    ],
     "test": {
         "karma": {
-            "config": "karma.conf.js"
+            "config": "./karma.conf.js"
         }
     },
     "defaults": {
         "styleExt": "css",
+        "component": {},
         "prefixInterfaces": false,
         "inline": {
             "style": false,

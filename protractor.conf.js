@@ -1,23 +1,16 @@
 // Protractor configuration file, see link for more information
-// https://github.com/angular/protractor/blob/master/docs/referenceConf.js
+// https://github.com/angular/protractor/blob/master/lib/config.ts
+
+const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
     allScriptsTimeout: 11000,
     specs: [
-        './e2e/**/*.e2e-spec.ts',
-    ],
-    exclude: [
-        './e2e/**/accordion-demo.e2e-spec.ts',
-        './e2e/**/alert-demo.e2e-spec.ts',
-        './e2e/**/buttons-demo.e2e-spec.ts',
-        './e2e/**/carousel-demo.e2e-spec.ts',
-        './e2e/**/collapse-demo.e2e-spec.ts',
-        './e2e/**/leftPanelTests.po.ts',
-        './e2e/**/modals-demo.e2e-spec.ts',
+        './e2e/**/*.e2e-spec.ts'
     ],
     capabilities: {
         browserName: 'chrome',
-        'chromeOptions': {
+        chromeOptions: {
             'args': ['show-fps-counter=true', '--no-sandbox']
         }
     },
@@ -27,21 +20,15 @@ exports.config = {
     jasmineNodeOpts: {
         showColors: true,
         defaultTimeoutInterval: 30000,
-        print() {}
+        print: function() {}
     },
     useAllAngular2AppRoots: true,
-    beforeLaunch() {
-        require('ts-node').register({ project: 'e2e' });
+    beforeLaunch: function() {
+        require('ts-node').register({
+            project: 'e2e/tsconfig.e2e.json'
+        });
     },
-    // TODO add working specreporter
-    // onPrepare() {
-    //   jasmine.getEnv().addReporter(new SpecReporter());
-    // }
-};
-
-if (process.env.SAUCE) {
-    if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
-        console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.');
-        process.exit(1);
+    onPrepare() {
+        jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     }
-}
+};

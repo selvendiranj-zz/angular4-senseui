@@ -1,19 +1,20 @@
 {
+    "compileOnSave": false,
     "compilerOptions": {
+        "outDir": "./dist/out-tsc",
+        "baseUrl": "src",
+        "sourceMap": true,
         "declaration": false,
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "target": "es5",
         "noEmitHelpers": true,
-        "lib": ["es6", "dom"],
         "mapRoot": "./",
         "module": "es6",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "target": "es5",
-        "outDir": "../dist",
         "types": [
             "jquery",
             "jasmine",
@@ -21,7 +22,11 @@
             "googlemaps"
         ],
         "typeRoots": [
-            "../node_modules/@types"
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2016",
+            "dom"
         ]
     }
 }
