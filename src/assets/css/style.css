@@ -507,7 +507,7 @@ p {
     position: fixed;
     width: 100%;
     z-index: 10;
-    background-color: #3c763d;
+    background-color: rgb(0, 166, 90);
     left: 0;
     top: 0
 }
@@ -515,7 +515,7 @@ p {
 .navbar-boxed {
     width: 1140px !important;
     z-index: 10;
-    background-color: #3c763d;
+    background-color: rgb(0, 166, 90);
     left: auto !important;
     top: 0
 }
@@ -533,7 +533,7 @@ p {
 .navbar-content {
     position: relative;
     left: 0;
-    background-color: #3c763d;
+    background-color: rgb(0, 166, 90);
     padding: 0 8px;
 }
 
@@ -545,7 +545,7 @@ p {
 */
 
 .navbar-brand {
-    background-color: #3c763d;
+    background-color: rgb(0, 166, 90);
     color: #fff;
     padding: 0;
     height: 60px;
@@ -748,7 +748,7 @@ p {
         width: 100%
     }
     #navbar-container {
-        background-color: #3c763d;
+        background-color: rgb(0, 166, 90);
         color: #ffffff;
     }
     .navbar-content {
