@@ -8,7 +8,9 @@
         "**/.DS_Store": true,
         "**/*.js": { "when": "$(basename).ts" },
         "**/*.js.map": { "when": "$(basename).map" },
-        "npm-debug.log": true
+        "npm-debug.log": true,
+        "package-lock.json": true,
+        "yarn.lock": true
     },
     "vsicons.presets.angular": true
 }
