@@ -96,7 +96,7 @@ export class MainnavService
                 }, 700);
             };
 
-            $(document).click(function (event2: JQueryEventObject): any
+            $(document).click(function (event2: any): any
             {
                 if (!$(event2.currentTarget).closest('#mainnav-container').length)
                 {
@@ -304,7 +304,7 @@ export class MainnavService
         let colapsed = $('#mainnav-menu').find('.collapse');
         if (colapsed.length)
         {
-            colapsed.each(function (event: JQueryEventObject): any
+            colapsed.each(function (index: number): any
             {
                 let cl = $(this);
                 if (cl.hasClass('in'))

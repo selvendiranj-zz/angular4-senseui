@@ -106,7 +106,7 @@ export class GMapService
         {
             e.preventDefault();
             GMaps.geocode({
-                address: $('#demo-geocoding-address').val().trim(),
+                address: $('#demo-geocoding-address').val().toString().trim(),
                 callback(results: any, status: any): any
                 {
                     if (status === 'OK')

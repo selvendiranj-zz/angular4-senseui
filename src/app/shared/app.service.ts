@@ -73,7 +73,7 @@ export class AppService
 
         // Update nancoscroller
         $('#navbar-container .navbar-top-links').on('shown.bs.dropdown', '.dropdown',
-            function (event: JQueryEventObject): any
+            function (event: any): any
             {
                 $(this).find('.nano').nanoScroller({
                     preventPageScrolling: true
@@ -586,7 +586,7 @@ export class AppService
         {
             let input = $(this);
             let numFiles = input.get(0).files ? input.get(0).files.length : 1;
-            let label = input.val()
+            let label = input.val().toString()
                 .replace(/\\/g, '/')
                 .replace(/.*\//, '');
             let size = function (): any
@@ -625,7 +625,7 @@ export class AppService
 
         if (shortcutBtn.length)
         {
-            shortcutBtn.find('li').each(function (event: JQueryEventObject): any
+            shortcutBtn.find('li').each(function (index: number): any
             {
                 let $el = $(this);
                 $el.popover({

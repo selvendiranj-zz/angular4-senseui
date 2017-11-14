@@ -26,3 +26,59 @@ declare module jasmine
         toHaveCssClass(expected: any): boolean;
     }
 }
+
+interface HTMLElement
+{
+    value: any;
+    files: any;
+
+}
+interface JQuery
+{
+    plot: any;
+    draggable: any;
+    fullCalendar: any;
+    vectorMap: any;
+    easyPieChart: any;
+    sortable: any;
+    disableSelection: any;
+    footable: any;
+    dataTable: any;
+    live: any;
+    editableTableWidget: any;
+    selectpicker: any;
+    senseuiOverlay: any;
+    chosen: any;
+    ionRangeSlider: any;
+    timepicker: any;
+    datepicker: any;
+    summernote: any;
+    mask: any;
+    tagit: any;
+    bootstrapValidator: any;
+    bootstrapWizard: any;
+    steps: any;
+    parsley: any;
+    slimscroll: any;
+    DataTable: any;
+    nestable: any;
+    editable: any;
+    tooltip: any;
+    popover: any;
+    nanoScroller: any;
+    senseuiCheck: any;
+    senseuiLanguage: any;
+    senseuiAffix: any;
+    affix: any;
+    isOnScreen: any;
+    metisMenu: any;
+}
+
+interface JQueryStatic
+{
+    plot: any;
+    senseuiNav: any;
+    senseuiNoty: any;
+    senseuiAside: any;
+
+}
