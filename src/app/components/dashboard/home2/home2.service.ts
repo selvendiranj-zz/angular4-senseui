@@ -281,7 +281,7 @@ export class Home2Service
         function countTodos(): any
         {
             let count = $('#sortable li').length;
-            $('.count-todos').html(count);
+            $('.count-todos').html(count.toString());
         }
 
         // create task

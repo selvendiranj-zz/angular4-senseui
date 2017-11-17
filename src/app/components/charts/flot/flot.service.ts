@@ -3,6 +3,10 @@
 // ====================================================================
 
 import { Injectable } from '@angular/core';
+import * as Moment from 'moment';
+import * as momentRange from 'moment-range';
+
+const moment = momentRange.extendMoment(Moment);
 declare const window: any;
 
 @Injectable()
@@ -580,11 +584,9 @@ export class FlotService
 
             let range = moment().range(moment(chatData.daterange[0], 'M-D-YY'), moment(chatData.daterange[1], 'M-D-YY'));
 
-            range.by(moment().range(moment(chatData.daterange[0], 'M-D-YY'), moment(chatData.daterange[0], 'M-D-YY').add(1, 'days')), function (m: any): any
-            {
-                dataTemp.date.push(m.valueOf());
-                ticks.push([m.valueOf(), m.format('MMM D')]);
-            });
+            let momt: any = range.byRange(moment().range(moment(chatData.daterange[0], 'M-D-YY'), moment(chatData.daterange[0], 'M-D-YY').add(1, 'days')));
+            dataTemp.date.push(momt.valueOf());
+            ticks.push([momt.valueOf(), momt.format('MMM D')]);
 
             let num = dataTemp.count.length;
 
@@ -605,7 +607,10 @@ export class FlotService
             let maxScale = Math.ceil(axis.datamax / units) * units;
             let values = [];
 
-            while (maxScale / 4 !== Math.round(maxScale / 4)) { maxScale++; };
+            while (maxScale / 4 !== Math.round(maxScale / 4))
+            {
+                maxScale++;
+            }
 
             values.push([maxScale, (maxScale).toLocaleString()]);
             values.push([(maxScale * 3) / 4, ((maxScale * 3) / 4).toLocaleString()]);
