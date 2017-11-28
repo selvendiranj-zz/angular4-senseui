@@ -5,8 +5,11 @@
 import { Injectable } from '@angular/core';
 import * as Moment from 'moment';
 import * as momentRange from 'moment-range';
+import 'moment/locale/en-gb';
 
 const moment = momentRange.extendMoment(Moment);
+let localeData: Moment.Locale = moment.localeData();
+
 declare const window: any;
 
 @Injectable()
@@ -14,7 +17,7 @@ export class FlotService
 {
     public InitFlot(): any
     {
-        window['moment-range'].extendMoment(moment);
+        window['moment-range'] = moment;
 
         // FLOT CHART
         // =================================================================
