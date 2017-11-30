@@ -12,5 +12,8 @@
         "package-lock.json": true,
         "yarn.lock": true
     },
-    "vsicons.presets.angular": true
+    "vsicons.presets.angular": true,
+    "cSpell.words": [
+        "Mainnav"
+    ]
 }
